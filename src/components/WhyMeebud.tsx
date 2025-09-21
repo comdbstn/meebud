@@ -3,8 +3,8 @@ export default function WhyMeebud() {
     {
       icon: "🤖",
       title: "AI 외모 매칭",
-      subtitle: "강아지상 ↔ 고양이상 궁합 분석",
-      description: "단순한 스와이프가 아닌, AI가 얼굴형·눈매·미소까지 분석해서 정말 잘 어울리는 외모 스타일끼리 매칭해드려요."
+      subtitle: "얼굴상 완벽 분석",
+      description: "얼굴형, 눈매, 미소까지 AI가 분석해서 당신과 찰떡궁합인 외모 스타일을 찾아드려요."
     },
     {
       icon: "🛡️",

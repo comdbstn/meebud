@@ -20,10 +20,10 @@ export default function Hero() {
         {/* Main headline */}
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            AI가 매칭하는 후불제 매칭
+            AI가 매칭하는 후불제 매칭,
           </h2>
           <h3 className="text-xl font-bold text-gray-700">
-            가장 <span className="text-[#FF4D8D]">완벽한</span> 이상형을 찾아드립니다
+            가장 <span className="text-[#FF4D8D]">완벽한</span> 이상형을 찾아드립니다.
           </h3>
         </div>
 
@@ -31,11 +31,11 @@ export default function Hero() {
         <div className="mb-8 space-y-2">
           <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
             <span>🐶</span>
-            <span>강아지상과 잘 어울리는 매칭</span>
+            <span>내 이상형을 Ai가 인식해서 완벽한 매칭</span>
           </div>
           <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
             <span>🐱</span>
-            <span>고양이상과 찰떡궁합 매칭</span>
+            <span>100% 후불제! 서로 매칭 수락한 뒤 결제하세요:)</span>
           </div>
           <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
             <span>✨</span>
@@ -53,8 +53,8 @@ export default function Hero() {
             <span className="text-sm font-medium text-gray-700">3분 내외의 간단한 가입으로</span>
           </div>
           <div className="bg-gray-50 rounded-lg p-3">
-            <div className="text-sm text-gray-600 mb-2">💬 자기소개 해볼까요?</div>
-            <div className="text-xs text-gray-500">🦊 따뜻한 강아지상이 좋아요!</div>
+            <div className="text-sm text-gray-600 mb-2">💬 이상형이 어떻게 되세요?</div>
+            <div className="text-xs text-gray-500">🦊 ENTJ 여우상이 좋아요!</div>
           </div>
         </div>
 
