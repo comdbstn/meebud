@@ -53,34 +53,31 @@ export default function FAQ() {
   }
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-      <div className="max-w-md mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 mb-4">
-            <span className="text-2xl animate-bounce">🤔</span>
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              어떻게 진행될까요?
-            </h2>
-          </div>
-          <p className="text-gray-600 text-lg font-medium">
-            자주 묻는 <span className="text-[#FF4D8D] font-bold">궁금한 점들</span>
+    <section className="py-16 px-4 bg-gray-50">
+      <div className="max-w-sm mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl font-bold text-gray-800 mb-3">
+            자주 묻는 질문
+          </h2>
+          <p className="text-gray-600">
+            궁금한 점이 있으시다면 확인해보세요
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-white/70 backdrop-blur-sm border border-white/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+            <div key={index} className="bg-white border border-gray-200 rounded-xl overflow-hidden">
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left hover:bg-white/50 transition-colors duration-200 flex items-center justify-between"
+                className="w-full px-5 py-4 text-left hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
               >
                 <div className="flex items-center space-x-3">
-                  <span className="text-xl">{faq.icon}</span>
-                  <span className="font-semibold text-gray-800 text-sm">
+                  <span className="text-base">{faq.icon}</span>
+                  <span className="font-medium text-gray-800 text-sm">
                     {faq.question}
                   </span>
                 </div>
-                <span className={`text-[#FF4D8D] text-xl font-bold transition-transform duration-200 ${
+                <span className={`text-[#FF4D8D] text-lg font-bold transition-transform duration-200 ${
                   openFAQ === index ? 'rotate-45' : ''
                 }`}>
                   +
@@ -88,7 +85,7 @@ export default function FAQ() {
               </button>
 
               {openFAQ === index && (
-                <div className="px-6 py-4 bg-gradient-to-r from-purple-50 to-pink-50 border-t border-white/30">
+                <div className="px-5 py-4 bg-gray-50 border-t border-gray-200">
                   <p className="text-gray-700 text-sm leading-relaxed">
                     {faq.answer}
                   </p>
@@ -98,18 +95,15 @@ export default function FAQ() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <span className="text-2xl animate-bounce">💌</span>
-              <span className="font-bold text-gray-800">더 궁금한 점이 있으시나요?</span>
-            </div>
+        <div className="mt-10 text-center">
+          <div className="bg-white rounded-xl p-6 border border-gray-200">
+            <p className="font-semibold text-gray-800 mb-2">더 궁금한 점이 있으시나요?</p>
             <p className="text-gray-600 text-sm mb-4">
               언제든지 편하게 문의해주세요!
             </p>
             <a
               href="mailto:jys13230@gmail.com"
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#FF4D8D] to-purple-500 text-white px-6 py-3 rounded-2xl text-sm font-medium hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="inline-flex items-center space-x-2 bg-[#FF4D8D] text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-[#ff3080] transition-colors duration-200"
             >
               <span>✉️</span>
               <span>문의하기</span>
