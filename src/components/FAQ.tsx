@@ -7,36 +7,44 @@ export default function FAQ() {
 
   const faqs = [
     {
-      question: "얼굴은 언제 공개되나요?",
-      answer: "서로 수락한 후 연결이 성사되면 얼굴 사진이 공개됩니다. 그 전까지는 모자이크 처리되어 보호됩니다."
+      question: "AI가 외모를 어떻게 분석하나요?",
+      answer: "얼굴형, 눈매, 미소 등을 AI가 분석해서 강아지상, 고양이상 등의 스타일을 파악하고 비슷한 취향을 가진 분들과 매칭해드려요! 🐶🐱",
+      icon: "🤖"
     },
     {
       question: "성사형 후불제 가격은 얼마인가요?",
-      answer: "남성 9,900원, 여성 무료입니다. 서로 수락한 연결에만 결제가 진행되는 공정한 시스템입니다."
+      answer: "남성 9,900원, 여성 무료입니다. 서로 수락한 연결에만 결제가 진행되는 공정한 시스템이에요. 지금은 테스트 기간이라 전부 무료! 🎉",
+      icon: "💳"
     },
     {
-      question: "인증은 필수인가요?",
-      answer: "신분 인증은 필수이며, 학력·직장·건강 인증은 선택사항입니다. 더 많은 인증을 받을수록 신뢰도가 높아집니다."
+      question: "인증은 꼭 해야 하나요?",
+      answer: "기본 회원가입만으로도 이용 가능해요! 학력, 직장, 취미 등은 본인이 원할 때만 인증하면 되고, 운영진이 꼼꼼하게 검수해서 신뢰도를 높여드려요.",
+      icon: "✨"
     },
     {
-      question: "AI는 어떻게 매칭하나요?",
-      answer: "MBTI, 가치관, 라이프스타일, 취향 등을 종합 분석하여 궁합을 계산하고 가장 잘 맞는 사람을 추천합니다."
+      question: "얼굴 사진은 언제 공개되나요?",
+      answer: "서로 관심을 보이고 연결이 성사되면 얼굴 사진이 공개됩니다. 그 전까지는 안전하게 보호되어 있어요!",
+      icon: "🔒"
     },
     {
-      question: "매칭이 안 되면 환불되나요?",
-      answer: "서로 수락하지 않으면 결제가 발생하지 않습니다. 성사된 연결에만 결제하는 후불제 시스템입니다."
+      question: "매칭이 안 되면 어떻게 되나요?",
+      answer: "서로 수락하지 않으면 결제가 전혀 발생하지 않아요. 성사된 연결에만 결제하는 후불제 시스템이라 부담 없이 시작할 수 있어요!",
+      icon: "💕"
     },
     {
       question: "개인정보는 안전한가요?",
-      answer: "모든 개인정보는 암호화되어 보관되며, 권한을 가진 운영진만 최소한의 정보에 접근할 수 있습니다."
+      answer: "모든 개인정보는 암호화되어 보관되며, 최소한의 정보만 수집해요. 권한을 가진 운영진만 접근할 수 있고, 절대 외부에 유출되지 않아요.",
+      icon: "🛡️"
     },
     {
-      question: "부적절한 사용자를 신고할 수 있나요?",
-      answer: "신고 기능을 통해 언제든 신고 가능하며, 24시간 내 검토 후 적절한 조치를 취합니다."
+      question: "부적절한 사용자는 어떻게 처리하나요?",
+      answer: "신고 기능을 통해 언제든 신고 가능하며, 24시간 내 빠르게 검토해서 적절한 조치를 취해요. 안전한 만남 환경을 위해 최선을 다해요!",
+      icon: "🚨"
     },
     {
-      question: "탈퇴하면 정보가 삭제되나요?",
-      answer: "탈퇴 시 개인정보는 즉시 삭제되며, 법적 보관이 필요한 최소한의 정보만 일정 기간 보관됩니다."
+      question: "가입하면 바로 매칭이 되나요?",
+      answer: "프로필 작성 후 AI가 분석하는 시간이 조금 필요해요. 보통 1-2시간 내에 나와 잘 맞는 이상형들을 추천해드려요! ⏰",
+      icon: "⚡"
     }
   ]
 
@@ -45,27 +53,33 @@ export default function FAQ() {
   }
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       <div className="max-w-md mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-[#0D1B2A] mb-4">
-            자주 묻는 질문
-          </h2>
-          <p className="text-[#ADB5BD] text-lg">
-            궁금한 점이 있으시다면 확인해보세요
+          <div className="inline-flex items-center space-x-2 mb-4">
+            <span className="text-2xl animate-bounce">🤔</span>
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              어떻게 진행될까요?
+            </h2>
+          </div>
+          <p className="text-gray-600 text-lg font-medium">
+            자주 묻는 <span className="text-[#FF4D8D] font-bold">궁금한 점들</span>
           </p>
         </div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="border border-gray-200 rounded-xl overflow-hidden">
+            <div key={index} className="bg-white/70 backdrop-blur-sm border border-white/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between"
+                className="w-full px-6 py-4 text-left hover:bg-white/50 transition-colors duration-200 flex items-center justify-between"
               >
-                <span className="font-semibold text-[#0D1B2A] text-sm">
-                  {faq.question}
-                </span>
+                <div className="flex items-center space-x-3">
+                  <span className="text-xl">{faq.icon}</span>
+                  <span className="font-semibold text-gray-800 text-sm">
+                    {faq.question}
+                  </span>
+                </div>
                 <span className={`text-[#FF4D8D] text-xl font-bold transition-transform duration-200 ${
                   openFAQ === index ? 'rotate-45' : ''
                 }`}>
@@ -74,8 +88,8 @@ export default function FAQ() {
               </button>
 
               {openFAQ === index && (
-                <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
-                  <p className="text-[#ADB5BD] text-sm leading-relaxed">
+                <div className="px-6 py-4 bg-gradient-to-r from-purple-50 to-pink-50 border-t border-white/30">
+                  <p className="text-gray-700 text-sm leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
@@ -85,16 +99,22 @@ export default function FAQ() {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-[#ADB5BD] text-sm mb-4">
-            더 궁금한 점이 있으시나요?
-          </p>
-          <a
-            href="mailto:jys13230@gmail.com"
-            className="inline-flex items-center space-x-2 bg-[#0D1B2A] text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[#1a2b3d] transition-colors duration-200"
-          >
-            <span>✉️</span>
-            <span>문의하기</span>
-          </a>
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <span className="text-2xl animate-bounce">💌</span>
+              <span className="font-bold text-gray-800">더 궁금한 점이 있으시나요?</span>
+            </div>
+            <p className="text-gray-600 text-sm mb-4">
+              언제든지 편하게 문의해주세요!
+            </p>
+            <a
+              href="mailto:jys13230@gmail.com"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#FF4D8D] to-purple-500 text-white px-6 py-3 rounded-2xl text-sm font-medium hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              <span>✉️</span>
+              <span>문의하기</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
