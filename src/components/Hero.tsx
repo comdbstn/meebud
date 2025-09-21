@@ -3,7 +3,7 @@
 export default function Hero() {
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center px-4">
-      <div className="text-center max-w-sm mx-auto">
+      <div className="text-center max-w-sm mx-auto animate-fade-in">
         {/* Logo */}
         <div className="mb-8">
           <div className="inline-flex items-center space-x-2 mb-3">
@@ -20,10 +20,10 @@ export default function Hero() {
         {/* Main headline */}
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            AI가 외모까지 매칭해주는
+            AI가 매칭하는 후불제 매칭
           </h2>
           <h3 className="text-xl font-bold text-gray-700">
-            가장 <span className="text-[#FF4D8D]">완벽한</span> 나의 이상형
+            가장 <span className="text-[#FF4D8D]">완벽한</span> 이상형을 찾아드립니다
           </h3>
         </div>
 

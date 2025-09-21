@@ -2,7 +2,7 @@ export default function TrustSafety() {
   return (
     <section className="py-16 px-4 bg-white">
       <div className="max-w-sm mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-slide-up">
           <h2 className="text-2xl font-bold text-gray-800 mb-3">
             신뢰와 안전
           </h2>

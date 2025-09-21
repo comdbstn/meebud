@@ -13,7 +13,7 @@ export default function FAQ() {
     },
     {
       question: "성사형 후불제 가격은 얼마인가요?",
-      answer: "남성 9,900원, 여성 무료입니다. 서로 수락한 연결에만 결제가 진행되는 공정한 시스템이에요. 지금은 테스트 기간이라 전부 무료! 🎉",
+      answer: "남성 9,900원, 여성 무료입니다. 서로 수락한 연결에만 결제가 진행되는 공정한 시스템이에요! 💝",
       icon: "💳"
     },
     {
@@ -55,7 +55,7 @@ export default function FAQ() {
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-sm mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-slide-up">
           <h2 className="text-2xl font-bold text-gray-800 mb-3">
             자주 묻는 질문
           </h2>

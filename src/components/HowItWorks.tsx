@@ -2,7 +2,7 @@ export default function HowItWorks() {
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-sm mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-slide-up">
           <h2 className="text-2xl font-bold text-gray-800 mb-3">
             어떻게 작동하나요?
           </h2>
@@ -12,7 +12,7 @@ export default function HowItWorks() {
         </div>
 
         <div className="space-y-8">
-          <div className="text-center">
+          <div className="text-center animate-slide-up-delay">
             <div className="w-12 h-12 bg-[#FF4D8D] rounded-full flex items-center justify-center mx-auto mb-3">
               <span className="text-white font-bold">1</span>
             </div>
@@ -20,7 +20,7 @@ export default function HowItWorks() {
             <p className="text-sm text-gray-600">기본정보와 질문지를 작성하고 원하는 경우 인증까지</p>
           </div>
 
-          <div className="text-center">
+          <div className="text-center animate-slide-up-delay">
             <div className="w-12 h-12 bg-[#FF4D8D] rounded-full flex items-center justify-center mx-auto mb-3">
               <span className="text-white font-bold">2</span>
             </div>
@@ -28,7 +28,7 @@ export default function HowItWorks() {
             <p className="text-sm text-gray-600">AI가 분석한 나와 가장 잘 맞는 이상형 추천받기</p>
           </div>
 
-          <div className="text-center">
+          <div className="text-center animate-slide-up-delay">
             <div className="w-12 h-12 bg-[#FF4D8D] rounded-full flex items-center justify-center mx-auto mb-3">
               <span className="text-white font-bold">3</span>
             </div>
@@ -38,7 +38,7 @@ export default function HowItWorks() {
         </div>
 
         {/* AI Feature highlight */}
-        <div className="mt-12 bg-gray-800 rounded-xl p-6 text-center text-white">
+        <div className="mt-12 bg-gray-800 rounded-xl p-6 text-center text-white animate-slide-up-delay">
           <div className="text-2xl mb-2">🤖</div>
           <h3 className="font-bold mb-2">AI 궁합 분석</h3>
           <p className="text-sm text-gray-300">
