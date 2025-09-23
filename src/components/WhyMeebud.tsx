@@ -10,8 +10,8 @@ export default function WhyMeebud() {
     },
     {
       icon: "🤖",
-      title: "AI 이상형 매칭",
-      subtitle: "MBTI·가치관·취향 기반 추천",
+      title: "AI 매칭, 이젠 외모까지",
+      subtitle: "MBTI, 가치관, 취향 심지어 사주까지",
       description: "AI가 분석한 완벽한 궁합으로 진짜 맞는 사람만",
       bgColor: "from-purple-50 to-pink-50",
       iconBg: "from-purple-500 to-pink-600"
@@ -42,10 +42,11 @@ export default function WhyMeebud() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`bg-gradient-to-r ${feature.bgColor} rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-all duration-300`}
+              className={`bg-gradient-to-r ${feature.bgColor} rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-all duration-300 hover-lift animate-slide-up-delay`}
+              style={{animationDelay: `${index * 0.1}s`}}
             >
               <div className="flex items-start space-x-4">
-                <div className={`w-14 h-14 bg-gradient-to-br ${feature.iconBg} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
+                <div className={`w-14 h-14 bg-gradient-to-br ${feature.iconBg} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg animate-float`}>
                   <span className="text-white text-xl">{feature.icon}</span>
                 </div>
 
@@ -71,7 +72,7 @@ export default function WhyMeebud() {
         <div className="mt-10 text-center">
           <div className="bg-[#FF4D8D] text-white px-6 py-3 rounded-xl">
             <p className="text-sm font-medium">
-              💝 여성만 무료! 남성 9,900원 (성사 시에만 결제)
+              💝 매칭 당 9,900원
             </p>
           </div>
         </div>

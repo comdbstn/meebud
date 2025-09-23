@@ -12,27 +12,27 @@ export default function HowItWorks() {
         </div>
 
         <div className="space-y-6">
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-slide-up-delay">
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-slide-up-delay hover-lift">
             <div className="flex items-start space-x-4">
-              <div className="w-14 h-14 bg-[#FF4D8D] rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="w-14 h-14 bg-[#FF4D8D] rounded-2xl flex items-center justify-center flex-shrink-0 animate-bounce-gentle">
                 <span className="text-white font-bold text-lg">1</span>
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-bold text-gray-800 mb-2">프로필 완성</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  기본정보와 질문지를 작성하고 원하는 경우 인증까지
+                  기본정보와 질문지를 작성 및 사진 업로드
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-slide-up-delay">
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-slide-up-delay hover-lift">
             <div className="flex items-start space-x-4">
-              <div className="w-14 h-14 bg-[#FF4D8D] rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="w-14 h-14 bg-[#FF4D8D] rounded-2xl flex items-center justify-center flex-shrink-0 animate-bounce-gentle" style={{animationDelay: '0.5s'}}>
                 <span className="text-white font-bold text-lg">2</span>
               </div>
               <div className="flex-1">
-                <h3 className="text-lg font-bold text-gray-800 mb-2">AI 추천 확인(1~3명)</h3>
+                <h3 className="text-lg font-bold text-gray-800 mb-2">AI 추천 확인</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   AI가 분석한 나와 가장 잘 맞는 이상형 추천받기
                 </p>
@@ -40,9 +40,9 @@ export default function HowItWorks() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-slide-up-delay">
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-slide-up-delay hover-lift">
             <div className="flex items-start space-x-4">
-              <div className="w-14 h-14 bg-[#FF4D8D] rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="w-14 h-14 bg-[#FF4D8D] rounded-2xl flex items-center justify-center flex-shrink-0 animate-bounce-gentle" style={{animationDelay: '1s'}}>
                 <span className="text-white font-bold text-lg">3</span>
               </div>
               <div className="flex-1">
