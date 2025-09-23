@@ -14,7 +14,7 @@ export default function ProfilePage() {
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/dashboard" className="text-gray-600 hover:text-gray-800">
+            <Link href="/dashboard" className="text-gray-700 hover:text-gray-800">
               ← 홈으로
             </Link>
             <h1 className="text-lg font-bold text-gray-900">
@@ -37,7 +37,7 @@ export default function ProfilePage() {
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-1">김지수, 25</h2>
             <p className="text-[#FF4D8D] font-medium mb-1">디자이너</p>
-            <p className="text-sm text-gray-600">서울 강남구</p>
+            <p className="text-sm text-gray-700">서울 강남구</p>
 
             <div className="flex justify-center space-x-2 mt-4">
               <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium">
@@ -63,15 +63,15 @@ export default function ProfilePage() {
         <div className="grid grid-cols-3 gap-4 mb-6">
           <div className="bg-white rounded-2xl p-4 text-center border border-gray-100">
             <div className="text-2xl font-bold text-[#FF4D8D] mb-1">12</div>
-            <div className="text-xs text-gray-600">매칭 성사</div>
+            <div className="text-xs text-gray-700">매칭 성사</div>
           </div>
           <div className="bg-white rounded-2xl p-4 text-center border border-gray-100">
             <div className="text-2xl font-bold text-blue-600 mb-1">86%</div>
-            <div className="text-xs text-gray-600">프로필 완성도</div>
+            <div className="text-xs text-gray-700">프로필 완성도</div>
           </div>
           <div className="bg-white rounded-2xl p-4 text-center border border-gray-100">
             <div className="text-2xl font-bold text-green-600 mb-1">4.8</div>
-            <div className="text-xs text-gray-600">평균 별점</div>
+            <div className="text-xs text-gray-700">평균 별점</div>
           </div>
         </div>
 
@@ -85,15 +85,15 @@ export default function ProfilePage() {
             </h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-600">키</span>
+                <span className="text-gray-700">키</span>
                 <span className="text-gray-900">165cm</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">학력</span>
+                <span className="text-gray-700">학력</span>
                 <span className="text-gray-900">대학교 졸업</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">직업</span>
+                <span className="text-gray-700">직업</span>
                 <span className="text-gray-900">디자이너</span>
               </div>
             </div>
@@ -137,11 +137,11 @@ export default function ProfilePage() {
             </h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-600">나이</span>
+                <span className="text-gray-700">나이</span>
                 <span className="text-gray-900">22-32세</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">선호 타입</span>
+                <span className="text-gray-700">선호 타입</span>
                 <div className="flex gap-2">
                   <span className="bg-pink-100 text-pink-700 px-2 py-1 rounded text-xs">🐶 강아지상</span>
                   <span className="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">🦊 여우상</span>

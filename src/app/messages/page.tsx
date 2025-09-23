@@ -66,7 +66,7 @@ export default function MessagesPage() {
       <div className="max-w-sm mx-auto px-4 py-8">
         {/* 헤더 */}
         <div className="flex items-center justify-between mb-6">
-          <Link href="/dashboard" className="text-gray-600 hover:text-gray-800">
+          <Link href="/dashboard" className="text-gray-700 hover:text-gray-800">
             ← 홈으로
           </Link>
           <h1 className="text-lg font-bold text-gray-800">
@@ -118,7 +118,7 @@ export default function MessagesPage() {
         {/* 대화 목록 */}
         {filteredConversations.length > 0 ? (
           <div className="space-y-3">
-            <h2 className="text-sm font-semibold text-gray-600 mb-3">
+            <h2 className="text-sm font-semibold text-gray-700 mb-3">
               활성 대화 ({filteredConversations.length})
             </h2>
 
@@ -162,7 +162,7 @@ export default function MessagesPage() {
                     </div>
 
                     <p className={`text-sm truncate ${
-                      conversation.unreadCount > 0 ? 'text-gray-800 font-medium' : 'text-gray-600'
+                      conversation.unreadCount > 0 ? 'text-gray-800 font-medium' : 'text-gray-700'
                     }`}>
                       {conversation.lastMessage}
                     </p>
@@ -190,7 +190,7 @@ export default function MessagesPage() {
             <h3 className="text-xl font-bold text-gray-800 mb-2">
               {searchQuery ? '검색 결과가 없어요' : '아직 대화가 없어요'}
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-700 mb-6">
               {searchQuery
                 ? '다른 이름으로 검색해보세요'
                 : '매칭된 사람과 대화를 시작해보세요!'

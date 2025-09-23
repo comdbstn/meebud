@@ -98,7 +98,7 @@ export default function MatchingPage() {
           <h1 className="text-2xl font-bold text-gray-800 mb-4">
             오늘의 추천 완료!
           </h1>
-          <p className="text-gray-600 mb-8">
+          <p className="text-gray-700 mb-8">
             내일 새로운 매칭을 확인해보세요
           </p>
           <Link href="/" className="bg-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-purple-700 transition-colors">
@@ -114,13 +114,13 @@ export default function MatchingPage() {
       <div className="max-w-sm mx-auto">
         {/* 헤더 */}
         <div className="flex items-center justify-between mb-6">
-          <Link href="/" className="text-gray-600 hover:text-gray-800">
+          <Link href="/" className="text-gray-700 hover:text-gray-800">
             ← 뒤로가기
           </Link>
           <h1 className="text-lg font-bold text-gray-800">
             AI 추천 매칭
           </h1>
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-gray-600">
             {currentIndex + 1}/{sampleMatches.length}
           </div>
         </div>
@@ -167,7 +167,7 @@ export default function MatchingPage() {
                 <h2 className="text-2xl font-bold text-gray-800">
                   {currentMatch.name}, {currentMatch.age}
                 </h2>
-                <p className="text-gray-600">{currentMatch.location}</p>
+                <p className="text-gray-700">{currentMatch.location}</p>
               </div>
               <button
                 onClick={() => setShowDetails(!showDetails)}
@@ -198,7 +198,7 @@ export default function MatchingPage() {
               <div className="space-y-4 border-t border-gray-200 pt-4">
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-2">자기소개</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-sm text-gray-700 leading-relaxed">
                     {currentMatch.introduction}
                   </p>
                 </div>
@@ -257,7 +257,7 @@ export default function MatchingPage() {
         </div>
 
         {/* 버튼 설명 */}
-        <div className="flex items-center justify-center space-x-8 mt-4 text-xs text-gray-500">
+        <div className="flex items-center justify-center space-x-8 mt-4 text-xs text-gray-600">
           <span>패스</span>
           <span>슈퍼라이크</span>
           <span>좋아요</span>

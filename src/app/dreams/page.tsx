@@ -14,7 +14,7 @@ export default function DreamsPage() {
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/dashboard" className="text-gray-600 hover:text-gray-800">
+            <Link href="/dashboard" className="text-gray-700 hover:text-gray-800">
               ← 홈으로
             </Link>
             <h1 className="text-lg font-bold text-gray-900">
@@ -56,7 +56,7 @@ export default function DreamsPage() {
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-gray-900 mb-2">₩ 29,700</div>
-            <p className="text-sm text-gray-600">3회 매칭 가능</p>
+            <p className="text-sm text-gray-700">3회 매칭 가능</p>
           </div>
         </div>
 
@@ -70,7 +70,7 @@ export default function DreamsPage() {
               <span className="text-green-600 text-xl">💰</span>
             </div>
             <h3 className="font-semibold text-gray-900 text-sm mb-1">충전하기</h3>
-            <p className="text-xs text-gray-600">꿈결제 포인트 충전</p>
+            <p className="text-xs text-gray-700">꿈결제 포인트 충전</p>
           </Link>
 
           <Link
@@ -81,7 +81,7 @@ export default function DreamsPage() {
               <span className="text-blue-600 text-xl">📊</span>
             </div>
             <h3 className="font-semibold text-gray-900 text-sm mb-1">사용 내역</h3>
-            <p className="text-xs text-gray-600">결제 및 충전 기록</p>
+            <p className="text-xs text-gray-700">결제 및 충전 기록</p>
           </Link>
         </div>
 
@@ -103,11 +103,11 @@ export default function DreamsPage() {
             <div className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
               <div>
                 <p className="font-medium text-gray-700">매칭 실패</p>
-                <p className="text-sm text-gray-600">상대방이 거절할 때</p>
+                <p className="text-sm text-gray-700">상대방이 거절할 때</p>
               </div>
               <div className="text-right">
                 <p className="font-bold text-gray-900">₩ 0</p>
-                <p className="text-xs text-gray-600">무료</p>
+                <p className="text-xs text-gray-700">무료</p>
               </div>
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function DreamsPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900">매칭 성사</p>
-                  <p className="text-xs text-gray-600">김○○님과 매칭</p>
+                  <p className="text-xs text-gray-700">김○○님과 매칭</p>
                 </div>
               </div>
               <div className="text-right">
@@ -145,7 +145,7 @@ export default function DreamsPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900">포인트 충전</p>
-                  <p className="text-xs text-gray-600">카카오페이</p>
+                  <p className="text-xs text-gray-700">카카오페이</p>
                 </div>
               </div>
               <div className="text-right">
@@ -161,7 +161,7 @@ export default function DreamsPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900">매칭 실패</p>
-                  <p className="text-xs text-gray-600">상대방 거절</p>
+                  <p className="text-xs text-gray-700">상대방 거절</p>
                 </div>
               </div>
               <div className="text-right">

@@ -31,15 +31,15 @@ export default function Hero() {
 
         {/* Key features */}
         <div className="mb-8 space-y-2">
-          <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+          <div className="flex items-center justify-center space-x-2 text-sm text-gray-700">
             <span>🐶</span>
             <span>내 이상형을 Ai가 인식해서 완벽한 매칭</span>
           </div>
-          <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+          <div className="flex items-center justify-center space-x-2 text-sm text-gray-700">
             <span>🐱</span>
             <span>100% 후불제! 서로 매칭 수락한 뒤 결제하세요:)</span>
           </div>
-          <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+          <div className="flex items-center justify-center space-x-2 text-sm text-gray-700">
             <span>✨</span>
             <span>운영진 꼼꼼 검수로 안전한 만남</span>
           </div>
@@ -55,8 +55,8 @@ export default function Hero() {
             <span className="text-sm font-medium text-gray-700">3분 내외의 간단한 가입으로</span>
           </div>
           <div className="bg-gray-50 rounded-lg p-3">
-            <div className="text-sm text-gray-600 mb-2">💬 이상형이 어떻게 되세요?</div>
-            <div className="text-xs text-gray-500">🦊 ENTJ 여우상이 좋아요!</div>
+            <div className="text-sm text-gray-700 mb-2">💬 이상형이 어떻게 되세요?</div>
+            <div className="text-xs text-gray-600">🦊 ENTJ 여우상이 좋아요!</div>
           </div>
         </div>
 

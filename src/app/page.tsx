@@ -52,7 +52,7 @@ export default function HomePage() {
                 <h1 className="text-xl font-bold text-gray-900">MEE&apos;BUD</h1>
               </div>
               <div className="flex items-center space-x-4">
-                <span className="text-sm text-gray-600">{userEmail}</span>
+                <span className="text-sm text-gray-700">{userEmail}</span>
                 <button
                   onClick={handleLogout}
                   className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
@@ -70,7 +70,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               환영합니다! 🎉
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-gray-700 mb-8">
               AI가 분석한 완벽한 이상형을 만나보세요
             </p>
           </div>
@@ -86,7 +86,7 @@ export default function HomePage() {
                   <span className="text-2xl">❤️</span>
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">매칭</h3>
-                <p className="text-sm text-gray-600">AI 추천 이상형을 만나보세요</p>
+                <p className="text-sm text-gray-700">AI 추천 이상형을 만나보세요</p>
               </div>
             </Link>
 
@@ -99,7 +99,7 @@ export default function HomePage() {
                   <span className="text-2xl">💬</span>
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">메시지</h3>
-                <p className="text-sm text-gray-600">매칭된 상대와 대화하기</p>
+                <p className="text-sm text-gray-700">매칭된 상대와 대화하기</p>
               </div>
             </Link>
 
@@ -112,7 +112,7 @@ export default function HomePage() {
                   <span className="text-2xl">👤</span>
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">프로필</h3>
-                <p className="text-sm text-gray-600">내 정보 관리하기</p>
+                <p className="text-sm text-gray-700">내 정보 관리하기</p>
               </div>
             </Link>
 
@@ -125,7 +125,7 @@ export default function HomePage() {
                   <span className="text-2xl">💎</span>
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">꿈</h3>
-                <p className="text-sm text-gray-600">포인트 및 결제 관리</p>
+                <p className="text-sm text-gray-700">포인트 및 결제 관리</p>
               </div>
             </Link>
           </div>
@@ -178,7 +178,7 @@ export default function HomePage() {
           <h2 className="text-2xl font-bold text-gray-800 mb-4 leading-tight">
             AI가 매칭하는 후불제 소개팅, Meebud입니다
           </h2>
-          <p className="text-base text-gray-600 font-medium mb-6">
+          <p className="text-base text-gray-700 font-medium mb-6">
             Meebud에 대해서 자세히 알아보세요 :)
           </p>
         </div>

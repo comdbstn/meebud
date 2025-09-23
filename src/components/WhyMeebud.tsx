@@ -33,7 +33,7 @@ export default function WhyMeebud() {
           <h2 className="text-2xl font-bold text-gray-800 mb-3">
             왜 MEE&apos;BUD일까요?
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-700">
             기존 데이팅 앱과는 <span className="text-[#FF4D8D] font-semibold">완전히 다른 접근</span>
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function WhyMeebud() {
                     {feature.title}
                   </h3>
 
-                  <p className="text-sm text-gray-600 font-medium mb-3">
+                  <p className="text-sm text-gray-700 font-medium mb-3">
                     {feature.subtitle}
                   </p>
 
