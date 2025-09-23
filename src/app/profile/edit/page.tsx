@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import BottomNavigation from '@/components/BottomNavigation'
 
 export default function EditProfilePage() {
   const [activeTab, setActiveTab] = useState<'basic' | 'photos' | 'preferences'>('basic')
@@ -44,11 +45,11 @@ export default function EditProfilePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 px-4 py-8">
-      <div className="max-w-sm mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 pb-20">
+      <div className="max-w-sm mx-auto px-4 py-8">
         {/* 헤더 */}
         <div className="flex items-center justify-between mb-6">
-          <Link href="/" className="text-gray-600 hover:text-gray-800">
+          <Link href="/dashboard" className="text-gray-600 hover:text-gray-800">
             ← 홈으로
           </Link>
           <h1 className="text-lg font-bold text-gray-800">
@@ -432,6 +433,8 @@ export default function EditProfilePage() {
           </div>
         </div>
       </div>
+
+      <BottomNavigation />
     </div>
   )
 }

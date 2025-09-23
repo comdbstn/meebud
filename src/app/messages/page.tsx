@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import BottomNavigation from '@/components/BottomNavigation'
 
 // 샘플 메시지 데이터
 const conversations = [
@@ -61,11 +62,11 @@ export default function MessagesPage() {
   const unreadTotal = conversations.reduce((sum, conv) => sum + conv.unreadCount, 0)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 px-4 py-8">
-      <div className="max-w-sm mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 pb-20">
+      <div className="max-w-sm mx-auto px-4 py-8">
         {/* 헤더 */}
         <div className="flex items-center justify-between mb-6">
-          <Link href="/" className="text-gray-600 hover:text-gray-800">
+          <Link href="/dashboard" className="text-gray-600 hover:text-gray-800">
             ← 홈으로
           </Link>
           <h1 className="text-lg font-bold text-gray-800">
@@ -218,31 +219,9 @@ export default function MessagesPage() {
           </div>
         )}
 
-        {/* 하단 네비게이션 */}
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3">
-          <div className="max-w-sm mx-auto flex justify-around">
-            <Link href="/" className="text-gray-600 hover:text-purple-600 text-center">
-              <div className="text-xl mb-1">🏠</div>
-              <div className="text-xs">홈</div>
-            </Link>
-            <Link href="/matching" className="text-gray-600 hover:text-purple-600 text-center">
-              <div className="text-xl mb-1">💕</div>
-              <div className="text-xs">매칭</div>
-            </Link>
-            <div className="text-purple-600 text-center">
-              <div className="text-xl mb-1">💬</div>
-              <div className="text-xs">메시지</div>
-            </div>
-            <Link href="/profile/edit" className="text-gray-600 hover:text-purple-600 text-center">
-              <div className="text-xl mb-1">👤</div>
-              <div className="text-xs">프로필</div>
-            </Link>
-          </div>
-        </div>
-
-        {/* 하단 여백 (네비게이션 공간 확보) */}
-        <div className="h-20"></div>
       </div>
+
+      <BottomNavigation />
     </div>
   )
 }
