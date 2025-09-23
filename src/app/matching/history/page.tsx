@@ -43,7 +43,7 @@ export default function MatchingHistoryPage() {
   const [activeTab, setActiveTab] = useState<'likes' | 'received' | 'matches'>('matches')
 
   const handleLikeResponse = (id: number, response: 'like' | 'pass') => {
-    console.log(`Response to ${id}: ${response}`)
+    // console.log(`Response to ${id}: ${response}`)
     // TODO: 백엔드 연동 시 실제 로직 구현
     alert(response === 'like' ? '매칭이 성사되었어요! 🎉' : '다음 기회에 만나요')
   }

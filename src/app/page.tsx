@@ -1,26 +1,12 @@
 'use client'
 
-import { Metadata } from 'next'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
-
-const metadata: Metadata = {
-  title: "MEE'BUD - AI가 매칭하는 후불제 소개팅",
-  description: "AI가 외모까지 분석해서 찾아주는 완벽한 이상형. 성사 시에만 결제하는 안전한 후불제 매칭 서비스",
-  keywords: "소개팅, 매칭, AI, 얼굴상, 후불제, 데이팅앱, 이상형",
-  openGraph: {
-    title: "MEE'BUD - AI가 매칭하는 후불제 소개팅",
-    description: "AI가 외모까지 분석해서 찾아주는 완벽한 이상형. 성사 시에만 결제하는 안전한 후불제 매칭 서비스",
-    type: "website",
-    url: "https://meebud.com",
-  },
-}
+import Link from 'next/link'
 
 export default function HomePage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [userEmail, setUserEmail] = useState('')
   const [loading, setLoading] = useState(true)
-  const router = useRouter()
 
   useEffect(() => {
     // 로그인 상태 확인
@@ -91,7 +77,7 @@ export default function HomePage() {
 
           {/* Navigation Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a
+            <Link
               href="/matching"
               className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow border border-gray-100"
             >
@@ -102,9 +88,9 @@ export default function HomePage() {
                 <h3 className="font-semibold text-gray-900 mb-2">매칭</h3>
                 <p className="text-sm text-gray-600">AI 추천 이상형을 만나보세요</p>
               </div>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/messages"
               className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow border border-gray-100"
             >
@@ -115,9 +101,9 @@ export default function HomePage() {
                 <h3 className="font-semibold text-gray-900 mb-2">메시지</h3>
                 <p className="text-sm text-gray-600">매칭된 상대와 대화하기</p>
               </div>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/profile"
               className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow border border-gray-100"
             >
@@ -128,9 +114,9 @@ export default function HomePage() {
                 <h3 className="font-semibold text-gray-900 mb-2">프로필</h3>
                 <p className="text-sm text-gray-600">내 정보 관리하기</p>
               </div>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/dreams"
               className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow border border-gray-100"
             >
@@ -141,7 +127,7 @@ export default function HomePage() {
                 <h3 className="font-semibold text-gray-900 mb-2">꿈</h3>
                 <p className="text-sm text-gray-600">포인트 및 결제 관리</p>
               </div>
-            </a>
+            </Link>
           </div>
 
           {/* Recent Activity */}

@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-const metadata: Metadata = {
+const _metadata: Metadata = {
   title: "로그인 - MEE'BUD",
   description: "MEE'BUD 로그인으로 AI 매칭 서비스를 시작하세요",
 }

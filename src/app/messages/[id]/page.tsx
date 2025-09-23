@@ -80,7 +80,7 @@ export default function ChatPage() {
   const handleSendMessage = () => {
     if (message.trim()) {
       // TODO: 실제로는 백엔드로 메시지 전송
-      console.log('Sending message:', message)
+      // console.log('Sending message:', message)
       setMessage('')
       setIsTyping(true)
     }

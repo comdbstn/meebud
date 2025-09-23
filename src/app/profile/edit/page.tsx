@@ -26,7 +26,7 @@ export default function EditProfilePage() {
 
   const handleSave = () => {
     // TODO: 백엔드로 프로필 업데이트 전송
-    console.log('Saving profile:', profile)
+    // console.log('Saving profile:', profile)
     alert('프로필이 업데이트되었어요! 🎉')
   }
 

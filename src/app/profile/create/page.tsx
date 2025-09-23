@@ -56,7 +56,7 @@ export default function CreateProfilePage() {
 
   const handleSubmit = async () => {
     // TODO: 백엔드 연동 시 실제 프로필 생성 로직
-    console.log('Profile created:', formData)
+    // console.log('Profile created:', formData)
 
     // AI 분석 시뮬레이션
     setTimeout(() => {

@@ -189,7 +189,7 @@ export default function HistoryPage() {
           ].map((tab) => (
             <button
               key={tab.key}
-              onClick={() => setFilter(tab.key as any)}
+              onClick={() => setFilter(tab.key as 'all' | 'charge' | 'use' | 'refund')}
               className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
                 filter === tab.key
                   ? 'bg-white text-gray-900 shadow-sm'
