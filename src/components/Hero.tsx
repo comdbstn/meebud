@@ -25,7 +25,7 @@ export default function Hero() {
             가벼운 스와이프는 잊으세요.
           </h2>
           <h3 className="text-xl font-bold text-gray-800 mb-4 leading-tight">
-            Mee'bud는 인증·AI·성사형 후불제로 <span className="text-[#FF4D8D]">'진짜'</span>를 잇습니다.
+            Mee&apos;bud는 인증·AI·성사형 후불제로 <span className="text-[#FF4D8D]">&apos;진짜&apos;</span>를 잇습니다.
           </h3>
           <p className="text-base text-gray-600 font-medium">
             서로 수락한 연결에만 결제합니다.
