@@ -48,6 +48,9 @@ export default function Footer() {
           <p className="text-gray-400 text-xs">
             © 2024 MEE&apos;BUD. All rights reserved.
           </p>
+          <p className="text-gray-400 text-xs mt-1">
+            사업자등록번호: 405-06-65006
+          </p>
           <p className="text-gray-400 text-xs mt-2">
             Made with 💝 for genuine connections
           </p>

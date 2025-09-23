@@ -1,22 +1,28 @@
 export default function WhyMeebud() {
   const features = [
     {
+      icon: "🛡",
+      title: "다중 인증",
+      subtitle: "신분·학력·직장·건강",
+      description: "운영진 검수 뱃지로 신뢰할 수 있는 연결만",
+      bgColor: "from-blue-50 to-indigo-50",
+      iconBg: "from-blue-500 to-indigo-600"
+    },
+    {
       icon: "🤖",
-      title: "AI 외모 매칭",
-      subtitle: "얼굴상 완벽 분석",
-      description: "얼굴형, 눈매, 미소까지 AI가 분석해서 당신과 찰떡궁합인 외모 스타일을 찾아드려요."
+      title: "AI 이상형 매칭",
+      subtitle: "MBTI·가치관·취향 기반 추천",
+      description: "AI가 분석한 완벽한 궁합으로 진짜 맞는 사람만",
+      bgColor: "from-purple-50 to-pink-50",
+      iconBg: "from-purple-500 to-pink-600"
     },
     {
-      icon: "🛡️",
-      title: "안전한 인증 시스템",
-      subtitle: "선택적 검수로 신뢰도 UP",
-      description: "원하는 정보만 골라서 인증 가능! 학력, 직장, 취미 등 운영진이 직접 검수해서 진짜 신뢰할 수 있는 만남을 보장해요."
-    },
-    {
-      icon: "💎",
-      title: "공정한 후불제",
-      subtitle: "성사될 때만 결제하는 시스템",
-      description: "일방적인 관심이 아닌, 서로 마음이 통했을 때만 결제! 여성은 무료, 남성도 성사 시에만 9,900원으로 부담 제로."
+      icon: "💳",
+      title: "성사형 후불제",
+      subtitle: "성사된 연결에만 결제",
+      description: "서로 수락한 연결에만 결제하는 공정한 시스템",
+      bgColor: "from-emerald-50 to-teal-50",
+      iconBg: "from-emerald-500 to-teal-600"
     }
   ]
 
@@ -36,19 +42,19 @@ export default function WhyMeebud() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-5 border border-gray-100 hover:shadow-lg transition-all duration-300"
+              className={`bg-gradient-to-r ${feature.bgColor} rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-all duration-300`}
             >
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#FF4D8D] to-[#ff3080] rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                <div className={`w-14 h-14 bg-gradient-to-br ${feature.iconBg} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
                   <span className="text-white text-xl">{feature.icon}</span>
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-gray-800 mb-1">
+                  <h3 className="text-xl font-bold text-gray-800 mb-1">
                     {feature.title}
                   </h3>
 
-                  <p className="text-sm text-[#FF4D8D] font-semibold mb-3">
+                  <p className="text-sm text-gray-600 font-medium mb-3">
                     {feature.subtitle}
                   </p>
 

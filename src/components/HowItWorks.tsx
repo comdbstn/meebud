@@ -11,29 +11,47 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        <div className="space-y-8">
-          <div className="text-center animate-slide-up-delay">
-            <div className="w-12 h-12 bg-[#FF4D8D] rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-white font-bold">1</span>
+        <div className="space-y-6">
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-slide-up-delay">
+            <div className="flex items-start space-x-4">
+              <div className="w-14 h-14 bg-[#FF4D8D] rounded-2xl flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-bold text-lg">1</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-gray-800 mb-2">프로필 완성</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  기본정보와 질문지를 작성하고 원하는 경우 인증까지
+                </p>
+              </div>
             </div>
-            <h3 className="text-lg font-bold text-gray-800 mb-2">프로필 완성</h3>
-            <p className="text-sm text-gray-600">기본정보와 질문지를 작성하고 원하는 경우 인증까지</p>
           </div>
 
-          <div className="text-center animate-slide-up-delay">
-            <div className="w-12 h-12 bg-[#FF4D8D] rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-white font-bold">2</span>
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-slide-up-delay">
+            <div className="flex items-start space-x-4">
+              <div className="w-14 h-14 bg-[#FF4D8D] rounded-2xl flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-bold text-lg">2</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-gray-800 mb-2">AI 추천 확인(1~3명)</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  AI가 분석한 나와 가장 잘 맞는 이상형 추천받기
+                </p>
+              </div>
             </div>
-            <h3 className="text-lg font-bold text-gray-800 mb-2">AI 추천 확인</h3>
-            <p className="text-sm text-gray-600">AI가 분석한 나와 가장 잘 맞는 이상형 추천받기</p>
           </div>
 
-          <div className="text-center animate-slide-up-delay">
-            <div className="w-12 h-12 bg-[#FF4D8D] rounded-full flex items-center justify-center mx-auto mb-3">
-              <span className="text-white font-bold">3</span>
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 animate-slide-up-delay">
+            <div className="flex items-start space-x-4">
+              <div className="w-14 h-14 bg-[#FF4D8D] rounded-2xl flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-bold text-lg">3</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-bold text-gray-800 mb-2">상호 수락 시 성사 & 결제</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  서로 수락하면 연결 성사, 그때만 결제 진행
+                </p>
+              </div>
             </div>
-            <h3 className="text-lg font-bold text-gray-800 mb-2">상호 수락 시 성사</h3>
-            <p className="text-sm text-gray-600">서로 수락하면 연결 성사, 그때만 결제 진행</p>
           </div>
         </div>
 
