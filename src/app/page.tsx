@@ -1,7 +1,7 @@
+import { Metadata } from 'next'
 import Header from '@/components/Header'
 import Calendar from '@/components/Calendar'
 import RecentMatches from '@/components/RecentMatches'
-import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: "MEE'BUD - AI가 매칭하는 후불제 소개팅",
