@@ -130,6 +130,36 @@ body {
   animation: heart-beat 1.5s ease-in-out infinite;
 }
 
+/* Loading animations */
+@keyframes loading-bar {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-loading-bar {
+  animation: loading-bar 2s ease-in-out infinite;
+}
+
+/* Animation delays */
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
 /* Hover animations */
 .hover-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;

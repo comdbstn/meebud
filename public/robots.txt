@@ -1,4 +1,26 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
+# Sitemap
 Sitemap: https://meebud.com/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
+
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: NaverBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
