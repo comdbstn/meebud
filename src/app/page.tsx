@@ -1,20 +1,28 @@
+import Header from '@/components/Header'
+import Calendar from '@/components/Calendar'
+import RecentMatches from '@/components/RecentMatches'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "MEE'BUD - AI가 매칭하는 후불제 소개팅",
+  description: "AI가 외모까지 분석해서 찾아주는 완벽한 이상형. 성사 시에만 결제하는 안전한 후불제 매칭 서비스",
+  keywords: "소개팅, 매칭, AI, 얼굴상, 후불제, 데이팅앱, 이상형",
+  openGraph: {
+    title: "MEE'BUD - AI가 매칭하는 후불제 소개팅",
+    description: "AI가 외모까지 분석해서 찾아주는 완벽한 이상형. 성사 시에만 결제하는 안전한 후불제 매칭 서비스",
+    type: "website",
+    url: "https://meebud.com",
+  },
+}
+
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#0D1B2A] flex items-center justify-center px-4">
-      <div className="text-center max-w-md mx-auto">
-        <h1 className="text-4xl font-bold text-white mb-4">
-          Mee<span className="text-[#FF4D8D]">&apos;</span>bud
-        </h1>
-        <p className="text-[#ADB5BD] text-lg mb-8">
-          서비스 준비 중입니다
-        </p>
-        <a
-          href="/welcome"
-          className="inline-block bg-[#FF4D8D] text-white font-semibold py-3 px-6 rounded-full hover:bg-[#ff3080] transition-colors duration-300"
-        >
-          서비스 소개 보기
-        </a>
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      <main className="pb-20">
+        <Calendar />
+        <RecentMatches />
+      </main>
     </div>
   )
 }
