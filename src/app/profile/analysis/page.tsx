@@ -42,7 +42,7 @@ export default function ProfileAnalysisPage() {
 
   if (isAnalyzing) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[#F8FAFB] flex items-center justify-center px-4">
         <div className="max-w-sm w-full">
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center">
             <div className="text-6xl mb-6 animate-pulse">🤖</div>
@@ -63,7 +63,7 @@ export default function ProfileAnalysisPage() {
               </div>
               <div className="w-full bg-gray-200 rounded-full h-3">
                 <div
-                  className="bg-gradient-to-r from-purple-600 to-pink-500 h-3 rounded-full transition-all duration-300 relative overflow-hidden"
+                  className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] h-3 rounded-full transition-all duration-300 relative overflow-hidden"
                   style={{ width: `${progress}%` }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 animate-pulse"></div>
@@ -73,23 +73,23 @@ export default function ProfileAnalysisPage() {
 
             {/* 분석 단계 */}
             <div className="space-y-3 text-left">
-              <div className={`flex items-center space-x-3 ${progress >= 20 ? 'text-purple-600' : 'text-gray-400'}`}>
+              <div className={`flex items-center space-x-3 ${progress >= 20 ? 'text-[#FF4D8D]' : 'text-gray-400'}`}>
                 <span className="text-lg">✓</span>
                 <span className="text-sm">얼굴형 분석</span>
               </div>
-              <div className={`flex items-center space-x-3 ${progress >= 40 ? 'text-purple-600' : 'text-gray-400'}`}>
+              <div className={`flex items-center space-x-3 ${progress >= 40 ? 'text-[#FF4D8D]' : 'text-gray-400'}`}>
                 <span className="text-lg">✓</span>
                 <span className="text-sm">눈매 & 미소 분석</span>
               </div>
-              <div className={`flex items-center space-x-3 ${progress >= 60 ? 'text-purple-600' : 'text-gray-400'}`}>
+              <div className={`flex items-center space-x-3 ${progress >= 60 ? 'text-[#FF4D8D]' : 'text-gray-400'}`}>
                 <span className="text-lg">✓</span>
                 <span className="text-sm">전체적인 분위기 파악</span>
               </div>
-              <div className={`flex items-center space-x-3 ${progress >= 80 ? 'text-purple-600' : 'text-gray-400'}`}>
+              <div className={`flex items-center space-x-3 ${progress >= 80 ? 'text-[#FF4D8D]' : 'text-gray-400'}`}>
                 <span className="text-lg">✓</span>
                 <span className="text-sm">성격 & 취미 매칭</span>
               </div>
-              <div className={`flex items-center space-x-3 ${progress >= 100 ? 'text-purple-600' : 'text-gray-400'}`}>
+              <div className={`flex items-center space-x-3 ${progress >= 100 ? 'text-[#FF4D8D]' : 'text-gray-400'}`}>
                 <span className="text-lg">✓</span>
                 <span className="text-sm">이상형 궁합도 계산</span>
               </div>
@@ -101,7 +101,7 @@ export default function ProfileAnalysisPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 px-4 py-8">
+    <div className="min-h-screen bg-[#F8FAFB] px-4 py-8">
       <div className="max-w-sm mx-auto">
         {/* 헤더 */}
         <div className="text-center mb-8">
@@ -121,14 +121,14 @@ export default function ProfileAnalysisPage() {
             <h2 className="text-2xl font-bold text-gray-800 mb-2">
               {analysisResult.faceType}
             </h2>
-            <p className="text-purple-600 font-semibold">
+            <p className="text-[#FF4D8D] font-semibold">
               {analysisResult.charm}
             </p>
           </div>
 
-          <div className="bg-purple-50 rounded-xl p-4 mb-6">
-            <h3 className="font-semibold text-purple-800 mb-2">✨ AI가 분석한 당신</h3>
-            <ul className="text-sm text-purple-700 space-y-1">
+          <div className="bg-pink-50 rounded-xl p-4 mb-6">
+            <h3 className="font-semibold text-[#FF4D8D] mb-2">✨ AI가 분석한 당신</h3>
+            <ul className="text-sm text-[#0D1B2A] opacity-70 space-y-1">
               {analysisResult.recommendations.map((rec, index) => (
                 <li key={index}>• {rec}</li>
               ))}
@@ -138,7 +138,7 @@ export default function ProfileAnalysisPage() {
           {/* 성격 유형 */}
           <div className="text-center">
             <p className="text-sm text-gray-600 mb-2">추정 성격 유형</p>
-            <div className="inline-block bg-gradient-to-r from-purple-600 to-pink-500 text-white px-4 py-2 rounded-xl font-bold">
+            <div className="inline-block bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white px-4 py-2 rounded-xl font-bold">
               {analysisResult.personality}
             </div>
           </div>
@@ -162,12 +162,12 @@ export default function ProfileAnalysisPage() {
                     </span>
                     <span className="font-semibold text-gray-800">{comp.type}</span>
                   </div>
-                  <span className="text-lg font-bold text-purple-600">{comp.percentage}%</span>
+                  <span className="text-lg font-bold text-[#FF4D8D]">{comp.percentage}%</span>
                 </div>
 
                 <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
                   <div
-                    className="bg-gradient-to-r from-purple-600 to-pink-500 h-2 rounded-full"
+                    className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] h-2 rounded-full"
                     style={{ width: `${comp.percentage}%` }}
                   ></div>
                 </div>
@@ -182,7 +182,7 @@ export default function ProfileAnalysisPage() {
         <div className="space-y-3">
           <Link
             href="/"
-            className="block w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white py-4 px-6 rounded-xl font-bold text-center hover:from-purple-700 hover:to-pink-600 transition-all"
+            className="block w-full bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white py-4 px-6 rounded-xl font-bold text-center hover:opacity-90 transition-all"
           >
             매칭 시작하기 🚀
           </Link>
@@ -196,7 +196,7 @@ export default function ProfileAnalysisPage() {
         </div>
 
         {/* 팁 */}
-        <div className="mt-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4 border border-blue-200">
+        <div className="mt-6 bg-gradient-to-r from-blue-50 to-pink-50 rounded-xl p-4 border border-blue-200">
           <h4 className="font-semibold text-blue-800 mb-2">💡 매칭 성공 팁</h4>
           <ul className="text-sm text-blue-700 space-y-1">
             <li>• 프로필 사진을 다양하게 올리면 매칭률이 높아져요</li>

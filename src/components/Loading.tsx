@@ -43,7 +43,7 @@ export default function Loading({ message = "로딩 중...", fullScreen = false 
           <div className="absolute -top-2 -left-2 w-6 h-6 bg-pink-300 rounded-full flex items-center justify-center animate-bounce-gentle">
             <span className="text-white text-xs">💕</span>
           </div>
-          <div className="absolute -top-2 -right-2 w-6 h-6 bg-purple-300 rounded-full flex items-center justify-center animate-bounce-gentle animation-delay-200">
+          <div className="absolute -top-2 -right-2 w-6 h-6 bg-pink-300 rounded-full flex items-center justify-center animate-bounce-gentle animation-delay-200">
             <span className="text-white text-xs">✨</span>
           </div>
           <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-red-300 rounded-full flex items-center justify-center animate-bounce-gentle animation-delay-400">

@@ -88,7 +88,7 @@ export default function RecentMatches() {
           >
             <div className="flex items-start space-x-3">
               {/* 아이콘/이미지 */}
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-xl flex-shrink-0">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0D1B2A] to-[#FF4D8D] flex items-center justify-center text-xl flex-shrink-0">
                 {activity.image}
               </div>
 
@@ -114,7 +114,7 @@ export default function RecentMatches() {
                     {activity.time}
                   </span>
 
-                  <button className="text-xs text-purple-600 hover:text-purple-800 font-medium">
+                  <button className="text-xs text-[#FF4D8D] hover:text-[#ff3080] font-medium">
                     자세히 보기 →
                   </button>
                 </div>
@@ -132,13 +132,13 @@ export default function RecentMatches() {
       </div>
 
       {/* 하단 CTA */}
-      <div className="mt-8 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl p-6 text-white text-center">
+      <div className="mt-8 bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] rounded-xl p-6 text-white text-center">
         <div className="text-2xl mb-2">🎯</div>
         <h3 className="font-bold mb-2">완벽한 이상형을 찾아보세요!</h3>
-        <p className="text-sm text-purple-100 mb-4">
+        <p className="text-sm text-white opacity-80 mb-4">
           AI가 분석한 나만의 이상형이 기다리고 있어요
         </p>
-        <button className="w-full bg-white text-purple-600 py-3 px-4 rounded-xl font-bold hover:bg-gray-100 transition-colors">
+        <button className="w-full bg-white text-[#FF4D8D] py-3 px-4 rounded-xl font-bold hover:bg-gray-100 transition-colors">
           지금 시작하기
         </button>
       </div>

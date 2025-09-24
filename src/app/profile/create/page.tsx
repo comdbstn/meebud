@@ -79,7 +79,7 @@ export default function CreateProfilePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 px-4 py-8">
+    <div className="min-h-screen bg-[#F8FAFB] px-4 py-8">
       <div className="max-w-sm mx-auto">
         {/* 헤더 */}
         <div className="text-center mb-8">
@@ -99,7 +99,7 @@ export default function CreateProfilePage() {
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
-              className="bg-gradient-to-r from-purple-600 to-pink-500 h-2 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] h-2 rounded-full transition-all duration-300"
               style={{ width: `${(currentStep / totalSteps) * 100}%` }}
             ></div>
           </div>
@@ -120,7 +120,7 @@ export default function CreateProfilePage() {
                   type="number"
                   value={formData.height}
                   onChange={(e) => setFormData({...formData, height: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D]"
                   placeholder="170"
                 />
               </div>
@@ -133,7 +133,7 @@ export default function CreateProfilePage() {
                   type="text"
                   value={formData.job}
                   onChange={(e) => setFormData({...formData, job: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D]"
                   placeholder="개발자, 디자이너, 학생 등"
                 />
               </div>
@@ -145,7 +145,7 @@ export default function CreateProfilePage() {
                 <select
                   value={formData.education}
                   onChange={(e) => setFormData({...formData, education: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D]"
                 >
                   <option value="">선택해주세요</option>
                   <option value="고등학교">고등학교 졸업</option>
@@ -162,7 +162,7 @@ export default function CreateProfilePage() {
                   type="text"
                   value={formData.location}
                   onChange={(e) => setFormData({...formData, location: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D]"
                   placeholder="서울 강남구"
                 />
               </div>
@@ -178,7 +178,7 @@ export default function CreateProfilePage() {
                 <label className="block text-sm font-medium text-gray-700 mb-4">
                   대표 사진 <span className="text-red-500">(필수)</span>
                 </label>
-                <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-purple-400 transition-colors cursor-pointer">
+                <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-[#FF4D8D] transition-colors cursor-pointer">
                   <div className="text-4xl mb-2">📷</div>
                   <p className="text-sm text-gray-600 mb-2">
                     얼굴이 잘 보이는 사진을 업로드해주세요
@@ -204,7 +204,7 @@ export default function CreateProfilePage() {
                 </label>
                 <div className="grid grid-cols-2 gap-3">
                   {[1, 2, 3, 4].map((index) => (
-                    <div key={index} className="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:border-purple-400 transition-colors cursor-pointer aspect-square flex flex-col justify-center">
+                    <div key={index} className="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:border-[#FF4D8D] transition-colors cursor-pointer aspect-square flex flex-col justify-center">
                       <div className="text-2xl mb-1">📸</div>
                       <p className="text-xs text-gray-500">사진 {index}</p>
                     </div>
@@ -215,9 +215,9 @@ export default function CreateProfilePage() {
                 </p>
               </div>
 
-              <div className="bg-purple-50 rounded-xl p-4">
-                <h3 className="font-semibold text-purple-800 mb-2">🤖 AI 분석 예정</h3>
-                <ul className="text-sm text-purple-700 space-y-1">
+              <div className="bg-pink-50 rounded-xl p-4">
+                <h3 className="font-semibold text-[#FF4D8D] mb-2">🤖 AI 분석 예정</h3>
+                <ul className="text-sm text-[#0D1B2A] opacity-70 space-y-1">
                   <li>• 얼굴형 분석 (강아지상, 고양이상 등)</li>
                   <li>• 눈매, 미소 스타일 분석</li>
                   <li>• 전체적인 분위기 파악</li>
@@ -255,7 +255,7 @@ export default function CreateProfilePage() {
                       }}
                       className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
                         formData.personality.includes(option)
-                          ? 'bg-purple-600 text-white'
+                          ? 'bg-[#FF4D8D] text-white'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
@@ -289,7 +289,7 @@ export default function CreateProfilePage() {
                       }}
                       className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
                         formData.hobbies.includes(option)
-                          ? 'bg-purple-600 text-white'
+                          ? 'bg-[#FF4D8D] text-white'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
@@ -307,7 +307,7 @@ export default function CreateProfilePage() {
                   type="text"
                   value={formData.mbti}
                   onChange={(e) => setFormData({...formData, mbti: e.target.value.toUpperCase()})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D]"
                   placeholder="ENFP, INTJ 등"
                   maxLength={4}
                 />
@@ -379,7 +379,7 @@ export default function CreateProfilePage() {
                       }}
                       className={`py-3 px-4 rounded-xl font-medium transition-all ${
                         formData.idealType.includes(option)
-                          ? 'bg-purple-600 text-white'
+                          ? 'bg-[#FF4D8D] text-white'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
@@ -417,7 +417,7 @@ export default function CreateProfilePage() {
                 <textarea
                   value={formData.introduction}
                   onChange={(e) => setFormData({...formData, introduction: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] resize-none"
                   rows={4}
                   placeholder="안녕하세요! 저는..."
                   maxLength={500}
@@ -434,7 +434,7 @@ export default function CreateProfilePage() {
                     id="wantVerification"
                     checked={formData.wantVerification}
                     onChange={(e) => setFormData({...formData, wantVerification: e.target.checked})}
-                    className="w-4 h-4 text-purple-600 rounded"
+                    className="w-4 h-4 text-[#FF4D8D] rounded"
                   />
                   <label htmlFor="wantVerification" className="ml-2 text-sm font-medium text-gray-700">
                     추가 인증을 받고 싶어요 (선택)
@@ -464,7 +464,7 @@ export default function CreateProfilePage() {
                               })
                             }
                           }}
-                          className="w-3 h-3 text-purple-600 rounded"
+                          className="w-3 h-3 text-[#FF4D8D] rounded"
                         />
                         <span className="ml-2 text-xs text-gray-600">{type}</span>
                       </label>
@@ -489,14 +489,14 @@ export default function CreateProfilePage() {
             {currentStep < totalSteps ? (
               <button
                 onClick={handleNext}
-                className="flex-1 bg-gradient-to-r from-purple-600 to-pink-500 text-white py-3 px-4 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-600 transition-all"
+                className="flex-1 bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white py-3 px-4 rounded-xl font-semibold hover:opacity-90 transition-all"
               >
                 다음
               </button>
             ) : (
               <button
                 onClick={handleSubmit}
-                className="flex-1 bg-gradient-to-r from-purple-600 to-pink-500 text-white py-3 px-4 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-600 transition-all"
+                className="flex-1 bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white py-3 px-4 rounded-xl font-semibold hover:opacity-90 transition-all"
               >
                 프로필 완성 🎉
               </button>

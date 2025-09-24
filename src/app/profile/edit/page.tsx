@@ -45,7 +45,7 @@ export default function EditProfilePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 pb-20">
+    <div className="min-h-screen bg-[#F8FAFB] pb-20">
       <div className="max-w-sm mx-auto px-4 py-8">
         {/* 헤더 */}
         <div className="flex items-center justify-between mb-6">
@@ -57,7 +57,7 @@ export default function EditProfilePage() {
           </h1>
           <button
             onClick={handleSave}
-            className="text-purple-600 font-semibold hover:text-purple-700"
+            className="text-[#FF4D8D] font-semibold hover:text-[#ff3080]"
           >
             저장
           </button>
@@ -66,17 +66,17 @@ export default function EditProfilePage() {
         {/* 프로필 미리보기 */}
         <div className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100 mb-6">
           <div className="text-center">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-3xl mx-auto mb-3">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#0D1B2A] to-[#FF4D8D] flex items-center justify-center text-3xl mx-auto mb-3">
               👩🏻
             </div>
             <h2 className="text-xl font-bold text-gray-800">
               {profile.name}, {profile.age}
             </h2>
-            <p className="text-purple-600 font-medium">{profile.job}</p>
+            <p className="text-[#FF4D8D] font-medium">{profile.job}</p>
             <p className="text-sm text-gray-600">{profile.location}</p>
 
             <div className="flex justify-center space-x-2 mt-3">
-              <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs">
+              <span className="bg-pink-100 text-[#FF4D8D] px-3 py-1 rounded-full text-xs">
                 고양이상 (AI 분석)
               </span>
               <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs">
@@ -93,7 +93,7 @@ export default function EditProfilePage() {
               onClick={() => setActiveTab('basic')}
               className={`py-3 px-4 rounded-xl font-medium text-sm transition-all ${
                 activeTab === 'basic'
-                  ? 'bg-purple-600 text-white'
+                  ? 'bg-[#FF4D8D] text-white'
                   : 'text-gray-600 hover:text-gray-800'
               }`}
             >
@@ -103,7 +103,7 @@ export default function EditProfilePage() {
               onClick={() => setActiveTab('photos')}
               className={`py-3 px-4 rounded-xl font-medium text-sm transition-all ${
                 activeTab === 'photos'
-                  ? 'bg-purple-600 text-white'
+                  ? 'bg-[#FF4D8D] text-white'
                   : 'text-gray-600 hover:text-gray-800'
               }`}
             >
@@ -113,7 +113,7 @@ export default function EditProfilePage() {
               onClick={() => setActiveTab('preferences')}
               className={`py-3 px-4 rounded-xl font-medium text-sm transition-all ${
                 activeTab === 'preferences'
-                  ? 'bg-purple-600 text-white'
+                  ? 'bg-[#FF4D8D] text-white'
                   : 'text-gray-600 hover:text-gray-800'
               }`}
             >
@@ -133,7 +133,7 @@ export default function EditProfilePage() {
                 type="number"
                 value={profile.height}
                 onChange={(e) => setProfile({...profile, height: parseInt(e.target.value)})}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D]"
               />
             </div>
 
@@ -145,7 +145,7 @@ export default function EditProfilePage() {
                 type="text"
                 value={profile.job}
                 onChange={(e) => setProfile({...profile, job: e.target.value})}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D]"
               />
             </div>
 
@@ -157,7 +157,7 @@ export default function EditProfilePage() {
                 type="text"
                 value={profile.location}
                 onChange={(e) => setProfile({...profile, location: e.target.value})}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D]"
               />
             </div>
 
@@ -168,7 +168,7 @@ export default function EditProfilePage() {
               <textarea
                 value={profile.introduction}
                 onChange={(e) => setProfile({...profile, introduction: e.target.value})}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] resize-none"
                 rows={4}
                 maxLength={500}
               />
@@ -201,7 +201,7 @@ export default function EditProfilePage() {
                     }}
                     className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
                       profile.personality.includes(option)
-                        ? 'bg-purple-600 text-white'
+                        ? 'bg-[#FF4D8D] text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -235,7 +235,7 @@ export default function EditProfilePage() {
                     }}
                     className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
                       profile.hobbies.includes(option)
-                        ? 'bg-purple-600 text-white'
+                        ? 'bg-[#FF4D8D] text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -253,7 +253,7 @@ export default function EditProfilePage() {
                 type="text"
                 value={profile.mbti}
                 onChange={(e) => setProfile({...profile, mbti: e.target.value.toUpperCase()})}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D]"
                 placeholder="ENFP, INTJ 등"
                 maxLength={4}
               />
@@ -266,12 +266,12 @@ export default function EditProfilePage() {
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 space-y-6">
             <div>
               <h3 className="font-semibold text-gray-800 mb-4">대표 사진</h3>
-              <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-purple-400 transition-colors cursor-pointer">
+              <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-[#FF4D8D] transition-colors cursor-pointer">
                 <div className="text-4xl mb-2">👩🏻</div>
                 <p className="text-sm text-gray-600 mb-2">
                   현재 대표 사진
                 </p>
-                <button className="text-purple-600 text-sm font-medium hover:text-purple-700">
+                <button className="text-[#FF4D8D] text-sm font-medium hover:text-[#ff3080]">
                   사진 변경하기
                 </button>
               </div>
@@ -281,7 +281,7 @@ export default function EditProfilePage() {
               <h3 className="font-semibold text-gray-800 mb-4">추가 사진</h3>
               <div className="grid grid-cols-2 gap-3">
                 {[1, 2, 3, 4].map((index) => (
-                  <div key={index} className="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:border-purple-400 transition-colors cursor-pointer aspect-square flex flex-col justify-center">
+                  <div key={index} className="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:border-[#FF4D8D] transition-colors cursor-pointer aspect-square flex flex-col justify-center">
                     <div className="text-2xl mb-1">📸</div>
                     <p className="text-xs text-gray-500">사진 {index}</p>
                   </div>
@@ -289,9 +289,9 @@ export default function EditProfilePage() {
               </div>
             </div>
 
-            <div className="bg-purple-50 rounded-xl p-4">
-              <h4 className="font-semibold text-purple-800 mb-2">📸 사진 팁</h4>
-              <ul className="text-sm text-purple-700 space-y-1">
+            <div className="bg-pink-50 rounded-xl p-4">
+              <h4 className="font-semibold text-[#FF4D8D] mb-2">📸 사진 팁</h4>
+              <ul className="text-sm text-[#0D1B2A] opacity-70 space-y-1">
                 <li>• 얼굴이 잘 보이는 밝은 사진을 사용하세요</li>
                 <li>• 전신 사진이 있으면 매칭률이 높아져요</li>
                 <li>• 취미나 관심사가 드러나는 사진도 좋아요</li>
@@ -362,7 +362,7 @@ export default function EditProfilePage() {
                     }}
                     className={`py-3 px-4 rounded-xl font-medium transition-all ${
                       profile.idealTypes.includes(option)
-                        ? 'bg-purple-600 text-white'
+                        ? 'bg-[#FF4D8D] text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -394,7 +394,7 @@ export default function EditProfilePage() {
         <div className="mt-8 space-y-3">
           <Link
             href="/profile/analysis"
-            className="block w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-4 rounded-xl font-semibold text-center hover:from-blue-600 hover:to-purple-700 transition-all"
+            className="block w-full bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white py-3 px-4 rounded-xl font-semibold text-center hover:opacity-90 transition-all"
           >
             🤖 AI 재분석 요청하기
           </Link>
@@ -402,7 +402,7 @@ export default function EditProfilePage() {
           <div className="grid grid-cols-2 gap-3">
             <Link
               href="/matching"
-              className="bg-purple-600 text-white py-3 px-4 rounded-xl font-medium text-center hover:bg-purple-700 transition-colors"
+              className="bg-[#FF4D8D] text-white py-3 px-4 rounded-xl font-medium text-center hover:bg-[#ff3080] transition-colors"
             >
               매칭 시작
             </Link>

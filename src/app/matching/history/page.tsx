@@ -63,13 +63,13 @@ export default function MatchingHistoryPage() {
       case 'mutual': return 'bg-green-100 text-green-800'
       case 'waiting': return 'bg-yellow-100 text-yellow-800'
       case 'passed': return 'bg-red-100 text-red-800'
-      case 'pending': return 'bg-purple-100 text-purple-800'
+      case 'pending': return 'bg-pink-100 text-[#FF4D8D]'
       default: return 'bg-gray-100 text-gray-800'
     }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 px-4 py-8">
+    <div className="min-h-screen bg-[#F8FAFB] px-4 py-8">
       <div className="max-w-sm mx-auto">
         {/* 헤더 */}
         <div className="flex items-center justify-between mb-6">
@@ -89,7 +89,7 @@ export default function MatchingHistoryPage() {
               onClick={() => setActiveTab('matches')}
               className={`py-3 px-4 rounded-xl font-medium text-sm transition-all ${
                 activeTab === 'matches'
-                  ? 'bg-purple-600 text-white'
+                  ? 'bg-[#FF4D8D] text-white'
                   : 'text-gray-600 hover:text-gray-800'
               }`}
             >
@@ -99,7 +99,7 @@ export default function MatchingHistoryPage() {
               onClick={() => setActiveTab('received')}
               className={`py-3 px-4 rounded-xl font-medium text-sm transition-all ${
                 activeTab === 'received'
-                  ? 'bg-purple-600 text-white'
+                  ? 'bg-[#FF4D8D] text-white'
                   : 'text-gray-600 hover:text-gray-800'
               }`}
             >
@@ -109,7 +109,7 @@ export default function MatchingHistoryPage() {
               onClick={() => setActiveTab('likes')}
               className={`py-3 px-4 rounded-xl font-medium text-sm transition-all ${
                 activeTab === 'likes'
-                  ? 'bg-purple-600 text-white'
+                  ? 'bg-[#FF4D8D] text-white'
                   : 'text-gray-600 hover:text-gray-800'
               }`}
             >
@@ -126,7 +126,7 @@ export default function MatchingHistoryPage() {
                 <div key={match.id} className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100">
                   <div className="flex items-center space-x-4">
                     <div className="relative">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-2xl">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#0D1B2A] to-[#FF4D8D] flex items-center justify-center text-2xl">
                         {match.photo}
                       </div>
                       {match.hasNewMessage && (
@@ -144,7 +144,7 @@ export default function MatchingHistoryPage() {
                         <span className="text-xs text-gray-500">{match.matchedAt}</span>
                       </div>
 
-                      <p className="text-sm text-purple-600 mb-1">{match.faceType}</p>
+                      <p className="text-sm text-[#FF4D8D] mb-1">{match.faceType}</p>
 
                       <p className="text-sm text-gray-600 truncate">
                         {match.lastMessage}
@@ -153,7 +153,7 @@ export default function MatchingHistoryPage() {
 
                     <Link
                       href={`/messages/${match.id}`}
-                      className="bg-purple-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-purple-700 transition-colors"
+                      className="bg-[#FF4D8D] text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-[#ff3080] transition-colors"
                     >
                       채팅
                     </Link>
@@ -166,7 +166,7 @@ export default function MatchingHistoryPage() {
                 <p className="text-gray-600">아직 매칭된 사람이 없어요</p>
                 <Link
                   href="/matching"
-                  className="inline-block mt-4 bg-purple-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-purple-700 transition-colors"
+                  className="inline-block mt-4 bg-[#FF4D8D] text-white px-6 py-3 rounded-xl font-medium hover:bg-[#ff3080] transition-colors"
                 >
                   매칭 시작하기
                 </Link>
@@ -181,7 +181,7 @@ export default function MatchingHistoryPage() {
             {matchingHistory.received.map((person) => (
               <div key={person.id} className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100">
                 <div className="flex items-center space-x-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-2xl">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#0D1B2A] to-[#FF4D8D] flex items-center justify-center text-2xl">
                     {person.photo}
                   </div>
 
@@ -193,7 +193,7 @@ export default function MatchingHistoryPage() {
                       <span className="text-xs text-gray-500">{person.time}</span>
                     </div>
 
-                    <p className="text-sm text-purple-600 mb-2">{person.faceType}</p>
+                    <p className="text-sm text-[#FF4D8D] mb-2">{person.faceType}</p>
 
                     <div className="flex space-x-2">
                       <button
@@ -204,7 +204,7 @@ export default function MatchingHistoryPage() {
                       </button>
                       <button
                         onClick={() => handleLikeResponse(person.id, 'like')}
-                        className="flex-1 bg-purple-600 text-white py-2 px-3 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors"
+                        className="flex-1 bg-[#FF4D8D] text-white py-2 px-3 rounded-lg text-sm font-medium hover:bg-[#ff3080] transition-colors"
                       >
                         좋아요
                       </button>
@@ -222,7 +222,7 @@ export default function MatchingHistoryPage() {
             {matchingHistory.likes.map((person) => (
               <div key={person.id} className="bg-white rounded-2xl p-4 shadow-lg border border-gray-100">
                 <div className="flex items-center space-x-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-2xl">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#0D1B2A] to-[#FF4D8D] flex items-center justify-center text-2xl">
                     {person.photo}
                   </div>
 
@@ -234,7 +234,7 @@ export default function MatchingHistoryPage() {
                       <span className="text-xs text-gray-500">{person.time}</span>
                     </div>
 
-                    <p className="text-sm text-purple-600 mb-2">{person.faceType}</p>
+                    <p className="text-sm text-[#FF4D8D] mb-2">{person.faceType}</p>
 
                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(person.status)}`}>
                       {getStatusText(person.status)}
@@ -247,14 +247,14 @@ export default function MatchingHistoryPage() {
         )}
 
         {/* 하단 액션 */}
-        <div className="mt-8 bg-gradient-to-r from-purple-600 to-pink-500 rounded-2xl p-6 text-white text-center">
+        <div className="mt-8 bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] rounded-2xl p-6 text-white text-center">
           <h3 className="font-bold mb-2">💡 매칭률을 높이는 팁</h3>
-          <p className="text-sm text-purple-100 mb-4">
+          <p className="text-sm text-white opacity-80 mb-4">
             프로필을 더 자세히 작성하면 더 많은 매칭 기회가 생겨요
           </p>
           <Link
             href="/profile/edit"
-            className="inline-block bg-white text-purple-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-[#FF4D8D] px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors"
           >
             프로필 개선하기
           </Link>

@@ -22,7 +22,7 @@ export default function BalancePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-50">
+    <div className="min-h-screen bg-[#F8FAFB]">
       {/* 상단 탭 네비게이션 */}
       <TopTabNavigation />
 
@@ -30,8 +30,8 @@ export default function BalancePage() {
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-lg font-bold text-slate-900">💳 잔액관리</h1>
-            <Link href="/dreams" className="text-violet-600 text-sm font-medium">
+            <h1 className="text-lg font-bold text-[#0D1B2A]">💳 잔액관리</h1>
+            <Link href="/dreams" className="text-[#FF4D8D] text-sm font-medium">
               ← 뒤로
             </Link>
           </div>
@@ -41,20 +41,20 @@ export default function BalancePage() {
       {/* Main Content */}
       <div className="max-w-sm mx-auto px-4 py-6">
         {/* 현재 잔액 카드 */}
-        <div className="bg-gradient-to-r from-violet-500 to-purple-600 rounded-2xl p-6 mb-6 text-white">
+        <div className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] rounded-2xl p-6 mb-6 text-white">
           <div className="text-center">
-            <p className="text-violet-100 text-sm mb-2">현재 잔액</p>
+            <p className="text-white opacity-80 text-sm mb-2">현재 잔액</p>
             <div className="text-4xl font-bold mb-2">
               ₩ {currentBalance.toLocaleString()}
             </div>
-            <p className="text-purple-100 text-sm">
+            <p className="text-white opacity-80 text-sm">
               {availableMatches}회 매칭 가능
             </p>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-purple-300 border-opacity-30">
+          <div className="mt-6 pt-4 border-t border-white border-opacity-30">
             <div className="flex justify-between items-center text-sm">
-              <span className="text-purple-100">포인트 유효기간</span>
+              <span className="text-white opacity-80">포인트 유효기간</span>
               <span className="text-white font-medium">{expiryDate}</span>
             </div>
           </div>
@@ -89,19 +89,19 @@ export default function BalancePage() {
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
           <h3 className="font-bold text-gray-900 mb-4">포인트 사용 예상</h3>
           <div className="space-y-4">
-            <div className="flex items-center justify-between p-3 bg-purple-50 rounded-xl">
+            <div className="flex items-center justify-between p-3 bg-[#FF4D8D] bg-opacity-10 rounded-xl">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 bg-[#FF4D8D] rounded-full flex items-center justify-center">
                   <span className="text-white text-sm">💕</span>
                 </div>
                 <div>
-                  <p className="font-medium text-purple-900">매칭 성사 시</p>
-                  <p className="text-sm text-purple-700">1회당 차감</p>
+                  <p className="font-medium text-[#0D1B2A]">매칭 성사 시</p>
+                  <p className="text-sm text-[#0D1B2A] opacity-70">1회당 차감</p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="font-bold text-purple-900">-₩ 9,900</p>
-                <p className="text-xs text-purple-600">잔액: ₩ {(currentBalance - 9900).toLocaleString()}</p>
+                <p className="font-bold text-[#0D1B2A]">-₩ 9,900</p>
+                <p className="text-xs text-[#0D1B2A] opacity-60">잔액: ₩ {(currentBalance - 9900).toLocaleString()}</p>
               </div>
             </div>
 
@@ -142,7 +142,7 @@ export default function BalancePage() {
             <div className="border-t pt-3">
               <div className="flex justify-between">
                 <span className="font-bold text-gray-900">현재 잔액</span>
-                <span className="font-bold text-purple-600">₩ {currentBalance.toLocaleString()}</span>
+                <span className="font-bold text-[#FF4D8D]">₩ {currentBalance.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -175,7 +175,7 @@ export default function BalancePage() {
                 placeholder="환불받을 금액을 입력하세요"
                 value={refundAmount}
                 onChange={(e) => setRefundAmount(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] text-[#0D1B2A]"
                 max={currentBalance}
               />
             </div>
@@ -201,7 +201,7 @@ export default function BalancePage() {
               <button
                 onClick={handleRefund}
                 disabled={!refundAmount || Number(refundAmount) > currentBalance || Number(refundAmount) <= 0}
-                className="flex-1 py-3 bg-purple-600 text-white rounded-xl font-medium hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 py-3 bg-[#FF4D8D] text-white rounded-xl font-medium hover:bg-[#ff3080] disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 환불 신청
               </button>

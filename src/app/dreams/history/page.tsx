@@ -112,7 +112,7 @@ export default function HistoryPage() {
     switch (type) {
       case 'charge': return { icon: '💰', color: 'bg-green-500' }
       case 'use': return { icon: '💸', color: 'bg-red-500' }
-      case 'refund': return { icon: '💵', color: 'bg-blue-500' }
+      case 'refund': return { icon: '💵', color: 'bg-[#FF4D8D]' }
       default: return { icon: '💳', color: 'bg-gray-500' }
     }
   }
@@ -139,7 +139,7 @@ export default function HistoryPage() {
     .reduce((sum, t) => sum + t.amount, 0)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-50">
+    <div className="min-h-screen bg-[#F8FAFB]">
       {/* 상단 탭 네비게이션 */}
       <TopTabNavigation />
 
@@ -147,8 +147,8 @@ export default function HistoryPage() {
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-lg font-bold text-slate-900">📄 사용내역</h1>
-            <Link href="/dreams" className="text-violet-600 text-sm font-medium">
+            <h1 className="text-lg font-bold text-[#0D1B2A]">📄 사용내역</h1>
+            <Link href="/dreams" className="text-[#FF4D8D] text-sm font-medium">
               ← 뒤로
             </Link>
           </div>
@@ -172,7 +172,7 @@ export default function HistoryPage() {
             <div className="text-xs text-gray-600">총 사용</div>
           </div>
           <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-lg font-bold text-blue-600 mb-1">
+            <div className="text-lg font-bold text-[#0D1B2A] mb-1">
               ₩ {totalRefunded.toLocaleString()}
             </div>
             <div className="text-xs text-gray-600">총 환불</div>
@@ -233,7 +233,7 @@ export default function HistoryPage() {
                       <p className="text-sm text-gray-600 mb-1">
                         {transaction.description}
                         {transaction.method && (
-                          <span className="text-purple-600 ml-1">
+                          <span className="text-[#FF4D8D] ml-1">
                             • {transaction.method}
                           </span>
                         )}
@@ -270,7 +270,7 @@ export default function HistoryPage() {
               </p>
               <Link
                 href="/dreams/purchase"
-                className="inline-block bg-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-purple-700 transition-colors"
+                className="inline-block bg-[#FF4D8D] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#ff3080] transition-colors"
               >
                 포인트 충전하기
               </Link>
@@ -281,7 +281,7 @@ export default function HistoryPage() {
         {/* 더 보기 (무한 스크롤 대신 페이지네이션 버튼) */}
         {filteredTransactions.length >= 10 && (
           <div className="mt-6 text-center">
-            <button className="text-purple-600 font-medium hover:text-purple-700">
+            <button className="text-[#FF4D8D] font-medium hover:text-[#ff3080]">
               더 보기 →
             </button>
           </div>

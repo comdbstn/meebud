@@ -65,11 +65,11 @@ export default function ChatPage() {
 
   if (!chat) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[#F8FAFB] flex items-center justify-center px-4">
         <div className="text-center">
           <div className="text-4xl mb-4">💬</div>
           <h1 className="text-xl font-bold text-gray-800 mb-2">채팅방을 찾을 수 없어요</h1>
-          <Link href="/messages" className="text-purple-600 hover:text-purple-700">
+          <Link href="/messages" className="text-[#FF4D8D] hover:text-[#ff3080]">
             ← 메시지 목록으로 돌아가기
           </Link>
         </div>
@@ -91,7 +91,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 flex flex-col">
+    <div className="min-h-screen bg-[#F8FAFB] flex flex-col">
       {/* 채팅 헤더 */}
       <div className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-3">
@@ -99,7 +99,7 @@ export default function ChatPage() {
             ←
           </Link>
 
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-lg">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0D1B2A] to-[#FF4D8D] flex items-center justify-center text-lg">
             {chat.photo}
           </div>
 
@@ -123,11 +123,11 @@ export default function ChatPage() {
         <div className="flex items-center space-x-2">
           <button
             onClick={handlePhotoShare}
-            className="p-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors"
+            className="p-2 text-gray-600 hover:text-[#FF4D8D] hover:bg-pink-50 rounded-lg transition-colors"
           >
             📷
           </button>
-          <button className="p-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">
+          <button className="p-2 text-gray-600 hover:text-[#FF4D8D] hover:bg-pink-50 rounded-lg transition-colors">
             ⋮
           </button>
         </div>
@@ -152,12 +152,12 @@ export default function ChatPage() {
           >
             <div className={`max-w-xs lg:max-w-md px-4 py-2 rounded-2xl ${
               msg.sender === 'me'
-                ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white'
+                ? 'bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white'
                 : 'bg-white text-gray-800 border border-gray-200'
             }`}>
               <p className="text-sm">{msg.text}</p>
               <div className={`text-xs mt-1 ${
-                msg.sender === 'me' ? 'text-purple-100' : 'text-gray-500'
+                msg.sender === 'me' ? 'text-white opacity-80' : 'text-gray-500'
               }`}>
                 {msg.time}
                 {msg.sender === 'me' && (
@@ -189,7 +189,7 @@ export default function ChatPage() {
       {/* 메시지 입력 영역 */}
       <div className="bg-white border-t border-gray-200 px-4 py-3">
         <div className="flex items-center space-x-3">
-          <button className="p-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">
+          <button className="p-2 text-gray-600 hover:text-[#FF4D8D] hover:bg-pink-50 rounded-lg transition-colors">
             📎
           </button>
 
@@ -200,18 +200,18 @@ export default function ChatPage() {
               onChange={(e) => setMessage(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
               placeholder="메시지를 입력하세요..."
-              className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] focus:border-transparent"
             />
           </div>
 
-          <button className="p-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors">
+          <button className="p-2 text-gray-600 hover:text-[#FF4D8D] hover:bg-pink-50 rounded-lg transition-colors">
             😊
           </button>
 
           <button
             onClick={handleSendMessage}
             disabled={!message.trim()}
-            className="p-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-lg hover:from-purple-700 hover:to-pink-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="p-2 bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white rounded-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             ➤
           </button>
@@ -234,9 +234,9 @@ export default function ChatPage() {
                 </p>
               </div>
 
-              <div className="bg-purple-50 rounded-xl p-4 border border-purple-200">
-                <h4 className="font-semibold text-purple-800 mb-2">💝 사진 공개 혜택</h4>
-                <ul className="text-sm text-purple-700 space-y-1">
+              <div className="bg-pink-50 rounded-xl p-4 border border-pink-200">
+                <h4 className="font-semibold text-[#FF4D8D] mb-2">💝 사진 공개 혜택</h4>
+                <ul className="text-sm text-[#0D1B2A] opacity-70 space-y-1">
                   <li>• 상대방이 나를 더 잘 알 수 있어요</li>
                   <li>• 대화가 더 활발해져요</li>
                   <li>• 실제 만남으로 이어질 가능성이 높아져요</li>
@@ -255,7 +255,7 @@ export default function ChatPage() {
                     alert('사진을 공개했어요! 🎉')
                     setShowPhotoModal(false)
                   }}
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-pink-500 text-white py-3 px-4 rounded-xl font-medium hover:from-purple-700 hover:to-pink-600 transition-all"
+                  className="flex-1 bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white py-3 px-4 rounded-xl font-medium hover:opacity-90 transition-all"
                 >
                   공개하기
                 </button>

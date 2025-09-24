@@ -67,7 +67,7 @@ export default function PurchasePage() {
   const selectedCharge = chargeOptions.find(option => option.id === selectedOption)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-50">
+    <div className="min-h-screen bg-[#F8FAFB]">
       {/* 상단 탭 네비게이션 */}
       <TopTabNavigation />
 
@@ -75,8 +75,8 @@ export default function PurchasePage() {
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-lg font-bold text-slate-900">💰 충전하기</h1>
-            <Link href="/dreams" className="text-violet-600 text-sm font-medium">
+            <h1 className="text-lg font-bold text-[#0D1B2A]">💰 충전하기</h1>
+            <Link href="/dreams" className="text-[#FF4D8D] text-sm font-medium">
               ← 뒤로
             </Link>
           </div>
@@ -87,7 +87,7 @@ export default function PurchasePage() {
       <div className="max-w-sm mx-auto px-4 py-6">
         {/* 충전 금액 선택 */}
         <div className="mb-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">충전 금액 선택</h2>
+          <h2 className="text-lg font-bold text-[#0D1B2A] mb-4">충전 금액 선택</h2>
           <div className="space-y-3">
             {chargeOptions.map((option) => (
               <div
@@ -95,12 +95,12 @@ export default function PurchasePage() {
                 onClick={() => setSelectedOption(option.id)}
                 className={`relative p-4 rounded-2xl border-2 cursor-pointer transition-all ${
                   selectedOption === option.id
-                    ? 'border-purple-500 bg-purple-50'
+                    ? 'border-[#FF4D8D] bg-pink-50'
                     : 'border-gray-200 bg-white hover:border-gray-300'
                 }`}
               >
                 {option.popular && (
-                  <div className="absolute -top-2 left-4 bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  <div className="absolute -top-2 left-4 bg-[#FF4D8D] text-white text-xs font-bold px-2 py-1 rounded-full">
                     인기
                   </div>
                 )}
@@ -112,7 +112,7 @@ export default function PurchasePage() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-bold text-gray-900 text-lg">
+                    <p className="font-bold text-[#0D1B2A] text-lg">
                       ₩ {option.amount.toLocaleString()}
                     </p>
                     <p className="text-sm text-gray-600">
@@ -126,7 +126,7 @@ export default function PurchasePage() {
                   </div>
                   <div className={`w-6 h-6 rounded-full border-2 ${
                     selectedOption === option.id
-                      ? 'border-purple-500 bg-purple-500'
+                      ? 'border-[#FF4D8D] bg-[#FF4D8D]'
                       : 'border-gray-300'
                   }`}>
                     {selectedOption === option.id && (
@@ -141,7 +141,7 @@ export default function PurchasePage() {
 
         {/* 결제 방법 선택 */}
         <div className="mb-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">결제 방법 선택</h2>
+          <h2 className="text-lg font-bold text-[#0D1B2A] mb-4">결제 방법 선택</h2>
           <div className="grid grid-cols-2 gap-3">
             {paymentMethods.map((method) => (
               <div
@@ -149,14 +149,14 @@ export default function PurchasePage() {
                 onClick={() => setSelectedPayment(method.id)}
                 className={`p-4 rounded-2xl border-2 cursor-pointer transition-all text-center ${
                   selectedPayment === method.id
-                    ? 'border-purple-500 bg-purple-50'
+                    ? 'border-[#FF4D8D] bg-pink-50'
                     : 'border-gray-200 bg-white hover:border-gray-300'
                 }`}
               >
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-2 ${method.color}`}>
                   <span className="text-white text-xl">{method.icon}</span>
                 </div>
-                <p className="text-sm font-medium text-gray-900">{method.name}</p>
+                <p className="text-sm font-medium text-[#0D1B2A]">{method.name}</p>
               </div>
             ))}
           </div>
@@ -164,11 +164,11 @@ export default function PurchasePage() {
 
         {/* 결제 정보 요약 */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
-          <h3 className="font-bold text-gray-900 mb-4">결제 정보</h3>
+          <h3 className="font-bold text-[#0D1B2A] mb-4">결제 정보</h3>
           <div className="space-y-3">
             <div className="flex justify-between">
               <span className="text-gray-600">충전 금액</span>
-              <span className="font-medium text-gray-900">
+              <span className="font-medium text-[#0D1B2A]">
                 ₩ {selectedCharge?.amount.toLocaleString()}
               </span>
             </div>
@@ -182,14 +182,14 @@ export default function PurchasePage() {
             )}
             <div className="flex justify-between">
               <span className="text-gray-600">결제 방법</span>
-              <span className="font-medium text-gray-900">
+              <span className="font-medium text-[#0D1B2A]">
                 {paymentMethods.find(p => p.id === selectedPayment)?.name}
               </span>
             </div>
             <div className="border-t pt-3">
               <div className="flex justify-between">
-                <span className="font-bold text-gray-900">총 결제 금액</span>
-                <span className="font-bold text-purple-600 text-lg">
+                <span className="font-bold text-[#0D1B2A]">총 결제 금액</span>
+                <span className="font-bold text-[#FF4D8D] text-lg">
                   ₩ {selectedCharge?.amount.toLocaleString()}
                 </span>
               </div>
@@ -200,7 +200,7 @@ export default function PurchasePage() {
         {/* 이용 약관 */}
         <div className="mb-6">
           <div className="bg-gray-50 rounded-xl p-4">
-            <h4 className="font-semibold text-gray-900 mb-2">꿈결제 이용 약관</h4>
+            <h4 className="font-semibold text-[#0D1B2A] mb-2">꿈결제 이용 약관</h4>
             <ul className="text-sm text-gray-600 space-y-1">
               <li>• 충전된 포인트는 1년간 유효합니다</li>
               <li>• 매칭 성사 시에만 포인트가 차감됩니다</li>
@@ -214,7 +214,7 @@ export default function PurchasePage() {
         <button
           onClick={handlePurchase}
           disabled={isProcessing}
-          className="w-full bg-purple-600 text-white font-semibold py-4 rounded-2xl hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-[#FF4D8D] text-white font-semibold py-4 rounded-2xl hover:bg-[#ff3080] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isProcessing ? (
             <div className="flex items-center justify-center space-x-2">
