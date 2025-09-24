@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import BottomNavigation from '@/components/BottomNavigation'
+import TopTabNavigation from '@/components/TopTabNavigation'
 
 // 충전 옵션 데이터
 const chargeOptions = [
@@ -67,17 +67,18 @@ export default function PurchasePage() {
   const selectedCharge = chargeOptions.find(option => option.id === selectedOption)
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
-      {/* Header */}
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-50">
+      {/* 상단 탭 네비게이션 */}
+      <TopTabNavigation />
+
+      {/* 충전하기 헤더 */}
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
-          <div className="flex items-center justify-center relative">
-            <Link href="/dreams" className="absolute left-0 text-gray-600 hover:text-gray-800 text-xl">
-              ←
+          <div className="flex items-center justify-between">
+            <h1 className="text-lg font-bold text-slate-900">💰 충전하기</h1>
+            <Link href="/dreams" className="text-violet-600 text-sm font-medium">
+              ← 뒤로
             </Link>
-            <h1 className="text-lg font-bold text-black">
-              💰 충전하기
-            </h1>
           </div>
         </div>
       </div>
@@ -234,7 +235,6 @@ export default function PurchasePage() {
         </div>
       </div>
 
-      <BottomNavigation />
     </div>
   )
 }

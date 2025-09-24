@@ -793,6 +793,60 @@ git push
 }
 ```
 
+### 빌드 오류 방지 가이드라인 ⭐ **중요**
+```typescript
+// 1. JSX 구조 검증 - 반드시 확인할 사항들
+// ❌ 잘못된 예시: div 태그 누락/중복
+<div className="header">
+  <div className="container">
+  <div className="content">  // 이전 div 닫지 않고 새로운 div 시작
+    <h1>제목</h1>
+  </div>
+</div>
+
+// ✅ 올바른 예시: 모든 태그 정확히 열고 닫기
+<div className="header">
+  <div className="container">
+    <div className="content">
+      <h1>제목</h1>
+    </div>
+  </div>
+</div>
+
+// 2. 컴포넌트 import/export 확인
+// ❌ 존재하지 않는 컴포넌트 import
+import BottomNavigation from '@/components/BottomNavigation'  // 삭제된 파일
+
+// ✅ 올바른 import
+import TopTabNavigation from '@/components/TopTabNavigation'  // 실제 존재하는 파일
+
+// 3. 중괄호와 괄호 매칭 확인
+// 반드시 다음을 확인:
+// - { } 중괄호 쌍 맞춤
+// - ( ) 소괄호 쌍 맞춤
+// - [ ] 대괄호 쌍 맞춤
+// - < > JSX 태그 쌍 맞춤
+```
+
+### 빌드 전 필수 체크리스트
+```bash
+# 배포 전 반드시 실행해야 할 명령어들
+npm run build    # 로컬에서 빌드 테스트
+npm run lint     # 코드 품질 검사
+
+# 일반적인 빌드 오류 패턴
+1. "Unexpected token" → JSX 태그 누락/중복
+2. "Cannot find module" → import 경로 오류
+3. "Expected '}'" → 중괄호 누락
+4. "Parsing failed" → 문법 오류
+
+# 오류 발생 시 해결 순서
+1. 오류 메시지의 파일명과 라인 번호 확인
+2. 해당 라인 주변의 태그/괄호 매칭 확인
+3. import문과 실제 파일 존재 여부 확인
+4. 수정 후 다시 빌드 테스트
+```
+
 ### 브랜딩 정보
 - **톤앤매너**: 신뢰, 프리미엄, 차분함
 - **연락처**: jys13230@gmail.com, @meebud_

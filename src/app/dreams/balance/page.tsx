@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import BottomNavigation from '@/components/BottomNavigation'
+import TopTabNavigation from '@/components/TopTabNavigation'
 
 export default function BalancePage() {
   const [showRefundModal, setShowRefundModal] = useState(false)
@@ -22,18 +22,18 @@ export default function BalancePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
-      {/* Header */}
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-50">
+      {/* 상단 탭 네비게이션 */}
+      <TopTabNavigation />
+
+      {/* 잔액관리 헤더 */}
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-          <div className="flex items-center justify-center relative">
-            <Link href="/dreams" className="absolute left-0 text-gray-600 hover:text-gray-800 text-xl">
-              ←
+            <h1 className="text-lg font-bold text-slate-900">💳 잔액관리</h1>
+            <Link href="/dreams" className="text-violet-600 text-sm font-medium">
+              ← 뒤로
             </Link>
-            <h1 className="text-lg font-bold text-black">
-              💳 잔액관리
-            </h1>
           </div>
         </div>
       </div>
@@ -41,9 +41,9 @@ export default function BalancePage() {
       {/* Main Content */}
       <div className="max-w-sm mx-auto px-4 py-6">
         {/* 현재 잔액 카드 */}
-        <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-6 mb-6 text-white">
+        <div className="bg-gradient-to-r from-violet-500 to-purple-600 rounded-2xl p-6 mb-6 text-white">
           <div className="text-center">
-            <p className="text-purple-100 text-sm mb-2">현재 잔액</p>
+            <p className="text-violet-100 text-sm mb-2">현재 잔액</p>
             <div className="text-4xl font-bold mb-2">
               ₩ {currentBalance.toLocaleString()}
             </div>
@@ -210,7 +210,6 @@ export default function BalancePage() {
         </div>
       )}
 
-      <BottomNavigation />
     </div>
   )
 }
