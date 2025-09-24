@@ -1,13 +1,47 @@
-import { Metadata } from 'next'
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import TopTabNavigation from '@/components/TopTabNavigation'
 
-export const metadata: Metadata = {
-  title: "프로필 - MEE'BUD",
-  description: "MEE'BUD 프로필 관리 및 설정",
-}
-
 export default function ProfilePage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    age: '',
+    location: '',
+    occupation: '',
+    education: '',
+    height: '',
+    bio: '',
+    mbti: '',
+    interests: [] as string[],
+    photos: [] as string[]
+  })
+
+  const [currentStep, setCurrentStep] = useState(1)
+  const totalSteps = 3
+
+  const interestOptions = [
+    '여행', '영화감상', '독서', '요리', '운동', '음악감상',
+    '카페', '전시회', '드라이브', '게임', '반려동물', '사진촬영'
+  ]
+
+  const handleInputChange = (field: string, value: string | string[]) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }))
+  }
+
+  const handleInterestToggle = (interest: string) => {
+    setFormData(prev => ({
+      ...prev,
+      interests: prev.interests.includes(interest)
+        ? prev.interests.filter(i => i !== interest)
+        : [...prev.interests, interest].slice(0, 5) // 최대 5개
+    }))
+  }
+
   return (
     <div className="min-h-screen bg-[#F8FAFB]">
       {/* 상단 탭 네비게이션 */}
@@ -17,187 +51,227 @@ export default function ProfilePage() {
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-lg font-bold text-[#0D1B2A]">프로필</h1>
-            <Link href="/profile/edit" className="text-[#FF4D8D] font-medium text-sm">
-              편집
-            </Link>
+            <h1 className="text-lg font-bold text-[#0D1B2A]">프로필 작성</h1>
+            <div className="text-sm text-[#0D1B2A] opacity-70">
+              {currentStep}/{totalSteps}단계
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="max-w-sm mx-auto px-4 py-6">
-        {/* Profile Card */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
-          <div className="text-center mb-6">
-            <div className="w-24 h-24 bg-gradient-to-br from-[#FF4D8D] to-[#C49A6C] rounded-full flex items-center justify-center text-4xl mx-auto mb-4">
-              👩🏻
-            </div>
-            <h2 className="text-2xl font-bold text-[#0D1B2A] mb-1">김지수, 25</h2>
-            <p className="text-[#FF4D8D] font-medium mb-1">디자이너</p>
-            <p className="text-sm text-[#0D1B2A] opacity-70">서울 강남구</p>
-
-            <div className="flex justify-center space-x-2 mt-4">
-              <span className="bg-pink-100 text-[#FF4D8D] px-3 py-1 rounded-full text-xs font-medium">
-                🐱 고양이상
-              </span>
-              <span className="bg-blue-100 text-[#0D1B2A] px-3 py-1 rounded-full text-xs font-medium">
-                ENFP
-              </span>
-              <span className="bg-green-100 text-[#C49A6C] px-3 py-1 rounded-full text-xs font-medium">
-                ✨ 인증완료
-              </span>
-            </div>
+        {/* 진행도 표시 */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm text-[#0D1B2A] opacity-70">진행도</span>
+            <span className="text-sm font-semibold text-[#FF4D8D]">
+              {Math.round((currentStep / totalSteps) * 100)}%
+            </span>
           </div>
-
-          <div className="border-t pt-4">
-            <p className="text-sm text-[#0D1B2A] opacity-80 leading-relaxed text-center">
-              안녕하세요! 디자인을 사랑하는 지수입니다. 새로운 사람들과 만나는 것을 좋아하고, 함께 즐거운 시간을 보낼 수 있는 분을 찾고 있어요.
-            </p>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="bg-gradient-to-r from-[#FF4D8D] to-[#C49A6C] h-2 rounded-full transition-all duration-300"
+              style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+            ></div>
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 mb-6">
-          <div className="bg-white rounded-2xl p-4 text-center border border-gray-100">
-            <div className="text-2xl font-bold text-[#FF4D8D] mb-1">12</div>
-            <div className="text-xs text-[#0D1B2A] opacity-70">매칭 성사</div>
-          </div>
-          <div className="bg-white rounded-2xl p-4 text-center border border-gray-100">
-            <div className="text-2xl font-bold text-[#0D1B2A] mb-1">86%</div>
-            <div className="text-xs text-[#0D1B2A] opacity-70">프로필 완성도</div>
-          </div>
-          <div className="bg-white rounded-2xl p-4 text-center border border-gray-100">
-            <div className="text-2xl font-bold text-[#C49A6C] mb-1">4.8</div>
-            <div className="text-xs text-[#0D1B2A] opacity-70">평균 별점</div>
-          </div>
+        {/* 안내 메시지 */}
+        <div className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] rounded-2xl p-6 text-white mb-6">
+          <h2 className="text-xl font-bold mb-2">기본 정보만 입력하세요!</h2>
+          <p className="text-white opacity-80 text-sm leading-relaxed">
+            입력하신 정보를 바탕으로 Admin AI가<br/>
+            매력적인 프로필을 완성해드립니다.
+          </p>
         </div>
 
-        {/* Profile Sections */}
-        <div className="space-y-4">
-          {/* 기본 정보 */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-            <h3 className="font-bold text-[#0D1B2A] mb-3 flex items-center">
-              <span className="mr-2">👤</span>
-              기본 정보
-            </h3>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-[#0D1B2A] opacity-70">키</span>
-                <span className="text-[#0D1B2A]">165cm</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#0D1B2A] opacity-70">학력</span>
-                <span className="text-[#0D1B2A]">대학교 졸업</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#0D1B2A] opacity-70">직업</span>
-                <span className="text-[#0D1B2A]">디자이너</span>
-              </div>
-            </div>
-          </div>
+        {/* Step 1: 기본 정보 */}
+        {currentStep === 1 && (
+          <div className="space-y-6">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+              <h3 className="font-bold text-[#0D1B2A] mb-4">👤 기본 정보</h3>
 
-          {/* 성격 */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-            <h3 className="font-bold text-[#0D1B2A] mb-3 flex items-center">
-              <span className="mr-2">✨</span>
-              성격
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {['유머러스한', '활발한', '로맨틱한'].map((trait) => (
-                <span key={trait} className="bg-pink-100 text-[#FF4D8D] px-3 py-1 rounded-full text-sm">
-                  {trait}
-                </span>
-              ))}
-            </div>
-          </div>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-[#0D1B2A] mb-2">이름</label>
+                  <input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] text-[#0D1B2A]"
+                    placeholder="실명을 입력해주세요"
+                  />
+                </div>
 
-          {/* 취미 */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-            <h3 className="font-bold text-[#0D1B2A] mb-3 flex items-center">
-              <span className="mr-2">🎯</span>
-              취미
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {['여행', '사진촬영', '요리'].map((hobby) => (
-                <span key={hobby} className="bg-blue-100 text-[#0D1B2A] px-3 py-1 rounded-full text-sm">
-                  {hobby}
-                </span>
-              ))}
-            </div>
-          </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-[#0D1B2A] mb-2">나이</label>
+                    <input
+                      type="number"
+                      value={formData.age}
+                      onChange={(e) => handleInputChange('age', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] text-[#0D1B2A]"
+                      placeholder="25"
+                      min="18"
+                      max="65"
+                    />
+                  </div>
 
-          {/* 이상형 */}
-          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-            <h3 className="font-bold text-[#0D1B2A] mb-3 flex items-center">
-              <span className="mr-2">💕</span>
-              이상형
-            </h3>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-gray-700">나이</span>
-                <span className="text-gray-900">22-32세</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-700">선호 타입</span>
-                <div className="flex gap-2">
-                  <span className="bg-pink-100 text-pink-700 px-2 py-1 rounded text-xs">🐶 강아지상</span>
-                  <span className="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">🦊 여우상</span>
+                  <div>
+                    <label className="block text-sm font-medium text-[#0D1B2A] mb-2">키</label>
+                    <input
+                      type="text"
+                      value={formData.height}
+                      onChange={(e) => handleInputChange('height', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] text-[#0D1B2A]"
+                      placeholder="170cm"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#0D1B2A] mb-2">지역</label>
+                  <input
+                    type="text"
+                    value={formData.location}
+                    onChange={(e) => handleInputChange('location', e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] text-[#0D1B2A]"
+                    placeholder="서울시 강남구"
+                  />
                 </div>
               </div>
             </div>
           </div>
+        )}
+
+        {/* Step 2: 직업/학력 정보 */}
+        {currentStep === 2 && (
+          <div className="space-y-6">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+              <h3 className="font-bold text-[#0D1B2A] mb-4">🎓 직업 및 학력</h3>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-[#0D1B2A] mb-2">직업</label>
+                  <input
+                    type="text"
+                    value={formData.occupation}
+                    onChange={(e) => handleInputChange('occupation', e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] text-[#0D1B2A]"
+                    placeholder="직업을 입력해주세요"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#0D1B2A] mb-2">학력</label>
+                  <select
+                    value={formData.education}
+                    onChange={(e) => handleInputChange('education', e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] text-[#0D1B2A]"
+                  >
+                    <option value="">학력을 선택해주세요</option>
+                    <option value="고등학교 졸업">고등학교 졸업</option>
+                    <option value="전문대 졸업">전문대 졸업</option>
+                    <option value="대학교 졸업">대학교 졸업</option>
+                    <option value="대학원 재학">대학원 재학</option>
+                    <option value="대학원 졸업">대학원 졸업</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-[#0D1B2A] mb-2">MBTI (선택)</label>
+                  <input
+                    type="text"
+                    value={formData.mbti}
+                    onChange={(e) => handleInputChange('mbti', e.target.value.toUpperCase())}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] text-[#0D1B2A]"
+                    placeholder="ENFP, ISTJ 등"
+                    maxLength={4}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Step 3: 관심사 및 소개 */}
+        {currentStep === 3 && (
+          <div className="space-y-6">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+              <h3 className="font-bold text-[#0D1B2A] mb-4">🎯 관심사 (최대 5개)</h3>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {interestOptions.map((interest) => (
+                  <button
+                    key={interest}
+                    onClick={() => handleInterestToggle(interest)}
+                    className={`px-3 py-2 rounded-full text-sm transition-all ${
+                      formData.interests.includes(interest)
+                        ? 'bg-[#FF4D8D] text-white'
+                        : 'bg-gray-100 text-[#0D1B2A] hover:bg-gray-200'
+                    }`}
+                  >
+                    {interest}
+                  </button>
+                ))}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-[#0D1B2A] mb-2">간단한 자기소개</label>
+                <textarea
+                  value={formData.bio}
+                  onChange={(e) => handleInputChange('bio', e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] text-[#0D1B2A] resize-none"
+                  placeholder="나를 한줄로 소개해주세요..."
+                  rows={3}
+                  maxLength={100}
+                />
+                <div className="text-xs text-[#0D1B2A] opacity-60 mt-1 text-right">
+                  {formData.bio.length}/100
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 네비게이션 버튼 */}
+        <div className="mt-8 flex space-x-3">
+          {currentStep > 1 && (
+            <button
+              onClick={() => setCurrentStep(prev => prev - 1)}
+              className="flex-1 bg-white border border-gray-300 text-[#0D1B2A] font-medium py-4 rounded-xl hover:bg-gray-50 transition-colors"
+            >
+              이전
+            </button>
+          )}
+
+          {currentStep < totalSteps ? (
+            <button
+              onClick={() => setCurrentStep(prev => prev + 1)}
+              className="flex-1 bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white font-semibold py-4 rounded-xl hover:opacity-90 transition-all"
+            >
+              다음
+            </button>
+          ) : (
+            <Link
+              href="/profile/analysis"
+              className="flex-1 bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white font-semibold py-4 rounded-xl text-center hover:opacity-90 transition-all"
+            >
+              Admin 검토 요청 →
+            </Link>
+          )}
         </div>
 
-        {/* Action Buttons */}
-        <div className="mt-8 space-y-3">
-          <Link
-            href="/profile/edit"
-            className="block w-full bg-[#FF4D8D] text-white font-semibold py-4 rounded-2xl text-center hover:bg-[#ff3080] transition-colors duration-200"
-          >
-            프로필 편집하기
-          </Link>
-
-          <div className="grid grid-cols-2 gap-3">
-            <Link
-              href="/matching"
-              className="bg-purple-600 text-white font-medium py-3 rounded-xl text-center hover:bg-purple-700 transition-colors duration-200"
-            >
-              매칭 시작
-            </Link>
-            <Link
-              href="/messages"
-              className="bg-white border border-gray-300 text-gray-700 font-medium py-3 rounded-xl text-center hover:bg-gray-50 transition-colors duration-200"
-            >
-              메시지함
-            </Link>
-          </div>
-        </div>
-
-        {/* Settings */}
-        <div className="mt-8 bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-          <h3 className="font-bold text-gray-900 mb-4">설정</h3>
-          <div className="space-y-3">
-            <button className="w-full flex items-center justify-between py-3 text-left">
-              <span className="text-gray-700">알림 설정</span>
-              <span className="text-gray-400">→</span>
-            </button>
-            <button className="w-full flex items-center justify-between py-3 text-left">
-              <span className="text-gray-700">프라이버시 설정</span>
-              <span className="text-gray-400">→</span>
-            </button>
-            <button className="w-full flex items-center justify-between py-3 text-left">
-              <span className="text-gray-700">차단 목록</span>
-              <span className="text-gray-400">→</span>
-            </button>
-            <button className="w-full flex items-center justify-between py-3 text-left text-red-600">
-              <span>로그아웃</span>
-              <span className="text-red-400">→</span>
-            </button>
-          </div>
+        {/* 안내 메시지 */}
+        <div className="mt-6 bg-[#FF4D8D] bg-opacity-10 rounded-xl p-4 border border-[#FF4D8D] border-opacity-20">
+          <h4 className="font-semibold text-[#0D1B2A] mb-2">💡 Admin AI가 완성해드려요</h4>
+          <ul className="text-sm text-[#0D1B2A] opacity-70 space-y-1">
+            <li>• 입력된 정보로 매력적인 프로필 문구 자동 생성</li>
+            <li>• MBTI와 관심사 기반 이상형 매칭 설정</li>
+            <li>• 전문 작가 수준의 프로필 완성</li>
+          </ul>
         </div>
       </div>
-
     </div>
   )
 }

@@ -28,17 +28,17 @@ export default function DreamsPage() {
       {/* Main Content */}
       <div className="max-w-sm mx-auto px-4 py-6">
         {/* 꿈결제 소개 카드 */}
-        <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-6 mb-6 text-white">
+        <div className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] rounded-2xl p-6 mb-6 text-white">
           <div className="flex items-center space-x-3 mb-4">
             <div className="w-12 h-12 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
               <span className="text-2xl">☁️</span>
             </div>
             <div>
               <h2 className="text-xl font-bold">꿈결제란?</h2>
-              <p className="text-purple-100 text-sm">성사 후 결제하는 안심 시스템</p>
+              <p className="text-white opacity-80 text-sm">성사 후 결제하는 안심 시스템</p>
             </div>
           </div>
-          <p className="text-sm text-purple-100 leading-relaxed">
+          <p className="text-sm text-white opacity-80 leading-relaxed">
             매칭이 성사되기 전까지는 결제하지 않아도 됩니다.
             진짜 연결이 이루어질 때만 결제하는 신뢰할 수 있는 시스템이에요.
           </p>
@@ -48,7 +48,7 @@ export default function DreamsPage() {
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-bold text-gray-900">현재 잔액</h3>
-            <Link href="/dreams/balance" className="text-purple-600 text-sm font-medium">
+            <Link href="/dreams/balance" className="text-[#FF4D8D] text-sm font-medium">
               자세히 보기 →
             </Link>
           </div>
@@ -87,14 +87,14 @@ export default function DreamsPage() {
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
           <h3 className="font-bold text-gray-900 mb-4">요금제 안내</h3>
           <div className="space-y-3">
-            <div className="flex items-center justify-between p-3 bg-purple-50 rounded-xl">
+            <div className="flex items-center justify-between p-3 bg-[#FF4D8D] bg-opacity-10 rounded-xl">
               <div>
-                <p className="font-medium text-purple-900">매칭 성사</p>
-                <p className="text-sm text-purple-700">상대방과 매칭될 때</p>
+                <p className="font-medium text-[#0D1B2A]">매칭 성사</p>
+                <p className="text-sm text-[#0D1B2A] opacity-70">상대방과 매칭될 때</p>
               </div>
               <div className="text-right">
-                <p className="font-bold text-purple-900">₩ 9,900</p>
-                <p className="text-xs text-purple-600">1회당</p>
+                <p className="font-bold text-[#0D1B2A]">₩ 9,900</p>
+                <p className="text-xs text-[#0D1B2A] opacity-60">1회당</p>
               </div>
             </div>
 
@@ -115,7 +115,7 @@ export default function DreamsPage() {
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-bold text-gray-900">최근 거래</h3>
-            <Link href="/dreams/history" className="text-purple-600 text-sm font-medium">
+            <Link href="/dreams/history" className="text-[#FF4D8D] text-sm font-medium">
               전체 보기 →
             </Link>
           </div>

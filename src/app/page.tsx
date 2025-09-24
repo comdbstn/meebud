@@ -22,10 +22,9 @@ export default function HomePage() {
       _setUserEmail(email)
 
       // TODO: 실제로는 API에서 사용자의 매칭 상태를 가져와야 함
-      // 데모용으로 다양한 상태를 보여주기 위해 랜덤으로 설정
-      const demoStatuses: MatchingStatusType[] = ['profile_incomplete', 'ready_to_start', 'matching', 'matched']
-      const randomStatus = demoStatuses[Math.floor(Math.random() * demoStatuses.length)]
-      setMatchingStatus(randomStatus)
+      // Admin 큐레이팅 플로우에 맞춰 논리적인 진행 상태 설정
+      // 실제 서비스에서는 사용자의 프로필 완성도와 매칭 진행 단계에 따라 결정
+      setMatchingStatus('profile_incomplete') // 기본 상태: 프로필 입력 필요
     }
     setLoading(false)
   }, [])
