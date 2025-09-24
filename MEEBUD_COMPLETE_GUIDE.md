@@ -461,17 +461,26 @@ type TransactionType = 'charge' | 'use' | 'refund' | 'bonus'
    - 인증 승인/거부 처리
    - 신고 접수 및 처리
 
-2. **매칭 관리**
+2. **AI 분석 프로필 관리** ⭐ **신규**
+   - 사용자 프로필 조회
+   - AI 분석 결과 직접 작성/편집
+   - 얼굴상, 성격 분석, 매력 포인트 입력
+   - MBTI 호환성 분석 작성
+   - 개인별 매칭 전략 수립
+
+3. **매칭 관리** ⭐ **강화**
    - 매칭 현황 모니터링
-   - 성사율 통계 분석
+   - **수동 매칭 생성**: 관리자가 직접 사용자 매칭
+   - **호환성 점수 조정**: AI 점수 수동 설정
+   - 매칭 성사율 통계 분석
    - 문제 매칭 개입 처리
 
-3. **결제 관리**
+4. **결제 관리**
    - 결제 현황 실시간 조회
    - 환불 처리 및 승인
    - 수익 통계 및 분석
 
-4. **컨텐츠 관리**
+5. **컨텐츠 관리**
    - 공지사항 작성/수정
    - FAQ 업데이트
    - 정책 변경 공지
@@ -585,19 +594,60 @@ $space-20: 5rem;    // 80px
 }
 ```
 
-### 반응형 디자인
-```scss
-// 브레이크포인트 정의 (Mobile First)
-$mobile: 320px;     // 기본
-$mobile-lg: 480px;  // 큰 모바일
-$tablet: 768px;     // 태블릿
-$desktop: 1024px;   // 데스크톱
-$desktop-lg: 1280px; // 큰 데스크톱
+### 모바일 전용 디자인 (Mobile First) ⭐
+**핵심 원칙**: 모든 페이지는 스마트폰 화면비율 기준으로 설계
 
-// 컨테이너 시스템
-.container-mobile { max-width: 384px; margin: 0 auto; padding: 0 1rem; }
-.container-tablet { max-width: 640px; margin: 0 auto; padding: 0 1.5rem; }
-.container-desktop { max-width: 1024px; margin: 0 auto; padding: 0 2rem; }
+```scss
+// 모바일 전용 브레이크포인트
+$mobile-min: 320px;   // 최소 폭
+$mobile-max: 480px;   // 최대 폭 (기본 타겟)
+$mobile-optimal: 375px; // 최적화 기준 (iPhone 기준)
+
+// 모바일 전용 컨테이너
+.mobile-container {
+  max-width: 480px;        // 최대 폭 제한
+  min-width: 320px;        // 최소 폭 보장
+  margin: 0 auto;          // 중앙 정렬
+  padding: 0 1rem;         // 좌우 여백
+  min-height: 100vh;       // 전체 화면 높이
+}
+
+// 모바일 전용 레이아웃
+.mobile-header {
+  height: 60px;            // 고정 헤더 높이
+  padding: 0.5rem 1rem;    // 내부 여백
+}
+
+.mobile-content {
+  padding: 1rem;           // 콘텐츠 여백
+  padding-bottom: 80px;    // 하단 네비게이션 공간
+}
+
+.mobile-bottom-nav {
+  height: 60px;            // 하단 네비게이션 높이
+  position: fixed;         // 고정 위치
+  bottom: 0;               // 하단 고정
+  left: 0;
+  right: 0;
+}
+```
+
+### 모바일 색상 접근성 강화
+```scss
+// 모바일에서 가독성 강화
+$mobile-text-primary: #000000;    // 완전한 검은색
+$mobile-text-secondary: #1A1A1A;  // 거의 검은색
+$mobile-text-body: #2D2D2D;       // 진한 회색
+$mobile-text-caption: #4A4A4A;    // 중간 회색
+$mobile-bg-contrast: #FFFFFF;     // 완전한 흰색 배경
+
+// 모바일 전용 입력 필드
+.mobile-input {
+  font-size: 16px;         // iOS 줌 방지
+  line-height: 1.5;        // 터치 최적화
+  padding: 12px 16px;      // 충분한 터치 영역
+  border-radius: 8px;      // 모바일 친화적 라운딩
+}
 ```
 
 ---

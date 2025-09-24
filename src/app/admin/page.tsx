@@ -107,7 +107,7 @@ export default function AdminPage() {
       <div className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-gray-900">MEE&apos;BUD 관리자</h1>
+            <h1 className="text-2xl font-bold text-black">MEE&apos;BUD 관리자</h1>
             <button
               onClick={handleLogout}
               className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors"
@@ -130,8 +130,8 @@ export default function AdminPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-500">총 사용자</p>
-                <p className="text-2xl font-bold text-gray-800">1,234</p>
+                <p className="text-sm font-medium text-gray-700">총 사용자</p>
+                <p className="text-2xl font-bold text-black">1,234</p>
               </div>
             </div>
           </div>
@@ -144,8 +144,8 @@ export default function AdminPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-500">성사된 매칭</p>
-                <p className="text-2xl font-bold text-gray-800">567</p>
+                <p className="text-sm font-medium text-gray-700">성사된 매칭</p>
+                <p className="text-2xl font-bold text-black">567</p>
               </div>
             </div>
           </div>
@@ -158,8 +158,8 @@ export default function AdminPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-500">이번 달 수익</p>
-                <p className="text-2xl font-bold text-gray-800">₩1,234,567</p>
+                <p className="text-sm font-medium text-gray-700">이번 달 수익</p>
+                <p className="text-2xl font-bold text-black">₩1,234,567</p>
               </div>
             </div>
           </div>
@@ -172,8 +172,8 @@ export default function AdminPage() {
                 </div>
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-500">매칭 성공률</p>
-                <p className="text-2xl font-bold text-gray-800">78%</p>
+                <p className="text-sm font-medium text-gray-700">매칭 성공률</p>
+                <p className="text-2xl font-bold text-black">78%</p>
               </div>
             </div>
           </div>
@@ -184,7 +184,7 @@ export default function AdminPage() {
           {/* User Management */}
           <div className="bg-white rounded-lg shadow">
             <div className="px-6 py-4 border-b">
-              <h3 className="text-lg font-medium text-gray-900">사용자 관리</h3>
+              <h3 className="text-lg font-medium text-black">사용자 관리</h3>
             </div>
             <div className="p-6">
               <div className="space-y-4">
@@ -213,7 +213,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">신규 가입자 승인</span>
+                    <span className="font-medium text-black">신규 가입자 승인</span>
                     <span className="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium">12</span>
                   </div>
                 </button>
@@ -260,7 +260,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">사용자 목록 관리</span>
+                    <span className="font-medium text-black">사용자 목록 관리</span>
                     <span className="text-gray-500">→</span>
                   </div>
                 </button>
@@ -294,7 +294,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-orange-50 hover:border-orange-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">신고 접수 처리</span>
+                    <span className="font-medium text-black">신고 접수 처리</span>
                     <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs font-medium">3</span>
                   </div>
                 </button>
@@ -302,18 +302,160 @@ export default function AdminPage() {
             </div>
           </div>
 
-          {/* Match Management */}
+          {/* AI Analysis & Matching Management */}
           <div className="bg-white rounded-lg shadow">
             <div className="px-6 py-4 border-b">
-              <h3 className="text-lg font-medium text-gray-900">매칭 관리</h3>
+              <h3 className="text-lg font-medium text-black">AI 분석 및 매칭 관리</h3>
             </div>
             <div className="p-6">
               <div className="space-y-4">
                 <button
                   onClick={() => setModal({
                     isOpen: true,
+                    type: 'ai-analysis-write',
+                    title: '회원 AI 분석 프로필 작성',
+                    content: (
+                      <div className="space-y-6">
+                        <div>
+                          <label className="block text-sm font-medium text-black mb-2">사용자 선택</label>
+                          <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF4D8D] focus:border-[#FF4D8D]">
+                            <option value="">사용자를 선택하세요</option>
+                            <option value="1">김민수 (test@meebud.com) - 분석 미완료</option>
+                            <option value="2">이지은 (demo@meebud.com) - 분석 미완료</option>
+                            <option value="3">박준혁 (user@meebud.com) - 분석 완료</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-black mb-2">성격 분석 (MBTI 기반)</label>
+                          <textarea
+                            className="w-full p-3 border border-gray-300 rounded-lg h-24 focus:ring-2 focus:ring-[#FF4D8D] focus:border-[#FF4D8D]"
+                            placeholder="예: ENFP 유형으로 외향적이고 직관적인 성향이 강합니다. 새로운 아이디어와 가능성에 열정을 보이며..."
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-black mb-2">취향 및 관심사 분석</label>
+                          <textarea
+                            className="w-full p-3 border border-gray-300 rounded-lg h-24 focus:ring-2 focus:ring-[#FF4D8D] focus:border-[#FF4D8D]"
+                            placeholder="예: 음악 감상과 영화 관람을 좋아하며, 특히 인디 음악과 예술 영화에 관심이 높습니다..."
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-black mb-2">가치관 및 연애관</label>
+                          <textarea
+                            className="w-full p-3 border border-gray-300 rounded-lg h-24 focus:ring-2 focus:ring-[#FF4D8D] focus:border-[#FF4D8D]"
+                            placeholder="예: 진실한 소통을 중요하게 생각하며, 서로의 개성을 존중하는 관계를 원합니다..."
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-black mb-2">매칭 추천도 설정</label>
+                          <div className="flex items-center space-x-4">
+                            <label className="flex items-center">
+                              <input type="radio" name="recommendation" value="high" className="mr-2" />
+                              <span>적극 추천 (90%+)</span>
+                            </label>
+                            <label className="flex items-center">
+                              <input type="radio" name="recommendation" value="medium" className="mr-2" defaultChecked />
+                              <span>일반 추천 (70-89%)</span>
+                            </label>
+                            <label className="flex items-center">
+                              <input type="radio" name="recommendation" value="low" className="mr-2" />
+                              <span>신중 추천 (50-69%)</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+                  className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-pink-50 hover:border-[#FF4D8D] transition-colors"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium text-black">회원 AI 분석 프로필 작성</span>
+                    <span className="bg-pink-100 text-[#FF4D8D] px-2 py-1 rounded-full text-xs font-medium">신규</span>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1">사용자 정보를 바탕으로 AI 분석 내용을 직접 작성합니다</p>
+                </button>
+                <button
+                  onClick={() => setModal({
+                    isOpen: true,
+                    type: 'manual-matching',
+                    title: '수동 매칭 관리',
+                    content: (
+                      <div className="space-y-6">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-sm font-medium text-black mb-2">첫 번째 사용자</label>
+                            <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF4D8D] focus:border-[#FF4D8D]">
+                              <option value="">사용자 A 선택</option>
+                              <option value="1">김민수 (25세, ENFP) - 서울</option>
+                              <option value="2">이지은 (23세, ISFJ) - 부산</option>
+                              <option value="3">박준혁 (27세, ENTP) - 서울</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-black mb-2">두 번째 사용자</label>
+                            <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF4D8D] focus:border-[#FF4D8D]">
+                              <option value="">사용자 B 선택</option>
+                              <option value="4">최수영 (24세, INFP) - 서울</option>
+                              <option value="5">정민호 (26세, ESTJ) - 대구</option>
+                              <option value="6">윤서현 (22세, ISFP) - 서울</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-black mb-2">호환성 점수 설정</label>
+                          <input
+                            type="range"
+                            min="50"
+                            max="95"
+                            defaultValue="85"
+                            className="w-full accent-[#FF4D8D]"
+                          />
+                          <div className="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>50% (낮음)</span>
+                            <span className="font-medium text-[#FF4D8D]">현재: 85% (높음)</span>
+                            <span>95% (매우 높음)</span>
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-black mb-2">매칭 사유 (관리자 메모)</label>
+                          <textarea
+                            className="w-full p-3 border border-gray-300 rounded-lg h-20 focus:ring-2 focus:ring-[#FF4D8D] focus:border-[#FF4D8D]"
+                            placeholder="예: 두 분 모두 예술에 관심이 많고 MBTI 궁합이 좋아 매칭을 추천합니다..."
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-black mb-2">매칭 우선순위</label>
+                          <div className="flex items-center space-x-4">
+                            <label className="flex items-center">
+                              <input type="radio" name="priority" value="urgent" className="mr-2" />
+                              <span>긴급 (즉시 매칭)</span>
+                            </label>
+                            <label className="flex items-center">
+                              <input type="radio" name="priority" value="high" className="mr-2" defaultChecked />
+                              <span>높음 (1일 내)</span>
+                            </label>
+                            <label className="flex items-center">
+                              <input type="radio" name="priority" value="normal" className="mr-2" />
+                              <span>보통 (3일 내)</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+                  className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium text-black">수동 매칭 관리</span>
+                    <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">신규</span>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1">관리자가 직접 두 사용자를 매칭시킵니다</p>
+                </button>
+                <button
+                  onClick={() => setModal({
+                    isOpen: true,
                     type: 'ai-settings',
-                    title: 'AI 매칭 설정',
+                    title: 'AI 매칭 설정 (향후 구현)',
                     content: (
                       <div className="space-y-6">
                         <div>
@@ -343,7 +485,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">AI 매칭 설정</span>
+                    <span className="font-medium text-black">AI 매칭 설정</span>
                     <span className="text-gray-500">→</span>
                   </div>
                 </button>
@@ -394,7 +536,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">매칭 현황 모니터링</span>
+                    <span className="font-medium text-black">매칭 현황 모니터링</span>
                     <span className="text-gray-500">→</span>
                   </div>
                 </button>
@@ -446,7 +588,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">성공 매칭 분석</span>
+                    <span className="font-medium text-black">성공 매칭 분석</span>
                     <span className="text-gray-500">→</span>
                   </div>
                 </button>
@@ -457,7 +599,7 @@ export default function AdminPage() {
           {/* Payment Management */}
           <div className="bg-white rounded-lg shadow">
             <div className="px-6 py-4 border-b">
-              <h3 className="text-lg font-medium text-gray-900">결제 관리</h3>
+              <h3 className="text-lg font-medium text-black">결제 관리</h3>
             </div>
             <div className="p-6">
               <div className="space-y-4">
@@ -512,7 +654,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">결제 내역 조회</span>
+                    <span className="font-medium text-black">결제 내역 조회</span>
                     <span className="text-gray-500">→</span>
                   </div>
                 </button>
@@ -552,7 +694,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-yellow-50 hover:border-yellow-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">환불 요청 처리</span>
+                    <span className="font-medium text-black">환불 요청 처리</span>
                     <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">2</span>
                   </div>
                 </button>
@@ -597,7 +739,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">수익 통계</span>
+                    <span className="font-medium text-black">수익 통계</span>
                     <span className="text-gray-500">→</span>
                   </div>
                 </button>
@@ -608,7 +750,7 @@ export default function AdminPage() {
           {/* System Settings */}
           <div className="bg-white rounded-lg shadow">
             <div className="px-6 py-4 border-b">
-              <h3 className="text-lg font-medium text-gray-900">시스템 설정</h3>
+              <h3 className="text-lg font-medium text-black">시스템 설정</h3>
             </div>
             <div className="p-6">
               <div className="space-y-4">
@@ -653,7 +795,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">앱 설정 관리</span>
+                    <span className="font-medium text-black">앱 설정 관리</span>
                     <span className="text-gray-500">→</span>
                   </div>
                 </button>
@@ -694,7 +836,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">공지사항 관리</span>
+                    <span className="font-medium text-black">공지사항 관리</span>
                     <span className="text-gray-500">→</span>
                   </div>
                 </button>
@@ -746,7 +888,7 @@ export default function AdminPage() {
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-gray-800">백업 및 복구</span>
+                    <span className="font-medium text-black">백업 및 복구</span>
                     <span className="text-gray-500">→</span>
                   </div>
                 </button>
@@ -758,28 +900,28 @@ export default function AdminPage() {
         {/* Recent Activity */}
         <div className="mt-8 bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b">
-            <h3 className="text-lg font-medium text-gray-900">최근 활동</h3>
+            <h3 className="text-lg font-medium text-black">최근 활동</h3>
           </div>
           <div className="p-6">
             <div className="space-y-4">
               <div className="flex items-center space-x-4">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-800">새로운 매칭이 성사되었습니다</p>
+                  <p className="text-sm font-medium text-black">새로운 매칭이 성사되었습니다</p>
                   <p className="text-xs text-gray-500">5분 전</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-800">신규 사용자가 가입했습니다</p>
+                  <p className="text-sm font-medium text-black">신규 사용자가 가입했습니다</p>
                   <p className="text-xs text-gray-500">15분 전</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
                 <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-800">결제가 완료되었습니다</p>
+                  <p className="text-sm font-medium text-black">결제가 완료되었습니다</p>
                   <p className="text-xs text-gray-500">1시간 전</p>
                 </div>
               </div>
