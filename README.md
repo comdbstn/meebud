@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MEE'BUD (미버드)
 
-## Getting Started
+> 인증·AI·성사형 후불제 매칭 서비스
 
-First, run the development server:
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://meebud.com)
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.3-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.1.0-61DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6)](https://www.typescriptlang.org/)
+
+## 🚀 빠른 시작
 
 ```bash
+# 의존성 설치
+npm install
+
+# 개발 서버 시작
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 프로덕션 빌드
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 서비스 접속
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **프로덕션**: https://meebud.com
+- **개발**: http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📖 완전 개발 가이드
 
-## Learn More
+모든 개발 정보는 **[MEEBUD_COMPLETE_GUIDE.md](./MEEBUD_COMPLETE_GUIDE.md)**에서 확인하세요.
 
-To learn more about Next.js, take a look at the following resources:
+이 문서에는 다음 내용이 포함되어 있습니다:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 🏗️ **프로젝트 아키텍처** - 기술 스택 & 구조
+- 🌐 **도메인 구조** - 전체 URL 체계 (18개 페이지)
+- 📄 **페이지별 상세 분석** - 기획/기능/디자인
+- 🎨 **디자인 시스템** - 색상/타이포/컴포넌트
+- 🛣️ **개발 로드맵** - 17주 완전 계획
+- 🎯 **KPI & 성공지표** - 비즈니스 메트릭
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔑 테스트 계정
 
-## Deploy on Vercel
+```
+이메일: test@meebud.com
+비밀번호: meebud123!
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📊 현재 상태
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- ✅ **프론트엔드**: 95% 완성 (18개 페이지)
+- 🚧 **백엔드**: 개발 예정
+- ✅ **디자인**: 100% 완성
+- ✅ **배포**: Vercel 자동 배포
+
+## 🛠️ 기술 스택
+
+- **프레임워크**: Next.js 15.5.3 (App Router)
+- **UI**: React 19.1.0 + TypeScript
+- **스타일링**: Tailwind CSS 4.0
+- **배포**: Vercel
+- **도메인**: meebud.com
+
+## 📞 연락처
+
+- **개발**: jys13230@gmail.com
+- **인스타그램**: @meebud_
+- **사업자등록번호**: 405-06-65006
+
+---
+
+**MEE'BUD** - 가벼운 스와이프는 잊으세요. 인증·AI·성사형 후불제로 '진짜'를 잇습니다.
