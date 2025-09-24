@@ -495,18 +495,18 @@ type TransactionType = 'charge' | 'use' | 'refund' | 'bonus'
 
 ## 🎨 통합 디자인 시스템
 
-### 색상 체계
+### 색상 체계 ⭐ **yeonpick 레퍼런스 기반 리뉴얼**
 ```scss
-// Primary Brand Colors
-$brand-primary: #FF4D8D;       // MEE'BUD 핑크
-$brand-primary-hover: #ff3080;  // 호버 상태
-$brand-primary-light: #FFB3D1;  // 연한 핑크
-$brand-primary-dark: #E6456F;   // 진한 핑크
+// Primary Brand Colors (보라색 계열로 변경)
+$brand-primary: #8B5CF6;       // MEE'BUD 보라 (violet-500)
+$brand-primary-hover: #7C3AED;  // 호버 상태 (violet-600)
+$brand-primary-light: #C4B5FD;  // 연한 보라 (violet-300)
+$brand-primary-dark: #6D28D9;   // 진한 보라 (violet-700)
 
 // Secondary Colors
-$brand-secondary: #0D1B2A;      // 네이비 (신뢰감)
-$brand-accent: #ADB5BD;         // 중성 그레이
-$brand-supporting: #C49A6C;     // 골드 (프리미엄)
+$brand-secondary: #1E293B;      // 슬레이트 (신뢰감)
+$brand-accent: #64748B;         // 중성 슬레이트
+$brand-supporting: #F59E0B;     // 골드 (프리미엄)
 
 // Functional Colors
 $success: #10B981;              // 성공 (초록)
@@ -660,23 +660,63 @@ $mobile-placeholder: #6B7280;     // 플레이스홀더 (회색)
 }
 ```
 
-### UI/UX 개선 사항 ⭐ **신규 요구사항**
+### UI/UX 개선 사항 ⭐ **yeonpick 레퍼런스 기반 리뉴얼**
 
-#### 텍스트 최소화 & 아이콘 중심 디자인
+#### 상단 탭 네비게이션 시스템 (하단→상단 이동)
 ```scss
-// AI티 제거를 위한 디자인 원칙
-1. 텍스트 최소화: 핵심 정보만 표시
-2. 이모티콘/아이콘 활용: 직관적 시각 요소
-3. 강조 텍스트: 중요한 정보만 볼드 처리
-4. 이미지 중심: 텍스트 대신 시각적 표현
+// 레퍼런스 기반 네비게이션 구조 변경
+기존: 하단 고정 네비게이션 (BottomNavigation)
+신규: 상단 탭 네비게이션 (TopTabNavigation)
 
-// 구체적 개선 사항
-- 로그인 페이지 입력 필드 텍스트 색상 개선 (회색→검은색)
-- 로그인 페이지 배경색 밝은 색으로 변경 (검은색→흰색/회색)
-- 프로필 페이지 헤더 중앙 정렬 ("프로필" 텍스트)
-- 꿈결제 페이지 헤더 중앙 정렬 개선
-- 홈 버튼을 텍스트에서 아이콘으로 변경 (🏠 또는 ←)
-- 전체적 그리드 정렬 문제 해결
+// 탭 구조 (5개 탭)
+1. 홈 (메인 대시보드)
+2. 매칭 (AI 매칭, 카드 스와이프)
+3. 메시지 (채팅, 대화)
+4. 꿈결제 (결제, 포인트)
+5. 프로필 (마이페이지, 설정)
+
+// 디자인 특징
+- 탭 하단 선택 인디케이터 (보라색)
+- 선택된 탭은 진한 텍스트, 미선택은 회색
+- 깔끔한 수평 레이아웃
+- 모바일 친화적 터치 영역
+```
+
+#### 깔끔한 카드 기반 디자인 시스템
+```scss
+// yeonpick 스타일 카드 레이아웃
+.main-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.1);
+  border: 1px solid #F1F5F9;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #8B5CF6 0%, #C4B5FD 100%);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.stats-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  text-align: center;
+  padding: 20px;
+}
+```
+
+#### 텍스트 최소화 & 시각적 개선
+```scss
+// 깔끔한 디자인 원칙 (yeonpick 기반)
+1. 핵심 메시지 중심: "진짜 매칭, 진짜 연결" 같은 캐치프레이즈
+2. 숫자 강조: "10,000명과 함께하는 매칭" 스타일
+3. 카드 기반 정보 표시: 핵심 정보를 카드로 구분
+4. 보라색 계열 통일: 브랜드 일관성 확보
+5. 여백 중심 레이아웃: 깔끔하고 여유로운 공간감
 ```
 
 #### 헤더 중앙 정렬 시스템

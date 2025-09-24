@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import BottomNavigation from '@/components/BottomNavigation'
+import TopTabNavigation from '@/components/TopTabNavigation'
 
 export const metadata: Metadata = {
   title: "프로필 - MEE'BUD",
@@ -9,18 +9,16 @@ export const metadata: Metadata = {
 
 export default function ProfilePage() {
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
-      {/* Header */}
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-50">
+      {/* 상단 탭 네비게이션 */}
+      <TopTabNavigation />
+
+      {/* 프로필 헤더 */}
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
-          <div className="flex items-center justify-center relative">
-            <Link href="/" className="absolute left-0 text-gray-700 hover:text-gray-800 text-xl">
-              🏠
-            </Link>
-            <h1 className="text-lg font-bold text-black">
-              프로필
-            </h1>
-            <Link href="/profile/edit" className="absolute right-0 text-[#FF4D8D] font-medium">
+          <div className="flex items-center justify-between">
+            <h1 className="text-lg font-bold text-slate-900">프로필</h1>
+            <Link href="/profile/edit" className="text-violet-600 font-medium text-sm">
               편집
             </Link>
           </div>
@@ -32,11 +30,11 @@ export default function ProfilePage() {
         {/* Profile Card */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
           <div className="text-center mb-6">
-            <div className="w-24 h-24 bg-gradient-to-br from-[#FF4D8D] to-[#FF6BA3] rounded-full flex items-center justify-center text-4xl mx-auto mb-4">
+            <div className="w-24 h-24 bg-gradient-to-br from-violet-500 to-purple-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">
               👩🏻
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-1">김지수, 25</h2>
-            <p className="text-[#FF4D8D] font-medium mb-1">디자이너</p>
+            <h2 className="text-2xl font-bold text-slate-900 mb-1">김지수, 25</h2>
+            <p className="text-violet-600 font-medium mb-1">디자이너</p>
             <p className="text-sm text-gray-700">서울 강남구</p>
 
             <div className="flex justify-center space-x-2 mt-4">
@@ -200,7 +198,6 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      <BottomNavigation />
     </div>
   )
 }

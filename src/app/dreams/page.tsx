@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import BottomNavigation from '@/components/BottomNavigation'
+import TopTabNavigation from '@/components/TopTabNavigation'
 
 export const metadata: Metadata = {
   title: "꿈결제 - MEE'BUD",
@@ -9,19 +9,17 @@ export const metadata: Metadata = {
 
 export default function DreamsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 pb-20">
-      {/* Header */}
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-50">
+      {/* 상단 탭 네비게이션 */}
+      <TopTabNavigation />
+
+      {/* 꿈결제 헤더 */}
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
-          <div className="flex items-center justify-center relative">
-            <Link href="/" className="absolute left-0 text-gray-700 hover:text-gray-800 text-xl">
-              🏠
-            </Link>
-            <h1 className="text-lg font-bold text-black">
-              ☁️ 꿈결제
-            </h1>
-            <Link href="/dreams/history" className="absolute right-0 text-purple-600 font-medium text-sm">
-              📋
+          <div className="flex items-center justify-between">
+            <h1 className="text-lg font-bold text-slate-900">☁️ 꿈결제</h1>
+            <Link href="/dreams/history" className="text-violet-600 font-medium text-sm">
+              📋 내역
             </Link>
           </div>
         </div>
@@ -183,7 +181,6 @@ export default function DreamsPage() {
         </div>
       </div>
 
-      <BottomNavigation />
     </div>
   )
 }
