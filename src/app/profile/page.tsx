@@ -13,14 +13,14 @@ export default function ProfilePage() {
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="text-gray-700 hover:text-gray-800">
-              ← 홈으로
+          <div className="flex items-center justify-center relative">
+            <Link href="/" className="absolute left-0 text-gray-700 hover:text-gray-800 text-xl">
+              🏠
             </Link>
-            <h1 className="text-lg font-bold text-gray-900">
+            <h1 className="text-lg font-bold text-black">
               프로필
             </h1>
-            <Link href="/profile/edit" className="text-[#FF4D8D] font-medium">
+            <Link href="/profile/edit" className="absolute right-0 text-[#FF4D8D] font-medium">
               편집
             </Link>
           </div>

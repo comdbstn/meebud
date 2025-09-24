@@ -45,7 +45,7 @@ export default function HomePage() {
           <div className="max-w-sm mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-xl font-bold text-gray-900">
+                <h1 className="text-xl font-bold text-black">
                   MEE<span className="text-[#FF4D8D]">&apos;</span>BUD
                 </h1>
                 <p className="text-sm text-gray-600">오늘도 좋은 하루 보내세요!</p>

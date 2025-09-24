@@ -65,19 +65,19 @@ export default function MessagesPage() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 pb-20">
       <div className="max-w-sm mx-auto px-4 py-8">
         {/* 헤더 */}
-        <div className="flex items-center justify-between mb-6">
-          <Link href="/" className="text-gray-700 hover:text-gray-800">
-            ← 홈으로
+        <div className="flex items-center justify-center relative mb-6">
+          <Link href="/" className="absolute left-0 text-gray-700 hover:text-gray-800 text-xl">
+            🏠
           </Link>
-          <h1 className="text-lg font-bold text-gray-800">
-            메시지 {unreadTotal > 0 && (
+          <h1 className="text-lg font-bold text-black">
+            💬 메시지 {unreadTotal > 0 && (
               <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full ml-1">
                 {unreadTotal}
               </span>
             )}
           </h1>
-          <Link href="/matching/history" className="text-purple-600 text-sm font-medium">
-            매칭 히스토리
+          <Link href="/matching/history" className="absolute right-0 text-purple-600 text-sm font-medium">
+            📝
           </Link>
         </div>
 

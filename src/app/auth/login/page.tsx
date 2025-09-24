@@ -50,7 +50,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white flex flex-col justify-center px-4 max-w-md mx-auto">
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center px-4 max-w-md mx-auto">
       {/* 모바일 최적화 헤더 */}
       <div className="text-center mb-8">
         <div className="inline-flex items-center space-x-3 mb-4">
@@ -92,7 +92,7 @@ export default function LoginPage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="block w-full px-4 py-4 border border-gray-300 rounded-xl text-base placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] focus:border-[#FF4D8D] bg-white"
+              className="block w-full px-4 py-4 border border-gray-300 rounded-xl text-base text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] focus:border-[#FF4D8D] bg-white"
               placeholder="이메일을 입력하세요"
             />
           </div>
@@ -109,7 +109,7 @@ export default function LoginPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="block w-full px-4 py-4 border border-gray-300 rounded-xl text-base placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] focus:border-[#FF4D8D] bg-white"
+              className="block w-full px-4 py-4 border border-gray-300 rounded-xl text-base text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] focus:border-[#FF4D8D] bg-white"
               placeholder="비밀번호를 입력하세요"
             />
           </div>

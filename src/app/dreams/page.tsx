@@ -13,15 +13,15 @@ export default function DreamsPage() {
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="text-gray-700 hover:text-gray-800">
-              ← 홈으로
+          <div className="flex items-center justify-center relative">
+            <Link href="/" className="absolute left-0 text-gray-700 hover:text-gray-800 text-xl">
+              🏠
             </Link>
-            <h1 className="text-lg font-bold text-gray-900">
-              꿈결제
+            <h1 className="text-lg font-bold text-black">
+              ☁️ 꿈결제
             </h1>
-            <Link href="/dreams/history" className="text-purple-600 font-medium text-sm">
-              내역
+            <Link href="/dreams/history" className="absolute right-0 text-purple-600 font-medium text-sm">
+              📋
             </Link>
           </div>
         </div>

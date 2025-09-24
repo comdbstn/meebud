@@ -143,14 +143,13 @@ export default function HistoryPage() {
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/dreams" className="text-gray-600 hover:text-gray-800">
-              ← 뒤로
+          <div className="flex items-center justify-center relative">
+            <Link href="/dreams" className="absolute left-0 text-gray-600 hover:text-gray-800 text-xl">
+              ←
             </Link>
-            <h1 className="text-lg font-bold text-gray-900">
-              사용 내역
+            <h1 className="text-lg font-bold text-black">
+              📄 사용내역
             </h1>
-            <div className="w-6"></div>
           </div>
         </div>
       </div>

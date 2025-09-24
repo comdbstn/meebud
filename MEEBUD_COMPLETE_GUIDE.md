@@ -632,7 +632,7 @@ $mobile-optimal: 375px; // 최적화 기준 (iPhone 기준)
 }
 ```
 
-### 모바일 색상 접근성 강화
+### 모바일 색상 접근성 강화 ⭐ **업데이트**
 ```scss
 // 모바일에서 가독성 강화
 $mobile-text-primary: #000000;    // 완전한 검은색
@@ -640,13 +640,76 @@ $mobile-text-secondary: #1A1A1A;  // 거의 검은색
 $mobile-text-body: #2D2D2D;       // 진한 회색
 $mobile-text-caption: #4A4A4A;    // 중간 회색
 $mobile-bg-contrast: #FFFFFF;     // 완전한 흰색 배경
+$mobile-input-text: #000000;      // 입력 필드 텍스트 (검은색)
+$mobile-input-bg: #FFFFFF;        // 입력 필드 배경 (흰색)
+$mobile-placeholder: #6B7280;     // 플레이스홀더 (회색)
 
 // 모바일 전용 입력 필드
 .mobile-input {
   font-size: 16px;         // iOS 줌 방지
   line-height: 1.5;        // 터치 최적화
   padding: 12px 16px;      // 충분한 터치 영역
-  border-radius: 8px;      // 모바일 친화적 라운딩
+  border-radius: 12px;     // 모바일 친화적 라운딩
+  color: #000000;          // 입력 텍스트 검은색
+  background: #FFFFFF;     // 배경 흰색
+}
+
+.mobile-input::placeholder {
+  color: #6B7280;          // 플레이스홀더 회색
+  opacity: 1;              // 투명도 제거
+}
+```
+
+### UI/UX 개선 사항 ⭐ **신규 요구사항**
+
+#### 텍스트 최소화 & 아이콘 중심 디자인
+```scss
+// AI티 제거를 위한 디자인 원칙
+1. 텍스트 최소화: 핵심 정보만 표시
+2. 이모티콘/아이콘 활용: 직관적 시각 요소
+3. 강조 텍스트: 중요한 정보만 볼드 처리
+4. 이미지 중심: 텍스트 대신 시각적 표현
+
+// 구체적 개선 사항
+- 로그인 페이지 입력 필드 텍스트 색상 개선 (회색→검은색)
+- 로그인 페이지 배경색 밝은 색으로 변경 (검은색→흰색/회색)
+- 프로필 페이지 헤더 중앙 정렬 ("프로필" 텍스트)
+- 꿈결제 페이지 헤더 중앙 정렬 개선
+- 홈 버튼을 텍스트에서 아이콘으로 변경 (🏠 또는 ←)
+- 전체적 그리드 정렬 문제 해결
+```
+
+#### 헤더 중앙 정렬 시스템
+```scss
+// 모든 페이지 헤더 표준화
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;  // 중앙 정렬
+  position: relative;       // 버튼 절대 위치 기준
+  height: 60px;
+  padding: 0 1rem;
+}
+
+.header-back-btn {
+  position: absolute;
+  left: 1rem;              // 왼쪽 고정
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-action-btn {
+  position: absolute;
+  right: 1rem;             // 오른쪽 고정
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-title {
+  font-size: 1.125rem;     // 18px
+  font-weight: 600;
+  color: #000000;
+  text-align: center;
 }
 ```
 
