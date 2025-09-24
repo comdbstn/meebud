@@ -62,7 +62,7 @@ export default function MessagesPage() {
   const unreadTotal = conversations.reduce((sum, conv) => sum + conv.unreadCount, 0)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-50">
+    <div className="min-h-screen bg-[#F8FAFB]">
       {/* 상단 탭 네비게이션 */}
       <TopTabNavigation />
 
@@ -70,14 +70,14 @@ export default function MessagesPage() {
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-lg font-bold text-slate-900">
+            <h1 className="text-lg font-bold text-[#0D1B2A]">
               💬 메시지 {unreadTotal > 0 && (
                 <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full ml-1">
                   {unreadTotal}
                 </span>
               )}
             </h1>
-            <Link href="/matching/history" className="text-violet-600 text-sm font-medium">
+            <Link href="/matching/history" className="text-[#FF4D8D] text-sm font-medium">
               📝 히스토리
             </Link>
           </div>
@@ -94,7 +94,7 @@ export default function MessagesPage() {
               placeholder="대화 상대 검색..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+              className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF4D8D] bg-white text-[#0D1B2A]"
             />
             <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
               🔍

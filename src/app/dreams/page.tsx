@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function DreamsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-50">
+    <div className="min-h-screen bg-[#F8FAFB]">
       {/* 상단 탭 네비게이션 */}
       <TopTabNavigation />
 
@@ -17,8 +17,8 @@ export default function DreamsPage() {
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-lg font-bold text-slate-900">☁️ 꿈결제</h1>
-            <Link href="/dreams/history" className="text-violet-600 font-medium text-sm">
+            <h1 className="text-lg font-bold text-[#0D1B2A]">☁️ 꿈결제</h1>
+            <Link href="/dreams/history" className="text-[#FF4D8D] font-medium text-sm">
               📋 내역
             </Link>
           </div>

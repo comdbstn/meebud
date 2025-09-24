@@ -5,24 +5,24 @@ export default function WhyMeebud() {
       title: "다중 인증",
       subtitle: "신분·학력·직장·건강",
       description: "운영진 검수 뱃지로 신뢰할 수 있는 연결만",
-      bgColor: "from-blue-50 to-indigo-50",
-      iconBg: "from-blue-500 to-indigo-600"
+      bgColor: "from-blue-50 to-blue-100",
+      iconBg: "from-[#0D1B2A] to-[#FF4D8D]"
     },
     {
       icon: "🤖",
       title: "AI 매칭, 이젠 외모까지",
       subtitle: "MBTI, 가치관, 취향 심지어 사주까지",
       description: "AI가 분석한 완벽한 궁합으로 진짜 맞는 사람만",
-      bgColor: "from-purple-50 to-pink-50",
-      iconBg: "from-purple-500 to-pink-600"
+      bgColor: "from-pink-50 to-rose-50",
+      iconBg: "from-[#FF4D8D] to-[#C49A6C]"
     },
     {
       icon: "💳",
       title: "성사형 후불제",
       subtitle: "성사된 연결에만 결제",
       description: "서로 수락한 연결에만 결제하는 공정한 시스템",
-      bgColor: "from-emerald-50 to-teal-50",
-      iconBg: "from-emerald-500 to-teal-600"
+      bgColor: "from-green-50 to-emerald-50",
+      iconBg: "from-[#C49A6C] to-[#0D1B2A]"
     }
   ]
 
@@ -30,10 +30,10 @@ export default function WhyMeebud() {
     <section id="why-meebud" className="py-16 px-4 bg-white">
       <div className="max-w-sm mx-auto">
         <div className="text-center mb-12 animate-slide-up">
-          <h2 className="text-2xl font-bold text-gray-800 mb-3">
+          <h2 className="text-2xl font-bold text-[#0D1B2A] mb-3">
             왜 MEE&apos;BUD일까요?
           </h2>
-          <p className="text-gray-700">
+          <p className="text-[#0D1B2A] opacity-80">
             기존 데이팅 앱과는 <span className="text-[#FF4D8D] font-semibold">완전히 다른 접근</span>
           </p>
         </div>
@@ -51,15 +51,15 @@ export default function WhyMeebud() {
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-800 mb-1">
+                  <h3 className="text-xl font-bold text-[#0D1B2A] mb-1">
                     {feature.title}
                   </h3>
 
-                  <p className="text-sm text-gray-700 font-medium mb-3">
+                  <p className="text-sm text-[#0D1B2A] opacity-80 font-medium mb-3">
                     {feature.subtitle}
                   </p>
 
-                  <p className="text-sm text-gray-700 leading-relaxed">
+                  <p className="text-sm text-[#0D1B2A] opacity-80 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

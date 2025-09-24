@@ -56,10 +56,10 @@ export default function FAQ() {
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-sm mx-auto">
         <div className="text-center mb-12 animate-slide-up">
-          <h2 className="text-2xl font-bold text-gray-800 mb-3">
+          <h2 className="text-2xl font-bold text-[#0D1B2A] mb-3">
             자주 묻는 질문
           </h2>
-          <p className="text-gray-600">
+          <p className="text-[#0D1B2A] opacity-70">
             궁금한 점이 있으시다면 확인해보세요
           </p>
         </div>
@@ -73,7 +73,7 @@ export default function FAQ() {
               >
                 <div className="flex items-center space-x-3">
                   <span className="text-base">{faq.icon}</span>
-                  <span className="font-medium text-gray-800 text-sm">
+                  <span className="font-medium text-[#0D1B2A] text-sm">
                     {faq.question}
                   </span>
                 </div>
@@ -86,7 +86,7 @@ export default function FAQ() {
 
               {openFAQ === index && (
                 <div className="px-5 py-4 bg-gray-50 border-t border-gray-200">
-                  <p className="text-gray-700 text-sm leading-relaxed">
+                  <p className="text-[#0D1B2A] opacity-80 text-sm leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
@@ -97,8 +97,8 @@ export default function FAQ() {
 
         <div className="mt-10 text-center">
           <div className="bg-white rounded-xl p-6 border border-gray-200">
-            <p className="font-semibold text-gray-800 mb-2">더 궁금한 점이 있으시나요?</p>
-            <p className="text-gray-600 text-sm mb-4">
+            <p className="font-semibold text-[#0D1B2A] mb-2">더 궁금한 점이 있으시나요?</p>
+            <p className="text-[#0D1B2A] opacity-70 text-sm mb-4">
               언제든지 편하게 문의해주세요!
             </p>
             <a

@@ -54,7 +54,7 @@ export default function RecentMatches() {
     switch (status) {
       case 'new': return 'bg-red-500'
       case 'waiting': return 'bg-orange-500'
-      case 'pending': return 'bg-purple-500'
+      case 'pending': return 'bg-[#FF4D8D]'
       default: return 'bg-gray-400'
     }
   }
@@ -72,10 +72,10 @@ export default function RecentMatches() {
   return (
     <div className="max-w-sm mx-auto px-4 py-6">
       <div className="mb-6">
-        <h2 className="text-lg font-bold text-gray-800 mb-2">
+        <h2 className="text-lg font-bold text-[#0D1B2A] mb-2">
           다가오는 일정보기
         </h2>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-[#0D1B2A] opacity-70">
           최근 매칭 활동과 추천을 확인해보세요
         </p>
       </div>
@@ -95,7 +95,7 @@ export default function RecentMatches() {
               {/* 내용 */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between">
-                  <h3 className="font-semibold text-gray-800 text-sm leading-tight">
+                  <h3 className="font-semibold text-[#0D1B2A] text-sm leading-tight">
                     {activity.title}
                   </h3>
                   {activity.status !== 'read' && activity.status !== 'info' && (
@@ -105,12 +105,12 @@ export default function RecentMatches() {
                   )}
                 </div>
 
-                <p className="text-sm text-gray-600 mt-1 leading-relaxed">
+                <p className="text-sm text-[#0D1B2A] opacity-70 mt-1 leading-relaxed">
                   {activity.description}
                 </p>
 
                 <div className="flex items-center justify-between mt-2">
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-[#0D1B2A] opacity-60">
                     {activity.time}
                   </span>
 
@@ -126,7 +126,7 @@ export default function RecentMatches() {
 
       {/* 더보기 버튼 */}
       <div className="mt-6 text-center">
-        <button className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 px-4 rounded-xl font-medium transition-colors">
+        <button className="w-full bg-gray-100 hover:bg-gray-200 text-[#0D1B2A] opacity-80 py-3 px-4 rounded-xl font-medium transition-colors">
           더 많은 활동 보기
         </button>
       </div>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ProfilePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-purple-50">
+    <div className="min-h-screen bg-[#F8FAFB]">
       {/* 상단 탭 네비게이션 */}
       <TopTabNavigation />
 
@@ -17,8 +17,8 @@ export default function ProfilePage() {
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-lg font-bold text-slate-900">프로필</h1>
-            <Link href="/profile/edit" className="text-violet-600 font-medium text-sm">
+            <h1 className="text-lg font-bold text-[#0D1B2A]">프로필</h1>
+            <Link href="/profile/edit" className="text-[#FF4D8D] font-medium text-sm">
               편집
             </Link>
           </div>
@@ -30,28 +30,28 @@ export default function ProfilePage() {
         {/* Profile Card */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
           <div className="text-center mb-6">
-            <div className="w-24 h-24 bg-gradient-to-br from-violet-500 to-purple-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">
+            <div className="w-24 h-24 bg-gradient-to-br from-[#FF4D8D] to-[#C49A6C] rounded-full flex items-center justify-center text-4xl mx-auto mb-4">
               👩🏻
             </div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-1">김지수, 25</h2>
-            <p className="text-violet-600 font-medium mb-1">디자이너</p>
-            <p className="text-sm text-gray-700">서울 강남구</p>
+            <h2 className="text-2xl font-bold text-[#0D1B2A] mb-1">김지수, 25</h2>
+            <p className="text-[#FF4D8D] font-medium mb-1">디자이너</p>
+            <p className="text-sm text-[#0D1B2A] opacity-70">서울 강남구</p>
 
             <div className="flex justify-center space-x-2 mt-4">
-              <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium">
+              <span className="bg-pink-100 text-[#FF4D8D] px-3 py-1 rounded-full text-xs font-medium">
                 🐱 고양이상
               </span>
-              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium">
+              <span className="bg-blue-100 text-[#0D1B2A] px-3 py-1 rounded-full text-xs font-medium">
                 ENFP
               </span>
-              <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">
+              <span className="bg-green-100 text-[#C49A6C] px-3 py-1 rounded-full text-xs font-medium">
                 ✨ 인증완료
               </span>
             </div>
           </div>
 
           <div className="border-t pt-4">
-            <p className="text-sm text-gray-700 leading-relaxed text-center">
+            <p className="text-sm text-[#0D1B2A] opacity-80 leading-relaxed text-center">
               안녕하세요! 디자인을 사랑하는 지수입니다. 새로운 사람들과 만나는 것을 좋아하고, 함께 즐거운 시간을 보낼 수 있는 분을 찾고 있어요.
             </p>
           </div>
@@ -61,15 +61,15 @@ export default function ProfilePage() {
         <div className="grid grid-cols-3 gap-4 mb-6">
           <div className="bg-white rounded-2xl p-4 text-center border border-gray-100">
             <div className="text-2xl font-bold text-[#FF4D8D] mb-1">12</div>
-            <div className="text-xs text-gray-700">매칭 성사</div>
+            <div className="text-xs text-[#0D1B2A] opacity-70">매칭 성사</div>
           </div>
           <div className="bg-white rounded-2xl p-4 text-center border border-gray-100">
-            <div className="text-2xl font-bold text-blue-600 mb-1">86%</div>
-            <div className="text-xs text-gray-700">프로필 완성도</div>
+            <div className="text-2xl font-bold text-[#0D1B2A] mb-1">86%</div>
+            <div className="text-xs text-[#0D1B2A] opacity-70">프로필 완성도</div>
           </div>
           <div className="bg-white rounded-2xl p-4 text-center border border-gray-100">
-            <div className="text-2xl font-bold text-green-600 mb-1">4.8</div>
-            <div className="text-xs text-gray-700">평균 별점</div>
+            <div className="text-2xl font-bold text-[#C49A6C] mb-1">4.8</div>
+            <div className="text-xs text-[#0D1B2A] opacity-70">평균 별점</div>
           </div>
         </div>
 
@@ -77,35 +77,35 @@ export default function ProfilePage() {
         <div className="space-y-4">
           {/* 기본 정보 */}
           <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-            <h3 className="font-bold text-gray-900 mb-3 flex items-center">
+            <h3 className="font-bold text-[#0D1B2A] mb-3 flex items-center">
               <span className="mr-2">👤</span>
               기본 정보
             </h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-700">키</span>
-                <span className="text-gray-900">165cm</span>
+                <span className="text-[#0D1B2A] opacity-70">키</span>
+                <span className="text-[#0D1B2A]">165cm</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-700">학력</span>
-                <span className="text-gray-900">대학교 졸업</span>
+                <span className="text-[#0D1B2A] opacity-70">학력</span>
+                <span className="text-[#0D1B2A]">대학교 졸업</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-700">직업</span>
-                <span className="text-gray-900">디자이너</span>
+                <span className="text-[#0D1B2A] opacity-70">직업</span>
+                <span className="text-[#0D1B2A]">디자이너</span>
               </div>
             </div>
           </div>
 
           {/* 성격 */}
           <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-            <h3 className="font-bold text-gray-900 mb-3 flex items-center">
+            <h3 className="font-bold text-[#0D1B2A] mb-3 flex items-center">
               <span className="mr-2">✨</span>
               성격
             </h3>
             <div className="flex flex-wrap gap-2">
               {['유머러스한', '활발한', '로맨틱한'].map((trait) => (
-                <span key={trait} className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">
+                <span key={trait} className="bg-pink-100 text-[#FF4D8D] px-3 py-1 rounded-full text-sm">
                   {trait}
                 </span>
               ))}
@@ -114,13 +114,13 @@ export default function ProfilePage() {
 
           {/* 취미 */}
           <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-            <h3 className="font-bold text-gray-900 mb-3 flex items-center">
+            <h3 className="font-bold text-[#0D1B2A] mb-3 flex items-center">
               <span className="mr-2">🎯</span>
               취미
             </h3>
             <div className="flex flex-wrap gap-2">
               {['여행', '사진촬영', '요리'].map((hobby) => (
-                <span key={hobby} className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
+                <span key={hobby} className="bg-blue-100 text-[#0D1B2A] px-3 py-1 rounded-full text-sm">
                   {hobby}
                 </span>
               ))}
@@ -129,7 +129,7 @@ export default function ProfilePage() {
 
           {/* 이상형 */}
           <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-            <h3 className="font-bold text-gray-900 mb-3 flex items-center">
+            <h3 className="font-bold text-[#0D1B2A] mb-3 flex items-center">
               <span className="mr-2">💕</span>
               이상형
             </h3>

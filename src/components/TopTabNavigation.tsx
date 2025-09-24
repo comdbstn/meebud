@@ -42,7 +42,7 @@ export default function TopTabNavigation() {
   }
 
   return (
-    <div className="bg-white border-b border-slate-200">
+    <div className="bg-[#0D1B2A] shadow-sm">
       <div className="max-w-sm mx-auto">
         <div className="flex">
           {tabs.map((tab) => {
@@ -51,16 +51,16 @@ export default function TopTabNavigation() {
               <Link
                 key={tab.name}
                 href={tab.href}
-                className={`flex-1 flex flex-col items-center py-3 px-2 text-xs font-medium transition-colors relative ${
+                className={`flex-1 flex flex-col items-center py-4 px-2 text-xs font-semibold transition-colors relative ${
                   active
-                    ? 'text-violet-600'
-                    : 'text-slate-500 hover:text-slate-700'
+                    ? 'text-white'
+                    : 'text-gray-400 hover:text-gray-300'
                 }`}
               >
                 <span className="text-lg mb-1">{tab.icon}</span>
                 <span>{tab.name}</span>
                 {active && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-500"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#FF4D8D] rounded-t-full"></div>
                 )}
               </Link>
             )

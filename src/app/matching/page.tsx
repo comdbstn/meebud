@@ -1,162 +1,197 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import TopTabNavigation from '@/components/TopTabNavigation'
 
-// 샘플 매칭 데이터
-const sampleMatches = [
+// Admin이 생성한 매칭 데이터 타입
+interface AdminMatch {
+  id: number
+  matchedUser: {
+    name: string
+    age: number
+    location: string
+    job: string
+    education: string
+    height: number
+    faceType: string
+    mbti: string
+    photos: string[]
+    introduction: string
+    personality: string[]
+    hobbies: string[]
+    isVerified: boolean
+    distance: string
+  }
+  compatibility: number
+  matchingReason: string
+  adminAnalysis: string
+  createdAt: string
+  status: 'pending' | 'accepted' | 'declined'
+}
+
+// 샘플 Admin 매칭 데이터
+const adminMatches: AdminMatch[] = [
   {
     id: 1,
-    name: '지수',
-    age: 25,
-    location: '서울 강남구',
-    job: '디자이너',
-    education: '대학교 졸업',
-    height: 165,
-    faceType: '고양이상',
-    mbti: 'ENFP',
-    photos: ['👩🏻', '📸', '📸'],
-    introduction: '안녕하세요! 디자인을 사랑하는 지수입니다. 여행과 맛집 탐방을 좋아하고, 새로운 사람들과의 만남을 소중히 여겨요.',
-    personality: ['유머러스한', '활발한', '로맨틱한', '외향적인'],
-    hobbies: ['여행', '사진촬영', '요리', '영화감상'],
-    compatibility: 95,
-    isVerified: true,
-    distance: '2.3km'
-  },
-  {
-    id: 2,
-    name: '민준',
-    age: 28,
-    location: '서울 서초구',
-    job: '개발자',
-    education: '대학교 졸업',
-    height: 175,
-    faceType: '강아지상',
-    mbti: 'INFP',
-    photos: ['👨🏻', '📸', '📸'],
-    introduction: '개발을 하면서도 예술을 사랑하는 민준입니다. 조용한 카페에서 책 읽는 시간을 좋아하고, 진솔한 대화를 나누고 싶어요.',
-    personality: ['진중한', '차분한', '감성적인', '내향적인'],
-    hobbies: ['독서', '음악감상', '게임', '영화감상'],
-    compatibility: 87,
-    isVerified: false,
-    distance: '1.8km'
-  },
-  {
-    id: 3,
-    name: '하은',
-    age: 24,
-    location: '서울 홍대',
-    job: '학생',
-    education: '대학교 재학',
-    height: 160,
-    faceType: '여우상',
-    mbti: 'ESFJ',
-    photos: ['👩🏻‍🦰', '📸', '📸'],
-    introduction: '대학생 하은이에요! 춤과 음악을 사랑하고, 활기찬 에너지로 가득한 사람입니다. 함께 즐거운 시간을 만들어가요.',
-    personality: ['활발한', '유머러스한', '외향적인', '즉흥적인'],
-    hobbies: ['댄스', '음악감상', '여행', '운동'],
-    compatibility: 82,
-    isVerified: true,
-    distance: '5.1km'
+    matchedUser: {
+      name: '지수',
+      age: 25,
+      location: '서울 강남구',
+      job: '디자이너',
+      education: '홍익대학교 시각디자인과',
+      height: 165,
+      faceType: '고양이상',
+      mbti: 'ENFP',
+      photos: ['👩🏻', '📸', '📸'],
+      introduction: '안녕하세요! 디자인을 사랑하는 지수입니다. 여행과 맛집 탐방을 좋아하고, 새로운 사람들과의 만남을 소중히 여겨요.',
+      personality: ['유머러스한', '활발한', '로맨틱한', '외향적인'],
+      hobbies: ['여행', '사진촬영', '요리', '영화감상'],
+      isVerified: true,
+      distance: '2.3km'
+    },
+    compatibility: 94,
+    matchingReason: '서로 보완적인 성격과 창의적 분야 공통 관심사',
+    adminAnalysis: '지수님은 당신과 매우 잘 맞는 상대입니다. 둘 다 창의적인 분야에서 일하시며, 외향적인 성격과 내향적인 성격이 서로 균형을 이룰 것 같아요. 특히 여행과 문화적 관심사가 비슷해서 즐거운 시간을 보낼 수 있을 거예요.',
+    createdAt: '2025-09-24T10:30:00Z',
+    status: 'pending'
   }
 ]
 
 export default function MatchingPage() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentMatch, setCurrentMatch] = useState<AdminMatch | null>(null)
   const [showDetails, setShowDetails] = useState(false)
-  const [swipeDirection, setSwipeDirection] = useState<'like' | 'pass' | null>(null)
+  const [loading, setLoading] = useState(true)
 
-  const currentMatch = sampleMatches[currentIndex]
+  useEffect(() => {
+    // 실제로는 API에서 사용자의 대기 중인 매칭을 가져와야 함
+    // 데모용으로 첫 번째 매칭 사용
+    const pendingMatch = adminMatches.find(match => match.status === 'pending')
+    setCurrentMatch(pendingMatch || null)
+    setLoading(false)
+  }, [])
 
-  const handleSwipe = (direction: 'like' | 'pass') => {
-    setSwipeDirection(direction)
+  const handleMatchDecision = async (decision: 'accept' | 'decline') => {
+    if (!currentMatch) return
 
-    // 애니메이션 후 다음 카드로
-    setTimeout(() => {
-      if (currentIndex < sampleMatches.length - 1) {
-        setCurrentIndex(currentIndex + 1)
-      } else {
-        // 모든 카드를 다 본 경우
-        alert('오늘의 추천이 끝났어요! 내일 새로운 매칭을 확인해보세요.')
-        window.location.href = '/'
-      }
-      setSwipeDirection(null)
-      setShowDetails(false)
-    }, 300)
+    if (decision === 'accept') {
+      // 매칭 수락 - 결제 페이지로 이동
+      alert('매칭을 수락하셨습니다! 결제를 진행해주세요.')
+      window.location.href = '/dreams/purchase'
+    } else {
+      // 매칭 거절
+      alert('매칭을 거절하셨습니다. 새로운 매칭을 기다려주세요.')
+      setCurrentMatch(null)
+    }
   }
 
-  const handleSuperLike = () => {
-    alert('슈퍼 라이크를 보냈어요! 상대방에게 특별한 관심을 표시했습니다.')
-    handleSwipe('like')
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#F8FAFB] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF4D8D]"></div>
+      </div>
+    )
   }
 
   if (!currentMatch) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 flex items-center justify-center px-4">
-        <div className="text-center">
-          <div className="text-6xl mb-4">🎉</div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">
-            오늘의 추천 완료!
-          </h1>
-          <p className="text-gray-700 mb-8">
-            내일 새로운 매칭을 확인해보세요
-          </p>
-          <Link href="/" className="bg-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-purple-700 transition-colors">
-            홈으로 돌아가기
-          </Link>
+      <div className="min-h-screen bg-[#F8FAFB]">
+        <TopTabNavigation />
+
+        <div className="max-w-sm mx-auto px-4 py-6">
+          {/* 헤더 */}
+          <div className="text-center mb-8">
+            <h1 className="text-xl font-bold text-[#0D1B2A] mb-2">매칭 확인</h1>
+            <p className="text-sm text-[#0D1B2A] opacity-70">Admin이 선별한 매칭을 확인하세요</p>
+          </div>
+
+          {/* 매칭 없음 상태 */}
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-slate-200 to-slate-300 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl">⏳</span>
+            </div>
+            <h3 className="font-bold text-[#0D1B2A] mb-2">대기 중인 매칭이 없습니다</h3>
+            <p className="text-sm text-[#0D1B2A] opacity-70 mb-6">
+              Admin이 최적의 상대를 찾고 있어요.<br />
+              보통 24-48시간 이내에 매칭 결과를 알려드립니다.
+            </p>
+            <Link
+              href="/"
+              className="bg-[#FF4D8D] text-white font-semibold py-3 px-6 rounded-xl hover:bg-[#ff3080] transition-colors inline-block"
+            >
+              홈으로 돌아가기
+            </Link>
+          </div>
+
+          {/* 매칭 프로세스 설명 */}
+          <div className="bg-slate-50 rounded-2xl p-6 mt-6 border border-slate-100">
+            <h4 className="font-semibold text-[#0D1B2A] mb-3">🔍 매칭 프로세스</h4>
+            <div className="space-y-2 text-sm text-[#0D1B2A] opacity-70">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-[#FF4D8D] rounded-full"></div>
+                <span>Admin이 프로필 분석 및 호환성 검토</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-[#FF4D8D] rounded-full"></div>
+                <span>최적의 상대 선별 및 매칭 생성</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-[#FF4D8D] rounded-full"></div>
+                <span>매칭 결과 알림 및 상대방 프로필 공개</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )
   }
 
+  // Admin 매칭 확인 페이지
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 px-4 py-8">
-      <div className="max-w-sm mx-auto">
+    <div className="min-h-screen bg-[#F8FAFB]">
+      <TopTabNavigation />
+
+      <div className="max-w-sm mx-auto px-4 py-6">
         {/* 헤더 */}
-        <div className="flex items-center justify-between mb-6">
-          <Link href="/" className="text-gray-700 hover:text-gray-800">
-            ← 뒤로가기
-          </Link>
-          <h1 className="text-lg font-bold text-gray-800">
-            AI 추천 매칭
-          </h1>
-          <div className="text-sm text-gray-600">
-            {currentIndex + 1}/{sampleMatches.length}
-          </div>
+        <div className="text-center mb-6">
+          <h1 className="text-xl font-bold text-[#0D1B2A] mb-2">매칭 확인</h1>
+          <p className="text-sm text-[#0D1B2A] opacity-70">Admin이 선별한 최적의 매칭입니다</p>
         </div>
 
-        {/* 매칭 카드 */}
-        <div className={`relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 ${
-          swipeDirection === 'like' ? 'transform translate-x-full opacity-0' :
-          swipeDirection === 'pass' ? 'transform -translate-x-full opacity-0' : ''
-        }`}>
-
-          {/* 궁합도 배지 */}
-          <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-purple-600 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-            궁합도 {currentMatch.compatibility}%
+        {/* Admin 매칭 카드 */}
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden mb-6">
+          {/* Admin 분석 헤더 */}
+          <div className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] p-4 text-white">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
+                  <span className="text-xs">👨‍💼</span>
+                </div>
+                <span className="font-semibold text-sm">Admin 큐레이팅</span>
+              </div>
+              <div className="bg-white/20 px-2 py-1 rounded-full text-xs font-semibold">
+                {currentMatch.compatibility}% 호환
+              </div>
+            </div>
+            <p className="text-sm text-pink-100">
+              {currentMatch.matchingReason}
+            </p>
           </div>
 
           {/* 인증 배지 */}
-          {currentMatch.isVerified && (
+          {currentMatch.matchedUser.isVerified && (
             <div className="absolute top-4 right-4 z-10 bg-blue-500 text-white p-1 rounded-full">
               <span className="text-xs">✓</span>
             </div>
           )}
 
           {/* 사진 영역 */}
-          <div className="relative h-80 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
-            <div className="text-6xl">{currentMatch.photos[0]}</div>
-
-            {/* 사진 인디케이터 */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-1">
-              {currentMatch.photos.map((_, index) => (
-                <div key={index} className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-white' : 'bg-white/50'}`}></div>
-              ))}
-            </div>
+          <div className="relative h-64 bg-gradient-to-br from-[#FF4D8D] to-[#C49A6C] flex items-center justify-center">
+            <div className="text-5xl">{currentMatch.matchedUser.photos[0]}</div>
 
             {/* 거리 표시 */}
             <div className="absolute bottom-4 right-4 bg-black/50 text-white px-2 py-1 rounded-full text-xs">
-              📍 {currentMatch.distance}
+              📍 {currentMatch.matchedUser.distance}
             </div>
           </div>
 
@@ -164,14 +199,14 @@ export default function MatchingPage() {
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h2 className="text-2xl font-bold text-gray-800">
-                  {currentMatch.name}, {currentMatch.age}
+                <h2 className="text-xl font-bold text-[#0D1B2A]">
+                  {currentMatch.matchedUser.name}님, {currentMatch.matchedUser.age}세
                 </h2>
-                <p className="text-gray-700">{currentMatch.location}</p>
+                <p className="text-sm text-[#0D1B2A] opacity-70">{currentMatch.matchedUser.location}</p>
               </div>
               <button
                 onClick={() => setShowDetails(!showDetails)}
-                className="text-purple-600 hover:text-purple-700 font-medium"
+                className="text-[#FF4D8D] hover:text-[#ff3080] font-medium text-sm"
               >
                 {showDetails ? '간단히' : '자세히'} →
               </button>
@@ -179,35 +214,48 @@ export default function MatchingPage() {
 
             {/* 기본 태그들 */}
             <div className="flex flex-wrap gap-2 mb-4">
-              <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium">
-                {currentMatch.faceType}
+              <span className="bg-pink-100 text-[#FF4D8D] px-3 py-1 rounded-full text-sm font-medium">
+                {currentMatch.matchedUser.faceType}
               </span>
-              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-                {currentMatch.mbti}
+              <span className="bg-blue-100 text-[#0D1B2A] px-3 py-1 rounded-full text-sm font-medium">
+                {currentMatch.matchedUser.mbti}
               </span>
-              <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
-                {currentMatch.height}cm
+              <span className="bg-gray-100 text-[#0D1B2A] opacity-80 px-3 py-1 rounded-full text-sm">
+                {currentMatch.matchedUser.height}cm
               </span>
-              <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
-                {currentMatch.job}
+              <span className="bg-gray-100 text-[#0D1B2A] opacity-80 px-3 py-1 rounded-full text-sm">
+                {currentMatch.matchedUser.job}
               </span>
+            </div>
+
+            {/* Admin 분석 */}
+            <div className="bg-pink-50 rounded-xl p-4 mb-4 border border-pink-100">
+              <div className="flex items-center space-x-2 mb-2">
+                <div className="w-4 h-4 bg-[#FF4D8D] rounded-full flex items-center justify-center">
+                  <span className="text-xs text-white">AI</span>
+                </div>
+                <span className="font-semibold text-[#0D1B2A] text-sm">Admin 분석 결과</span>
+              </div>
+              <p className="text-sm text-[#0D1B2A] opacity-80 leading-relaxed">
+                {currentMatch.adminAnalysis}
+              </p>
             </div>
 
             {/* 상세 정보 (토글) */}
             {showDetails && (
-              <div className="space-y-4 border-t border-gray-200 pt-4">
+              <div className="space-y-4 border-t border-slate-200 pt-4">
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">자기소개</h3>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    {currentMatch.introduction}
+                  <h3 className="font-semibold text-[#0D1B2A] mb-2">자기소개</h3>
+                  <p className="text-sm text-[#0D1B2A] opacity-80 leading-relaxed">
+                    {currentMatch.matchedUser.introduction}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">성격</h3>
+                  <h3 className="font-semibold text-[#0D1B2A] mb-2">성격</h3>
                   <div className="flex flex-wrap gap-1">
-                    {currentMatch.personality.map((trait, index) => (
-                      <span key={index} className="bg-pink-100 text-pink-700 px-2 py-1 rounded text-xs">
+                    {currentMatch.matchedUser.personality.map((trait, index) => (
+                      <span key={index} className="bg-pink-100 text-[#FF4D8D] px-2 py-1 rounded text-xs">
                         {trait}
                       </span>
                     ))}
@@ -215,78 +263,64 @@ export default function MatchingPage() {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">취미</h3>
+                  <h3 className="font-semibold text-[#0D1B2A] mb-2">취미</h3>
                   <div className="flex flex-wrap gap-1">
-                    {currentMatch.hobbies.map((hobby, index) => (
-                      <span key={index} className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">
+                    {currentMatch.matchedUser.hobbies.map((hobby, index) => (
+                      <span key={index} className="bg-green-100 text-[#C49A6C] px-2 py-1 rounded text-xs">
                         {hobby}
                       </span>
                     ))}
                   </div>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-[#0D1B2A] mb-2">학력</h3>
+                  <p className="text-sm text-[#0D1B2A] opacity-80">{currentMatch.matchedUser.education}</p>
                 </div>
               </div>
             )}
           </div>
         </div>
 
-        {/* 액션 버튼들 */}
-        <div className="flex items-center justify-center space-x-4 mt-8">
-          {/* 패스 */}
+        {/* 수락/거절 버튼 */}
+        <div className="flex space-x-4 mb-6">
           <button
-            onClick={() => handleSwipe('pass')}
-            className="w-16 h-16 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center text-2xl hover:border-gray-400 transition-colors shadow-lg"
+            onClick={() => handleMatchDecision('decline')}
+            className="flex-1 bg-white border-2 border-gray-300 text-[#0D1B2A] opacity-80 py-4 px-6 rounded-xl font-semibold hover:bg-gray-50 transition-colors text-center"
           >
-            ✕
+            <div className="text-xl mb-1">😔</div>
+            <div className="text-sm">다음에요</div>
           </button>
 
-          {/* 슈퍼 라이크 */}
           <button
-            onClick={handleSuperLike}
-            className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-xl text-white hover:from-blue-600 hover:to-blue-700 transition-all shadow-lg"
+            onClick={() => handleMatchDecision('accept')}
+            className="flex-1 bg-gradient-to-r from-[#FF4D8D] to-[#C49A6C] text-white py-4 px-6 rounded-xl font-semibold hover:from-[#ff3080] hover:to-[#b8885d] transition-all text-center shadow-lg"
           >
-            ⭐
-          </button>
-
-          {/* 라이크 */}
-          <button
-            onClick={() => handleSwipe('like')}
-            className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-500 rounded-full flex items-center justify-center text-2xl text-white hover:from-purple-700 hover:to-pink-600 transition-all shadow-lg"
-          >
-            💜
+            <div className="text-xl mb-1">💜</div>
+            <div className="text-sm">매칭 수락하기</div>
           </button>
         </div>
 
-        {/* 버튼 설명 */}
-        <div className="flex items-center justify-center space-x-8 mt-4 text-xs text-gray-600">
-          <span>패스</span>
-          <span>슈퍼라이크</span>
-          <span>좋아요</span>
-        </div>
-
-        {/* 팁 */}
-        <div className="mt-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-200">
-          <h4 className="font-semibold text-purple-800 mb-2">💡 매칭 팁</h4>
-          <ul className="text-sm text-purple-700 space-y-1">
-            <li>• 서로 좋아요를 누르면 매칭이 성사돼요</li>
-            <li>• 슈퍼라이크는 상대방에게 우선 노출됩니다</li>
-            <li>• 매칭 성사 시에만 결제가 진행돼요</li>
-          </ul>
-        </div>
-
-        {/* 추가 액션 */}
-        <div className="flex space-x-3 mt-6">
-          <Link
-            href="/matching/history"
-            className="flex-1 bg-white border border-gray-300 text-gray-700 py-3 px-4 rounded-xl font-medium text-center hover:bg-gray-50 transition-colors"
-          >
-            매칭 히스토리
-          </Link>
-          <Link
-            href="/messages"
-            className="flex-1 bg-purple-600 text-white py-3 px-4 rounded-xl font-medium text-center hover:bg-purple-700 transition-colors"
-          >
-            메시지함
-          </Link>
+        {/* 안내 메시지 */}
+        <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-4 border border-green-200">
+          <h4 className="font-semibold text-[#0D1B2A] mb-2 flex items-center">
+            <span className="mr-2">💡</span>
+            매칭 수락 후 프로세스
+          </h4>
+          <div className="text-sm text-[#0D1B2A] opacity-80 space-y-1">
+            <div className="flex items-center space-x-2">
+              <span className="w-1 h-1 bg-[#FF4D8D] rounded-full"></span>
+              <span>매칭 수락 → 결제 진행 → 메시지 시작</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="w-1 h-1 bg-[#FF4D8D] rounded-full"></span>
+              <span>상대방도 수락해야 최종 매칭 완료</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="w-1 h-1 bg-[#FF4D8D] rounded-full"></span>
+              <span>양쪽 모두 수락 시에만 결제됩니다</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

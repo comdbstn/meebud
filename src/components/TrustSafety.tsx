@@ -3,10 +3,10 @@ export default function TrustSafety() {
     <section className="py-16 px-4 bg-white">
       <div className="max-w-sm mx-auto">
         <div className="text-center mb-12 animate-slide-up">
-          <h2 className="text-2xl font-bold text-gray-800 mb-3">
+          <h2 className="text-2xl font-bold text-[#0D1B2A] mb-3">
             신뢰와 안전
           </h2>
-          <p className="text-gray-600">
+          <p className="text-[#0D1B2A] opacity-70">
             운영진이 직접 검수하는 안전한 시스템
           </p>
         </div>
@@ -17,8 +17,8 @@ export default function TrustSafety() {
             <div className="flex items-center space-x-3">
               <span className="text-xl">🔒</span>
               <div>
-                <h3 className="font-semibold text-gray-800 text-sm">개인정보 보호</h3>
-                <p className="text-xs text-gray-600">동의 기반 최소 수집, 안전한 보관</p>
+                <h3 className="font-semibold text-[#0D1B2A] text-sm">개인정보 보호</h3>
+                <p className="text-xs text-[#0D1B2A] opacity-70">동의 기반 최소 수집, 안전한 보관</p>
               </div>
             </div>
           </div>
@@ -27,8 +27,8 @@ export default function TrustSafety() {
             <div className="flex items-center space-x-3">
               <span className="text-xl">✨</span>
               <div>
-                <h3 className="font-semibold text-gray-800 text-sm">선택적 인증</h3>
-                <p className="text-xs text-gray-600">원하는 정보만 운영진 검수 후 인증</p>
+                <h3 className="font-semibold text-[#0D1B2A] text-sm">선택적 인증</h3>
+                <p className="text-xs text-[#0D1B2A] opacity-70">원하는 정보만 운영진 검수 후 인증</p>
               </div>
             </div>
           </div>
@@ -37,8 +37,8 @@ export default function TrustSafety() {
             <div className="flex items-center space-x-3">
               <span className="text-xl">🛡️</span>
               <div>
-                <h3 className="font-semibold text-gray-800 text-sm">신고 시스템</h3>
-                <p className="text-xs text-gray-600">24시간 내 빠른 검토 및 조치</p>
+                <h3 className="font-semibold text-[#0D1B2A] text-sm">신고 시스템</h3>
+                <p className="text-xs text-[#0D1B2A] opacity-70">24시간 내 빠른 검토 및 조치</p>
               </div>
             </div>
           </div>

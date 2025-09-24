@@ -38,16 +38,16 @@ export default function Header() {
           <div className="absolute top-full left-0 right-0 bg-white shadow-lg border-t">
             <div className="max-w-sm mx-auto">
               <nav className="py-4 px-4 space-y-3">
-                <Link href="/matching" className="block text-gray-700 hover:text-purple-600 font-medium transition-colors">
+                <Link href="/matching" className="block text-[#0D1B2A] opacity-80 hover:text-purple-600 font-medium transition-colors">
                   내 매칭
                 </Link>
-                <Link href="/messages" className="block text-gray-700 hover:text-purple-600 font-medium transition-colors">
+                <Link href="/messages" className="block text-[#0D1B2A] opacity-80 hover:text-purple-600 font-medium transition-colors">
                   메시지
                 </Link>
-                <Link href="/profile/edit" className="block text-gray-700 hover:text-purple-600 font-medium transition-colors">
+                <Link href="/profile/edit" className="block text-[#0D1B2A] opacity-80 hover:text-purple-600 font-medium transition-colors">
                   프로필 설정
                 </Link>
-                <Link href="/welcome" className="block text-gray-700 hover:text-purple-600 font-medium transition-colors">
+                <Link href="/welcome" className="block text-[#0D1B2A] opacity-80 hover:text-purple-600 font-medium transition-colors">
                   서비스 소개
                 </Link>
                 <div className="pt-2 border-t border-gray-200">

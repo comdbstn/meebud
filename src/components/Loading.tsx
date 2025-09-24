@@ -53,15 +53,15 @@ export default function Loading({ message = "로딩 중...", fullScreen = false 
 
         {/* 브랜드 로고 */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
+          <h1 className="text-3xl font-bold text-[#0D1B2A] mb-2">
             MEE<span className="text-[#FF4D8D]">&apos;</span>BUD
           </h1>
-          <p className="text-gray-600 text-sm">AI가 찾아주는 완벽한 이상형</p>
+          <p className="text-[#0D1B2A] opacity-70 text-sm">AI가 찾아주는 완벽한 이상형</p>
         </div>
 
         {/* 로딩 메시지 */}
         <div className="mb-8">
-          <p className="text-gray-700 font-medium text-lg">
+          <p className="text-[#0D1B2A] opacity-80 font-medium text-lg">
             {message}<span className="inline-block w-8 text-left">{dots}</span>
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function Loading({ message = "로딩 중...", fullScreen = false 
 
         {/* 로딩 텍스트 */}
         {fullScreen && (
-          <div className="mt-8 space-y-2 text-sm text-gray-500">
+          <div className="mt-8 space-y-2 text-sm text-[#0D1B2A] opacity-60">
             <p>✨ AI가 당신의 이상형을 분석하고 있어요</p>
             <p>💕 완벽한 매칭을 위해 잠시만 기다려주세요</p>
           </div>

@@ -44,13 +44,13 @@ export default function BottomNavigation() {
               className={`flex flex-col items-center py-2 px-3 rounded-xl transition-all duration-200 ${
                 item.isActive
                   ? 'bg-[#FF4D8D] text-white transform scale-105'
-                  : 'text-gray-700 hover:text-[#FF4D8D] hover:bg-gray-50'
+                  : 'text-[#0D1B2A] opacity-80 hover:text-[#FF4D8D] hover:bg-gray-50'
               }`}
             >
               <span className={`text-lg mb-1 ${item.isActive ? 'animate-bounce-gentle' : ''}`}>
                 {item.icon}
               </span>
-              <span className={`text-xs font-medium ${item.isActive ? 'text-white' : 'text-gray-700'}`}>
+              <span className={`text-xs font-medium ${item.isActive ? 'text-white' : 'text-[#0D1B2A] opacity-80'}`}>
                 {item.label}
               </span>
             </Link>
