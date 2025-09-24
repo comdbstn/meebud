@@ -14,7 +14,7 @@ export default function ProfilePage() {
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/dashboard" className="text-gray-700 hover:text-gray-800">
+            <Link href="/" className="text-gray-700 hover:text-gray-800">
               ← 홈으로
             </Link>
             <h1 className="text-lg font-bold text-gray-900">

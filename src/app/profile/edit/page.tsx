@@ -49,7 +49,7 @@ export default function EditProfilePage() {
       <div className="max-w-sm mx-auto px-4 py-8">
         {/* 헤더 */}
         <div className="flex items-center justify-between mb-6">
-          <Link href="/dashboard" className="text-gray-600 hover:text-gray-800">
+          <Link href="/" className="text-gray-600 hover:text-gray-800">
             ← 홈으로
           </Link>
           <h1 className="text-lg font-bold text-gray-800">

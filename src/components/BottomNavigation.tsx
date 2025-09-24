@@ -8,10 +8,10 @@ export default function BottomNavigation() {
 
   const navItems = [
     {
-      href: '/dashboard',
+      href: '/',
       icon: '🏠',
       label: '홈',
-      isActive: pathname === '/dashboard'
+      isActive: pathname === '/'
     },
     {
       href: '/messages',
