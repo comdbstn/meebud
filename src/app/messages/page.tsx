@@ -20,14 +20,14 @@ export default function MessagesPage() {
       </div>
 
       <div className="max-w-sm mx-auto px-4 py-6">
-        {/* 빈 상태 - Admin 매칭 플로우에 맞게 */}
+        {/* 빈 상태 - AI 매칭 플로우에 맞게 */}
         <div className="text-center py-16">
           <div className="text-6xl mb-6">💬</div>
           <h3 className="text-xl font-bold text-[#0D1B2A] mb-3">
             아직 메시지가 없어요
           </h3>
           <p className="text-[#0D1B2A] opacity-70 mb-8 leading-relaxed">
-            Admin이 큐레이팅한 매칭을 확인하고<br/>
+            AI가 큐레이팅한 매칭을 확인하고<br/>
             상호 수락 후 결제를 완료하면<br/>
             메시지를 주고받을 수 있어요!
           </p>
@@ -39,7 +39,7 @@ export default function MessagesPage() {
               <div className="flex items-start space-x-3">
                 <div className="w-6 h-6 bg-[#FF4D8D] rounded-full flex items-center justify-center text-white text-xs font-bold">1</div>
                 <div>
-                  <p className="font-medium text-[#0D1B2A]">Admin 매칭 확인</p>
+                  <p className="font-medium text-[#0D1B2A]">AI 매칭 확인</p>
                   <p className="text-sm text-[#0D1B2A] opacity-70">AI가 분석한 최적의 매칭을 받아보세요</p>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export default function MessagesPage() {
 
         {/* 안내 카드 */}
         <div className="mt-8 bg-gradient-to-r from-[#FF4D8D] bg-opacity-10 to-[#C49A6C] bg-opacity-10 rounded-xl p-4 border border-[#FF4D8D] border-opacity-20">
-          <h4 className="font-semibold text-[#0D1B2A] mb-2">✨ Admin 큐레이팅의 특별함</h4>
+          <h4 className="font-semibold text-[#0D1B2A] mb-2">✨ AI 큐레이팅의 특별함</h4>
           <ul className="text-sm text-[#0D1B2A] opacity-70 space-y-1">
             <li>• AI가 MBTI, 가치관, 취향을 종합 분석해서 매칭</li>
             <li>• 다중 인증을 통과한 검증된 회원만</li>

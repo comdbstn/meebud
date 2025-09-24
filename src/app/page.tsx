@@ -90,21 +90,6 @@ export default function HomePage() {
           {/* 다른 사용자 매칭 소식 */}
           <MatchingNews />
 
-          {/* 통계 카드 */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 mb-6">
-            <div className="text-center mb-4">
-              <h3 className="font-bold text-[#0D1B2A] mb-1">지금까지
-                <span className="text-[#FF4D8D]"> 1,247개</span>의
-              </h3>
-              <p className="text-sm text-[#0D1B2A] opacity-70">성공적인 매칭이 이루어졌어요.</p>
-            </div>
-
-            <div className="flex justify-center">
-              <div className="w-24 h-24 bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl flex items-center justify-center">
-                <span className="text-4xl">💝</span>
-              </div>
-            </div>
-          </div>
 
           {/* 퀵 액션 */}
           <div className="grid grid-cols-2 gap-4 mb-6">
@@ -132,7 +117,7 @@ export default function HomePage() {
             <div className="bg-gradient-to-r from-[#FF4D8D] to-[#C49A6C] rounded-2xl p-4 text-white text-center mb-6">
               <div className="text-lg mb-1">🎉</div>
               <div className="font-bold text-sm mb-1">축하합니다!</div>
-              <div className="text-xs opacity-90">Admin이 선별한 최고의 매칭을 확인해보세요</div>
+              <div className="text-xs opacity-90">AI가 선별한 최고의 매칭을 확인해보세요</div>
             </div>
           )}
 
@@ -179,6 +164,16 @@ export default function HomePage() {
           </Link>
         </div>
 
+        {/* 서비스 자세히보기 버튼 추가 */}
+        <div className="text-center mb-4">
+          <Link
+            href="/welcome"
+            className="bg-white text-[#0D1B2A] border-2 border-[#0D1B2A] font-semibold py-3 px-6 rounded-xl hover:bg-[#0D1B2A] hover:text-white transition-all inline-block shadow-sm"
+          >
+            서비스 자세히 보기
+          </Link>
+        </div>
+
         {/* 로그인 링크 */}
         <div className="text-center mb-6">
           <p className="text-sm text-[#6B7280]">이미 계정이 있다면?</p>
@@ -188,22 +183,6 @@ export default function HomePage() {
           >
             로그인하기
           </Link>
-        </div>
-
-        {/* 통계 카드 */}
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-          <div className="text-center mb-4">
-            <h3 className="font-bold text-[#0D1B2A] mb-1">지금까지
-              <span className="text-[#FF4D8D]"> 1,247개</span>의
-            </h3>
-            <p className="text-sm text-[#6B7280]">성공적인 매칭이 이루어졌어요.</p>
-          </div>
-
-          <div className="flex justify-center">
-            <div className="w-24 h-24 bg-gradient-to-br from-[#C49A6C] to-[#FF4D8D] rounded-2xl flex items-center justify-center opacity-90">
-              <span className="text-4xl">💝</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

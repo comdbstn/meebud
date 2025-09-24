@@ -60,7 +60,7 @@ export default function MatchingStatus({ status, matchedProfile }: MatchingStatu
             className="bg-[#FF4D8D] text-white font-semibold py-3 px-6 rounded-xl hover:bg-[#ff3080] transition-colors"
             onClick={() => {
               // TODO: 매칭 시작 API 호출
-              alert('매칭이 시작되었습니다! Admin이 최적의 상대를 찾고 있어요.')
+              alert('매칭이 시작되었습니다! AI가 최적의 상대를 찾고 있어요.')
             }}
           >
             매칭 시작하기
@@ -80,7 +80,7 @@ export default function MatchingStatus({ status, matchedProfile }: MatchingStatu
           </div>
           <h3 className="font-bold text-[#0D1B2A] mb-2">매칭 중입니다.</h3>
           <p className="text-sm text-[#0D1B2A] opacity-70 mb-4">
-            Admin이 최적의 상대를 찾고 있어요.<br />
+            AI가 최적의 상대를 찾고 있어요.<br />
             보통 24시간 이내에 결과를 알려드려요.
           </p>
           <div className="bg-slate-50 rounded-xl p-4">
@@ -106,7 +106,7 @@ export default function MatchingStatus({ status, matchedProfile }: MatchingStatu
           </div>
           <h3 className="font-bold text-[#0D1B2A] mb-2">매칭되었습니다!</h3>
           <p className="text-sm text-[#0D1B2A] opacity-70 mb-4">
-            Admin이 선별한 최적의 상대를 찾았어요.
+            AI가 선별한 최적의 상대를 찾았어요.
           </p>
 
           {/* 매칭된 상대 미리보기 */}

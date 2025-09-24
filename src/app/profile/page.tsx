@@ -80,7 +80,7 @@ export default function ProfilePage() {
         <div className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] rounded-2xl p-6 text-white mb-6">
           <h2 className="text-xl font-bold mb-2">기본 정보만 입력하세요!</h2>
           <p className="text-white opacity-80 text-sm leading-relaxed">
-            입력하신 정보를 바탕으로 Admin AI가<br/>
+            입력하신 정보를 바탕으로 AI가<br/>
             매력적인 프로필을 완성해드립니다.
           </p>
         </div>
@@ -257,14 +257,14 @@ export default function ProfilePage() {
               href="/profile/analysis"
               className="flex-1 bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white font-semibold py-4 rounded-xl text-center hover:opacity-90 transition-all"
             >
-              Admin 검토 요청 →
+              AI 검토 요청 →
             </Link>
           )}
         </div>
 
         {/* 안내 메시지 */}
         <div className="mt-6 bg-[#FF4D8D] bg-opacity-10 rounded-xl p-4 border border-[#FF4D8D] border-opacity-20">
-          <h4 className="font-semibold text-[#0D1B2A] mb-2">💡 Admin AI가 완성해드려요</h4>
+          <h4 className="font-semibold text-[#0D1B2A] mb-2">💡 AI가 완성해드려요</h4>
           <ul className="text-sm text-[#0D1B2A] opacity-70 space-y-1">
             <li>• 입력된 정보로 매력적인 프로필 문구 자동 생성</li>
             <li>• MBTI와 관심사 기반 이상형 매칭 설정</li>

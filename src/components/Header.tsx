@@ -7,16 +7,16 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="bg-gradient-to-r from-purple-600 to-pink-500 text-white sticky top-0 z-50 shadow-lg">
+    <header className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white sticky top-0 z-50 shadow-lg">
       <div className="max-w-sm mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-              <span className="text-purple-600 text-lg font-bold">💜</span>
+              <span className="text-[#FF4D8D] text-lg font-bold">💜</span>
             </div>
             <h1 className="text-xl font-bold">
-              MEE<span className="text-yellow-300">&apos;</span>BUD
+              MEE<span className="text-[#C49A6C]">&apos;</span>BUD
             </h1>
           </div>
 
@@ -38,20 +38,20 @@ export default function Header() {
           <div className="absolute top-full left-0 right-0 bg-white shadow-lg border-t">
             <div className="max-w-sm mx-auto">
               <nav className="py-4 px-4 space-y-3">
-                <Link href="/matching" className="block text-[#0D1B2A] opacity-80 hover:text-purple-600 font-medium transition-colors">
+                <Link href="/matching" className="block text-[#0D1B2A] opacity-80 hover:text-[#FF4D8D] font-medium transition-colors">
                   내 매칭
                 </Link>
-                <Link href="/messages" className="block text-[#0D1B2A] opacity-80 hover:text-purple-600 font-medium transition-colors">
+                <Link href="/messages" className="block text-[#0D1B2A] opacity-80 hover:text-[#FF4D8D] font-medium transition-colors">
                   메시지
                 </Link>
-                <Link href="/profile/edit" className="block text-[#0D1B2A] opacity-80 hover:text-purple-600 font-medium transition-colors">
+                <Link href="/profile/edit" className="block text-[#0D1B2A] opacity-80 hover:text-[#FF4D8D] font-medium transition-colors">
                   프로필 설정
                 </Link>
-                <Link href="/welcome" className="block text-[#0D1B2A] opacity-80 hover:text-purple-600 font-medium transition-colors">
+                <Link href="/welcome" className="block text-[#0D1B2A] opacity-80 hover:text-[#FF4D8D] font-medium transition-colors">
                   서비스 소개
                 </Link>
                 <div className="pt-2 border-t border-gray-200">
-                  <Link href="/login" className="block w-full bg-purple-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-purple-700 transition-colors text-center">
+                  <Link href="/login" className="block w-full bg-[#FF4D8D] text-white py-2 px-4 rounded-lg font-medium hover:bg-[#ff3080] transition-colors text-center">
                     로그인
                   </Link>
                 </div>
