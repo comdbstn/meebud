@@ -3,6 +3,9 @@
 import { Metadata } from 'next'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useAuth } from '@/contexts/AppContext'
+import { dummyUser } from '@/data/dummyData'
+import InteractiveButton from '@/components/InteractiveButton'
 
 const _metadata: Metadata = {
   title: "로그인 - MEE'BUD",
@@ -23,6 +26,8 @@ export default function LoginPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
+  const { login } = useAuth()
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
@@ -30,9 +35,9 @@ export default function LoginPage() {
 
     // 테스트 계정 인증
     if (TEST_ACCOUNTS[email as keyof typeof TEST_ACCOUNTS] === password) {
-      // 로그인 성공
-      sessionStorage.setItem('user_authenticated', 'true')
-      sessionStorage.setItem('user_email', email)
+      // 상태 관리에 로그인 처리
+      const userWithEmail = { ...dummyUser, email }
+      login(userWithEmail)
 
       // 관리자 계정 확인
       if (email === 'admin@meebud.com') {
@@ -118,13 +123,15 @@ export default function LoginPage() {
             </div>
           )}
 
-          <button
+          <InteractiveButton
             type="submit"
-            disabled={loading}
-            className="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-sm text-base font-semibold text-white bg-[#FF4D8D] hover:bg-[#ff3080] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF4D8D] transition-colors duration-200 disabled:opacity-50"
+            variant="primary"
+            size="lg"
+            loading={loading}
+            className="w-full"
           >
-            {loading ? '로그인 중...' : '로그인'}
-          </button>
+            로그인
+          </InteractiveButton>
         </form>
 
         <div className="mt-8">

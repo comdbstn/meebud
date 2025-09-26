@@ -1,53 +1,68 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Link from 'next/link'
 import TopTabNavigation from '@/components/TopTabNavigation'
 import MatchingStatus, { MatchingStatusType } from '@/components/MatchingStatus'
 import MatchingNews from '@/components/MatchingNews'
+import { LinkButton, Card, H1, H2, H4, P, Small } from '@/components/ui'
+import { useAuth, useMatching, useNotifications } from '@/contexts/AppContext'
+import { dummyNotifications } from '@/data/dummyData'
+import { PageLoading } from '@/components/LoadingSpinner'
+import OnboardingFlow, { useOnboarding } from '@/components/OnboardingFlow'
+import { useDemoFlow, LiveStats, ProgressTracker } from '@/components/DemoFlow'
 
 export default function HomePage() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [_userEmail, _setUserEmail] = useState('')
-  const [loading, setLoading] = useState(true)
-  const [matchingStatus, setMatchingStatus] = useState<MatchingStatusType>('profile_incomplete')
+  const { isAuthenticated, user, isLoading, logout } = useAuth()
+  const { currentMatch, matchHistory } = useMatching()
+  const { notifications, addNotification } = useNotifications()
+  const { isCompleted: onboardingCompleted } = useOnboarding()
+  const { simulateMatchingFlow, simulateLiveUpdates } = useDemoFlow()
 
   useEffect(() => {
-    // 로그인 상태 확인
-    const authStatus = sessionStorage.getItem('user_authenticated')
-    const email = sessionStorage.getItem('user_email')
-
-    if (authStatus === 'true' && email) {
-      setIsAuthenticated(true)
-      _setUserEmail(email)
-
-      // TODO: 실제로는 API에서 사용자의 매칭 상태를 가져와야 함
-      // Admin 큐레이팅 플로우에 맞춰 논리적인 진행 상태 설정
-      // 실제 서비스에서는 사용자의 프로필 완성도와 매칭 진행 단계에 따라 결정
-      setMatchingStatus('profile_incomplete') // 기본 상태: 프로필 입력 필요
+    // 데모용 사용자 데이터 시뮬레이션
+    if (!user && !isLoading) {
+      // 로그인된 상태로 시뮬레이션 (데모 모드)
+      const authStatus = sessionStorage.getItem('user_authenticated')
+      if (authStatus === 'true') {
+        // 이미 로그인된 상태라면 데모 데이터 로드는 하지 않음 (실제 로그인 유지)
+        return
+      }
     }
-    setLoading(false)
-  }, [])
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('user_authenticated')
-    sessionStorage.removeItem('user_email')
-    setIsAuthenticated(false)
-    _setUserEmail('')
+    // 초기 알림 로드 및 데모 플로우 시작
+    if (isAuthenticated && user && notifications.length === 0) {
+      dummyNotifications.forEach(notif => {
+        addNotification(notif.type, notif.message)
+      })
+
+      // 데모 플로우 시작
+      simulateMatchingFlow()
+      simulateLiveUpdates()
+    }
+  }, [isAuthenticated, user, isLoading, notifications.length, addNotification, simulateMatchingFlow, simulateLiveUpdates])
+
+  // 매칭 상태 결정 로직
+  const getMatchingStatus = (): MatchingStatusType => {
+    if (!user) return 'profile_incomplete'
+    if (!user.isProfileComplete) return 'profile_incomplete'
+    if (currentMatch) return 'matched'
+    if (matchHistory.length > 0) return 'waiting_for_match'
+    return 'profile_complete'
   }
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF4D8D]"></div>
-      </div>
-    )
+  const matchingStatus = getMatchingStatus()
+
+  if (isLoading) {
+    return <PageLoading message="MEE'BUD를 준비하고 있어요..." />
   }
 
   if (isAuthenticated) {
     // 새로운 매칭 상태별 대시보드
     return (
       <div className="min-h-screen bg-[#F8FAFB]">
+        {/* 온보딩 플로우 */}
+        {!onboardingCompleted && <OnboardingFlow />}
         {/* 상단 탭 네비게이션 */}
         <TopTabNavigation />
 
@@ -64,7 +79,7 @@ export default function HomePage() {
                 </h1>
               </div>
               <button
-                onClick={handleLogout}
+                onClick={logout}
                 className="text-xs text-[#0D1B2A] opacity-70 bg-gray-100 px-3 py-1 rounded-full hover:bg-gray-200 transition-colors"
               >
                 로그아웃
@@ -78,38 +93,41 @@ export default function HomePage() {
           {/* 매칭 상태별 메인 섹션 */}
           <MatchingStatus
             status={matchingStatus}
-            matchedProfile={matchingStatus === 'matched' ? {
-              name: '수진',
-              age: 25,
-              job: '디자이너',
-              mbti: 'ENFP',
-              compatibility: 94
+            matchedProfile={currentMatch ? {
+              name: currentMatch.matchedUser.name,
+              age: currentMatch.matchedUser.age,
+              job: currentMatch.matchedUser.job,
+              mbti: currentMatch.matchedUser.mbti,
+              compatibility: currentMatch.compatibility
             } : undefined}
           />
+
+          {/* 진행 상황 추적 */}
+          <ProgressTracker />
+
+          {/* 실시간 통계 */}
+          <LiveStats />
 
           {/* 다른 사용자 매칭 소식 */}
           <MatchingNews />
 
-
           {/* 퀵 액션 */}
           <div className="grid grid-cols-2 gap-4 mb-6">
-            <Link
-              href="/dreams"
-              className="bg-white rounded-2xl p-4 text-center shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
-            >
-              <div className="text-2xl mb-2">☁️</div>
-              <div className="font-medium text-[#0D1B2A] text-sm">꿈결제</div>
-              <div className="text-xs text-[#0D1B2A] opacity-60">포인트 관리</div>
-            </Link>
+            <Card variant="hover" padding="md" className="text-center">
+              <Link href="/dreams" className="block">
+                <div className="text-2xl mb-2">☁️</div>
+                <H4 className="text-sm mb-1">꿈결제</H4>
+                <Small>포인트 관리</Small>
+              </Link>
+            </Card>
 
-            <Link
-              href="/profile"
-              className="bg-white rounded-2xl p-4 text-center shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
-            >
-              <div className="text-2xl mb-2">👤</div>
-              <div className="font-medium text-[#0D1B2A] text-sm">프로필</div>
-              <div className="text-xs text-[#0D1B2A] opacity-60">내 정보 관리</div>
-            </Link>
+            <Card variant="hover" padding="md" className="text-center">
+              <Link href="/profile" className="block">
+                <div className="text-2xl mb-2">👤</div>
+                <H4 className="text-sm mb-1">프로필</H4>
+                <Small>내 정보 관리</Small>
+              </Link>
+            </Card>
           </div>
 
           {/* 상태별 추가 정보 */}
@@ -143,35 +161,39 @@ export default function HomePage() {
             <div className="w-12 h-12 bg-gradient-to-br from-[#0D1B2A] to-[#FF4D8D] rounded-2xl flex items-center justify-center shadow-lg">
               <span className="text-white text-xl">💜</span>
             </div>
-            <h1 className="text-3xl font-bold text-[#0D1B2A]">
+            <H1>
               MEE<span className="text-[#FF4D8D]">&apos;</span>BUD
-            </h1>
+            </H1>
           </div>
         </div>
 
         {/* 히어로 섹션 */}
-        <div className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] rounded-2xl p-8 text-white mb-6 shadow-lg">
+        <Card variant="gradient" padding="lg" className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white mb-6 shadow-lg">
           <div className="text-3xl mb-2">✨</div>
-          <h2 className="text-xl font-bold mb-2">진짜 매칭의 시작</h2>
-          <p className="text-sm text-pink-100 mb-4">
+          <H2 className="text-white mb-2">진짜 매칭의 시작</H2>
+          <P className="text-pink-100 mb-4">
             10,245명의 인증회원과 함께하고 있어요!
-          </p>
-          <Link
+          </P>
+          <LinkButton
             href="/auth/signup"
-            className="bg-white text-[#0D1B2A] font-semibold py-3 px-6 rounded-full hover:bg-gray-50 transition-colors inline-block shadow-sm"
+            variant="secondary"
+            size="lg"
+            className="bg-white text-[#0D1B2A] hover:bg-gray-50"
           >
             1분만에 무료 가입하기
-          </Link>
-        </div>
+          </LinkButton>
+        </Card>
 
         {/* 서비스 자세히보기 버튼 추가 */}
         <div className="text-center mb-4">
-          <Link
+          <LinkButton
             href="/welcome"
-            className="bg-white text-[#0D1B2A] border-2 border-[#0D1B2A] font-semibold py-3 px-6 rounded-xl hover:bg-[#0D1B2A] hover:text-white transition-all inline-block shadow-sm"
+            variant="outline"
+            size="lg"
+            className="w-full"
           >
             서비스 자세히 보기
-          </Link>
+          </LinkButton>
         </div>
 
         {/* 로그인 링크 */}

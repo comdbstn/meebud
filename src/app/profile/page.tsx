@@ -1,10 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import TopTabNavigation from '@/components/TopTabNavigation'
+import AuthGuard from '@/components/AuthGuard'
+import { useAuth } from '@/contexts/AppContext'
 
 export default function ProfilePage() {
+  const { user } = useAuth()
   const [formData, setFormData] = useState({
     name: '',
     age: '',
@@ -20,6 +23,24 @@ export default function ProfilePage() {
 
   const [currentStep, setCurrentStep] = useState(1)
   const totalSteps = 3
+
+  // 사용자 데이터가 있으면 폼에 미리 채워넣기
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        name: user.name,
+        age: user.age.toString(),
+        location: user.location,
+        occupation: user.job,
+        education: user.education,
+        height: user.height.toString() + 'cm',
+        bio: user.introduction,
+        mbti: user.mbti,
+        interests: user.hobbies,
+        photos: user.photos
+      })
+    }
+  }, [user])
 
   const interestOptions = [
     '여행', '영화감상', '독서', '요리', '운동', '음악감상',
@@ -43,7 +64,8 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFB]">
+    <AuthGuard>
+      <div className="min-h-screen bg-[#F8FAFB]">
       {/* 상단 탭 네비게이션 */}
       <TopTabNavigation />
 
@@ -272,6 +294,7 @@ export default function ProfilePage() {
           </ul>
         </div>
       </div>
-    </div>
+      </div>
+    </AuthGuard>
   )
 }

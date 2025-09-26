@@ -1,0 +1,227 @@
+/* MEE'BUD Typography System */
+
+/* 폰트 가져오기 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* CSS 변수 정의 */
+:root {
+  /* 색상 */
+  --color-primary: #0D1B2A;
+  --color-secondary: #FF4D8D;
+  --color-accent: #C49A6C;
+  --color-text-primary: #0D1B2A;
+  --color-text-secondary: #374151;
+  --color-text-muted: #6B7280;
+  --color-text-light: #9CA3AF;
+
+  /* 폰트 패밀리 */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* 폰트 크기 */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+
+  /* 폰트 가중치 */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* 줄 높이 */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* 글자 간격 */
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+}
+
+/* 기본 폰트 설정 */
+* {
+  font-family: var(--font-family-primary);
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 제목 요소들 */
+.typography-h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+}
+
+.typography-h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+}
+
+.typography-h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-primary);
+}
+
+.typography-h4 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-primary);
+}
+
+/* 본문 텍스트 */
+.typography-body {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+}
+
+.typography-body-small {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.typography-caption {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-muted);
+}
+
+/* 특수 텍스트 */
+.typography-accent {
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.typography-secondary-accent {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+}
+
+.typography-muted {
+  color: var(--color-text-muted);
+}
+
+.typography-light {
+  color: var(--color-text-light);
+}
+
+/* 버튼 텍스트 */
+.typography-button {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.typography-button-large {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* 입력 필드 텍스트 */
+.typography-input {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+}
+
+.typography-input-small {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+}
+
+/* 플레이스홀더 텍스트 */
+.typography-placeholder {
+  color: var(--color-text-light);
+  font-weight: var(--font-weight-normal);
+}
+
+/* 라벨 텍스트 */
+.typography-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+}
+
+/* 링크 텍스트 */
+.typography-link {
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.typography-link:hover {
+  color: #ff3080;
+  text-decoration: underline;
+}
+
+/* 모바일 반응형 타이포그래피 */
+@media (max-width: 640px) {
+  .typography-h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .typography-h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  .typography-h3 {
+    font-size: var(--font-size-lg);
+  }
+
+  .typography-h4 {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* 접근성을 위한 텍스트 크기 조정 */
+@media (prefers-reduced-motion: no-preference) {
+  .typography-animated {
+    transition: color 0.2s ease, font-weight 0.2s ease;
+  }
+}
+
+/* 높은 대비 모드 지원 */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text-secondary: #000000;
+    --color-text-muted: #333333;
+  }
+}

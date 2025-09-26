@@ -3,9 +3,13 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import TopTabNavigation from '@/components/TopTabNavigation'
+import { useAuth, useMatching, useNotifications } from '@/contexts/AppContext'
+import { dummyMatches } from '@/data/dummyData'
+import InteractiveButton from '@/components/InteractiveButton'
+import { PageLoading } from '@/components/LoadingSpinner'
 
-// Admin이 생성한 매칭 데이터 타입
-interface AdminMatch {
+// AI가 생성한 매칭 데이터 타입
+interface AIMatch {
   id: number
   matchedUser: {
     name: string
@@ -25,13 +29,15 @@ interface AdminMatch {
   }
   compatibility: number
   matchingReason: string
-  adminAnalysis: string
+  aiAnalysis: string
+  confidenceScore: number
+  matchingFactors: string[]
   createdAt: string
   status: 'pending' | 'accepted' | 'declined'
 }
 
-// 샘플 Admin 매칭 데이터
-const adminMatches: AdminMatch[] = [
+// 샘플 AI 매칭 데이터 (향후 사용 예정)
+const _aiMatches: AIMatch[] = [
   {
     id: 1,
     matchedUser: {
@@ -51,46 +57,54 @@ const adminMatches: AdminMatch[] = [
       distance: '2.3km'
     },
     compatibility: 94,
-    matchingReason: '서로 보완적인 성격과 창의적 분야 공통 관심사',
-    adminAnalysis: '지수님은 당신과 매우 잘 맞는 상대입니다. 둘 다 창의적인 분야에서 일하시며, 외향적인 성격과 내향적인 성격이 서로 균형을 이룰 것 같아요. 특히 여행과 문화적 관심사가 비슷해서 즐거운 시간을 보낼 수 있을 거예요.',
+    matchingReason: 'MBTI 궁합도와 라이프스타일 패턴 분석 결과 최적 매칭',
+    aiAnalysis: 'MEE\'BUD AI가 1,247개의 매칭 데이터를 분석한 결과, 지수님과의 매칭 성공 확률이 94%로 측정되었습니다. 특히 창의적 성향과 여행 취향, 그리고 MBTI 상호 보완성이 뛰어나 장기적 관계 발전 가능성이 높습니다.',
+    confidenceScore: 96,
+    matchingFactors: ['MBTI 궁합 (ENFP↔INTJ)', '창의적 직업군', '여행 취향 일치', '나이 차이 적절', '거주지 근접'],
     createdAt: '2025-09-24T10:30:00Z',
     status: 'pending'
   }
 ]
 
 export default function MatchingPage() {
-  const [currentMatch, setCurrentMatch] = useState<AdminMatch | null>(null)
+  const { isAuthenticated, user } = useAuth()
+  const { currentMatch, setCurrentMatch, addToHistory } = useMatching()
+  const { addNotification } = useNotifications()
   const [showDetails, setShowDetails] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // 실제로는 API에서 사용자의 대기 중인 매칭을 가져와야 함
-    // 데모용으로 첫 번째 매칭 사용
-    const pendingMatch = adminMatches.find(match => match.status === 'pending')
-    setCurrentMatch(pendingMatch || null)
+    if (isAuthenticated && user) {
+      // 더미 데이터에서 대기 중인 매칭 찾기
+      const pendingMatch = dummyMatches.find(match => match.status === 'pending')
+      if (pendingMatch && !currentMatch) {
+        setCurrentMatch(pendingMatch)
+      }
+    }
     setLoading(false)
-  }, [])
+  }, [isAuthenticated, user, currentMatch, setCurrentMatch])
 
   const handleMatchDecision = async (decision: 'accept' | 'decline') => {
     if (!currentMatch) return
 
     if (decision === 'accept') {
-      // 매칭 수락 - 결제 페이지로 이동
-      alert('매칭을 수락하셨습니다! 결제를 진행해주세요.')
-      window.location.href = '/dreams/purchase'
+      // 매칭 수락 - 상태 업데이트
+      const updatedMatch = { ...currentMatch, status: 'accepted' as const }
+      addToHistory(updatedMatch)
+      addNotification('success', `${currentMatch.matchedUser.name}님과의 매칭을 수락했어요! 상대방 응답을 기다리고 있습니다.`)
+
+      alert('매칭을 수락하셨습니다! 상대방도 수락하면 자동으로 결제됩니다.')
+      window.location.href = '/dreams'
     } else {
       // 매칭 거절
-      alert('매칭을 거절하셨습니다. 새로운 매칭을 기다려주세요.')
+      addNotification('info', 'AI가 새로운 최적 매칭을 찾고 있어요.')
       setCurrentMatch(null)
+      alert('매칭을 거절하셨습니다. AI가 새로운 최적 매칭을 찾고 있어요.')
     }
   }
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-[#F8FAFB] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF4D8D]"></div>
-      </div>
-    )
+    return <PageLoading message="AI가 최적의 매칭을 분석하고 있어요..." />
   }
 
   if (!currentMatch) {
@@ -101,19 +115,19 @@ export default function MatchingPage() {
         <div className="max-w-sm mx-auto px-4 py-6">
           {/* 헤더 */}
           <div className="text-center mb-8">
-            <h1 className="text-xl font-bold text-[#0D1B2A] mb-2">매칭 확인</h1>
-            <p className="text-sm text-[#0D1B2A] opacity-70">Admin이 선별한 매칭을 확인하세요</p>
+            <h1 className="text-xl font-bold text-[#0D1B2A] mb-2">🤖 AI 매칭</h1>
+            <p className="text-sm text-[#0D1B2A] opacity-70">MEE&apos;BUD AI가 찾은 최적의 매칭을 확인하세요</p>
           </div>
 
-          {/* 매칭 없음 상태 */}
+          {/* AI 분석 중 상태 */}
           <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-slate-200 to-slate-300 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">⏳</span>
+            <div className="w-16 h-16 bg-gradient-to-br from-[#0D1B2A] to-[#FF4D8D] rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl text-white animate-pulse">🤖</span>
             </div>
-            <h3 className="font-bold text-[#0D1B2A] mb-2">대기 중인 매칭이 없습니다</h3>
+            <h3 className="font-bold text-[#0D1B2A] mb-2">AI가 최적의 매칭을 분석 중입니다</h3>
             <p className="text-sm text-[#0D1B2A] opacity-70 mb-6">
-              Admin이 최적의 상대를 찾고 있어요.<br />
-              보통 24-48시간 이내에 매칭 결과를 알려드립니다.
+              1,000+ 프로필 데이터를 분석하여<br />
+              당신에게 가장 잘 맞는 상대를 찾고 있어요
             </p>
             <Link
               href="/"
@@ -123,21 +137,27 @@ export default function MatchingPage() {
             </Link>
           </div>
 
-          {/* 매칭 프로세스 설명 */}
-          <div className="bg-slate-50 rounded-2xl p-6 mt-6 border border-slate-100">
-            <h4 className="font-semibold text-[#0D1B2A] mb-3">🔍 매칭 프로세스</h4>
-            <div className="space-y-2 text-sm text-[#0D1B2A] opacity-70">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-[#FF4D8D] rounded-full"></div>
-                <span>Admin이 프로필 분석 및 호환성 검토</span>
+          {/* AI 매칭 프로세스 설명 */}
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 mt-6 border border-blue-200">
+            <h4 className="font-semibold text-[#0D1B2A] mb-3">🤖 AI 매칭 프로세스</h4>
+            <div className="space-y-3 text-sm text-[#0D1B2A] opacity-70">
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-[#0D1B2A] rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white text-xs">1</span>
+                </div>
+                <span>프로필 데이터 딥러닝 분석 (MBTI, 취향, 라이프스타일)</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-[#FF4D8D] rounded-full"></div>
-                <span>최적의 상대 선별 및 매칭 생성</span>
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-[#0D1B2A] rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white text-xs">2</span>
+                </div>
+                <span>1,000+ 매칭 성공 사례 기반 궁합도 측정</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-[#FF4D8D] rounded-full"></div>
-                <span>매칭 결과 알림 및 상대방 프로필 공개</span>
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-[#FF4D8D] rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white text-xs">3</span>
+                </div>
+                <span>최적 매칭 후보 선별 및 상세 분석 제공</span>
               </div>
             </div>
           </div>
@@ -146,7 +166,7 @@ export default function MatchingPage() {
     )
   }
 
-  // Admin 매칭 확인 페이지
+  // AI 매칭 확인 페이지
   return (
     <div className="min-h-screen bg-[#F8FAFB]">
       <TopTabNavigation />
@@ -154,23 +174,26 @@ export default function MatchingPage() {
       <div className="max-w-sm mx-auto px-4 py-6">
         {/* 헤더 */}
         <div className="text-center mb-6">
-          <h1 className="text-xl font-bold text-[#0D1B2A] mb-2">매칭 확인</h1>
-          <p className="text-sm text-[#0D1B2A] opacity-70">Admin이 선별한 최적의 매칭입니다</p>
+          <h1 className="text-xl font-bold text-[#0D1B2A] mb-2">🤖 AI 매칭 결과</h1>
+          <p className="text-sm text-[#0D1B2A] opacity-70">MEE&apos;BUD AI가 분석한 최적의 매칭입니다</p>
         </div>
 
-        {/* Admin 매칭 카드 */}
+        {/* AI 매칭 카드 */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden mb-6">
-          {/* Admin 분석 헤더 */}
+          {/* AI 분석 헤더 */}
           <div className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] p-4 text-white">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center space-x-2">
                 <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-                  <span className="text-xs">👨‍💼</span>
+                  <span className="text-xs">🤖</span>
                 </div>
-                <span className="font-semibold text-sm">Admin 큐레이팅</span>
+                <span className="font-semibold text-sm">AI 매칭</span>
+                <div className="bg-white/20 px-2 py-1 rounded-full text-xs font-semibold">
+                  신뢰도 {currentMatch.confidenceScore}%
+                </div>
               </div>
               <div className="bg-white/20 px-2 py-1 rounded-full text-xs font-semibold">
-                {currentMatch.compatibility}% 호환
+                {currentMatch.compatibility}% 궁합
               </div>
             </div>
             <p className="text-sm text-pink-100">
@@ -228,17 +251,29 @@ export default function MatchingPage() {
               </span>
             </div>
 
-            {/* Admin 분석 */}
-            <div className="bg-pink-50 rounded-xl p-4 mb-4 border border-pink-100">
-              <div className="flex items-center space-x-2 mb-2">
-                <div className="w-4 h-4 bg-[#FF4D8D] rounded-full flex items-center justify-center">
-                  <span className="text-xs text-white">AI</span>
+            {/* AI 분석 결과 */}
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4 mb-4 border border-blue-200">
+              <div className="flex items-center space-x-2 mb-3">
+                <div className="w-5 h-5 bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] rounded-full flex items-center justify-center">
+                  <span className="text-xs text-white">🤖</span>
                 </div>
-                <span className="font-semibold text-[#0D1B2A] text-sm">Admin 분석 결과</span>
+                <span className="font-semibold text-[#0D1B2A] text-sm">MEE&apos;BUD AI 분석</span>
               </div>
-              <p className="text-sm text-[#0D1B2A] opacity-80 leading-relaxed">
-                {currentMatch.adminAnalysis}
+              <p className="text-sm text-[#0D1B2A] opacity-80 leading-relaxed mb-3">
+                {currentMatch.aiAnalysis}
               </p>
+
+              {/* AI 매칭 요소들 */}
+              <div>
+                <h4 className="font-semibold text-[#0D1B2A] text-xs mb-2">주요 매칭 요소</h4>
+                <div className="flex flex-wrap gap-1">
+                  {currentMatch.matchingFactors.map((factor, index) => (
+                    <span key={index} className="bg-blue-100 text-[#0D1B2A] px-2 py-1 rounded-full text-xs">
+                      {factor}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* 상세 정보 (토글) */}
@@ -284,41 +319,45 @@ export default function MatchingPage() {
 
         {/* 수락/거절 버튼 */}
         <div className="flex space-x-4 mb-6">
-          <button
+          <InteractiveButton
+            variant="outline"
+            size="lg"
             onClick={() => handleMatchDecision('decline')}
-            className="flex-1 bg-white border-2 border-gray-300 text-[#0D1B2A] opacity-80 py-4 px-6 rounded-xl font-semibold hover:bg-gray-50 transition-colors text-center"
+            className="flex-1 flex flex-col items-center space-y-1"
           >
-            <div className="text-xl mb-1">😔</div>
+            <div className="text-xl">😔</div>
             <div className="text-sm">다음에요</div>
-          </button>
+          </InteractiveButton>
 
-          <button
+          <InteractiveButton
+            variant="secondary"
+            size="lg"
             onClick={() => handleMatchDecision('accept')}
-            className="flex-1 bg-gradient-to-r from-[#FF4D8D] to-[#C49A6C] text-white py-4 px-6 rounded-xl font-semibold hover:from-[#ff3080] hover:to-[#b8885d] transition-all text-center shadow-lg"
+            className="flex-1 flex flex-col items-center space-y-1 shadow-lg"
           >
-            <div className="text-xl mb-1">💜</div>
+            <div className="text-xl">💜</div>
             <div className="text-sm">매칭 수락하기</div>
-          </button>
+          </InteractiveButton>
         </div>
 
-        {/* 안내 메시지 */}
+        {/* AI 매칭 안내 메시지 */}
         <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-4 border border-green-200">
           <h4 className="font-semibold text-[#0D1B2A] mb-2 flex items-center">
-            <span className="mr-2">💡</span>
-            매칭 수락 후 프로세스
+            <span className="mr-2">🤖</span>
+            AI 매칭 성사형 후불제
           </h4>
           <div className="text-sm text-[#0D1B2A] opacity-80 space-y-1">
             <div className="flex items-center space-x-2">
               <span className="w-1 h-1 bg-[#FF4D8D] rounded-full"></span>
-              <span>매칭 수락 → 결제 진행 → 메시지 시작</span>
+              <span>AI가 분석한 {currentMatch.compatibility}% 궁합도 매칭</span>
             </div>
             <div className="flex items-center space-x-2">
               <span className="w-1 h-1 bg-[#FF4D8D] rounded-full"></span>
-              <span>상대방도 수락해야 최종 매칭 완료</span>
+              <span>양쪽 모두 수락 시 자동으로 ₩9,900 결제</span>
             </div>
             <div className="flex items-center space-x-2">
               <span className="w-1 h-1 bg-[#FF4D8D] rounded-full"></span>
-              <span>양쪽 모두 수락 시에만 결제됩니다</span>
+              <span>매칭 실패 시 결제 없음 (완전 무료)</span>
             </div>
           </div>
         </div>

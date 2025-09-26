@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { AppProvider } from '../contexts/AppContext';
+import NotificationToast from '../components/NotificationToast';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -91,7 +93,10 @@ export default function RootLayout({
   return (
     <html lang="ko" className="scroll-smooth">
       <body className={`${inter.className} antialiased`}>
-        {children}
+        <AppProvider>
+          {children}
+          <NotificationToast />
+        </AppProvider>
       </body>
     </html>
   );

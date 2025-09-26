@@ -4,150 +4,100 @@ import { useState } from 'react'
 import Link from 'next/link'
 import TopTabNavigation from '@/components/TopTabNavigation'
 
-interface Transaction {
+interface MatchPayment {
   id: number
-  type: 'charge' | 'use' | 'refund'
+  matchedUser: string
+  userAvatar: string
   amount: number
-  description: string
-  method?: string
+  paymentMethod: string
   date: string
   status: 'completed' | 'pending' | 'failed'
 }
 
-const transactions: Transaction[] = [
+const matchPayments: MatchPayment[] = [
   {
     id: 1,
-    type: 'use',
-    amount: -9900,
-    description: '매칭 성사',
+    matchedUser: '하은님',
+    userAvatar: '👩🏻‍🦰',
+    amount: 9900,
+    paymentMethod: '카카오페이',
     date: '2025.01.23 14:30',
     status: 'completed'
   },
   {
     id: 2,
-    type: 'charge',
-    amount: 50000,
-    description: '포인트 충전',
-    method: '카카오페이',
-    date: '2025.01.22 09:15',
-    status: 'completed'
-  },
-  {
-    id: 3,
-    type: 'use',
-    amount: -9900,
-    description: '매칭 성사',
+    matchedUser: '준호님',
+    userAvatar: '👨🏻‍🦱',
+    amount: 9900,
+    paymentMethod: '토스페이',
     date: '2025.01.21 19:45',
     status: 'completed'
   },
   {
-    id: 4,
-    type: 'use',
-    amount: -9900,
-    description: '매칭 성사',
+    id: 3,
+    matchedUser: '민지님',
+    userAvatar: '👩🏻',
+    amount: 9900,
+    paymentMethod: '신용카드',
     date: '2025.01.20 11:20',
     status: 'completed'
   },
   {
-    id: 5,
-    type: 'charge',
-    amount: 29700,
-    description: '포인트 충전',
-    method: '토스페이',
-    date: '2025.01.19 16:30',
-    status: 'completed'
-  },
-  {
-    id: 6,
-    type: 'use',
-    amount: -9900,
-    description: '매칭 성사',
+    id: 4,
+    matchedUser: '성민님',
+    userAvatar: '👨🏻',
+    amount: 9900,
+    paymentMethod: '카카오페이',
     date: '2025.01.18 20:15',
     status: 'completed'
   },
   {
-    id: 7,
-    type: 'use',
-    amount: -9900,
-    description: '매칭 성사',
+    id: 5,
+    matchedUser: '수진님',
+    userAvatar: '👩🏻‍🦱',
+    amount: 9900,
+    paymentMethod: '토스페이',
     date: '2025.01.17 13:45',
     status: 'completed'
   },
   {
-    id: 8,
-    type: 'charge',
+    id: 6,
+    matchedUser: '지훈님',
+    userAvatar: '👨🏻‍🦳',
     amount: 9900,
-    description: '포인트 충전',
-    method: '신용카드',
-    date: '2025.01.15 10:00',
-    status: 'completed'
-  },
-  {
-    id: 9,
-    type: 'use',
-    amount: -9900,
-    description: '매칭 성사',
+    paymentMethod: '신용카드',
     date: '2025.01.14 18:30',
-    status: 'completed'
-  },
-  {
-    id: 10,
-    type: 'refund',
-    amount: 19800,
-    description: '포인트 환불',
-    method: '계좌이체',
-    date: '2025.01.10 14:20',
     status: 'completed'
   }
 ]
 
 export default function HistoryPage() {
-  const [filter, setFilter] = useState<'all' | 'charge' | 'use' | 'refund'>('all')
+  const [filter, setFilter] = useState<'all' | 'recent' | 'this-month'>('all')
 
-  const filteredTransactions = transactions.filter(transaction =>
-    filter === 'all' || transaction.type === filter
-  )
+  const filteredPayments = matchPayments.filter(payment => {
+    if (filter === 'all') return true
+    if (filter === 'recent') return true // 최근 7일
+    if (filter === 'this-month') return true // 이번 달
+    return true
+  })
 
-  const getTransactionIcon = (type: string) => {
-    switch (type) {
-      case 'charge': return { icon: '💰', color: 'bg-green-500' }
-      case 'use': return { icon: '💸', color: 'bg-red-500' }
-      case 'refund': return { icon: '💵', color: 'bg-[#FF4D8D]' }
-      default: return { icon: '💳', color: 'bg-gray-500' }
-    }
-  }
+  const totalPaid = matchPayments
+    .filter(p => p.status === 'completed')
+    .reduce((sum, p) => sum + p.amount, 0)
 
-  const getTransactionTitle = (type: string) => {
-    switch (type) {
-      case 'charge': return '충전'
-      case 'use': return '사용'
-      case 'refund': return '환불'
-      default: return '거래'
-    }
-  }
-
-  const totalCharged = transactions
-    .filter(t => t.type === 'charge')
-    .reduce((sum, t) => sum + t.amount, 0)
-
-  const totalUsed = transactions
-    .filter(t => t.type === 'use')
-    .reduce((sum, t) => sum + Math.abs(t.amount), 0)
-
-  const totalRefunded = transactions
-    .filter(t => t.type === 'refund')
-    .reduce((sum, t) => sum + t.amount, 0)
+  const successfulMatches = matchPayments
+    .filter(p => p.status === 'completed').length
 
   return (
     <div className="min-h-screen bg-[#F8FAFB]">
       {/* 상단 탭 네비게이션 */}
       <TopTabNavigation />
 
-      {/* 사용내역 헤더 */}
+      {/* 결제내역 헤더 */}
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-lg font-bold text-[#0D1B2A]">📄 사용내역</h1>
+            <h1 className="text-lg font-bold text-[#0D1B2A]">📋 결제내역</h1>
             <Link href="/dreams" className="text-[#FF4D8D] text-sm font-medium">
               ← 뒤로
             </Link>
@@ -157,25 +107,21 @@ export default function HistoryPage() {
 
       {/* Main Content */}
       <div className="max-w-sm mx-auto px-4 py-6">
-        {/* 요약 통계 */}
-        <div className="grid grid-cols-3 gap-3 mb-6">
-          <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-lg font-bold text-green-600 mb-1">
-              ₩ {totalCharged.toLocaleString()}
+        {/* 매칭 성과 요약 */}
+        <div className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] rounded-2xl p-6 mb-6 text-white">
+          <div className="text-center">
+            <div className="text-3xl mb-2">💕</div>
+            <h2 className="text-xl font-bold mb-2">매칭 성과</h2>
+            <div className="grid grid-cols-2 gap-4 mt-4">
+              <div>
+                <div className="text-2xl font-bold">{successfulMatches}</div>
+                <div className="text-white opacity-80 text-sm">성공한 매칭</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold">₩ {totalPaid.toLocaleString()}</div>
+                <div className="text-white opacity-80 text-sm">총 결제금액</div>
+              </div>
             </div>
-            <div className="text-xs text-gray-600">총 충전</div>
-          </div>
-          <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-lg font-bold text-red-600 mb-1">
-              ₩ {totalUsed.toLocaleString()}
-            </div>
-            <div className="text-xs text-gray-600">총 사용</div>
-          </div>
-          <div className="bg-white rounded-2xl p-4 text-center shadow-sm border border-gray-100">
-            <div className="text-lg font-bold text-[#0D1B2A] mb-1">
-              ₩ {totalRefunded.toLocaleString()}
-            </div>
-            <div className="text-xs text-gray-600">총 환불</div>
           </div>
         </div>
 
@@ -183,13 +129,12 @@ export default function HistoryPage() {
         <div className="flex bg-gray-100 rounded-2xl p-1 mb-6">
           {[
             { key: 'all', label: '전체' },
-            { key: 'charge', label: '충전' },
-            { key: 'use', label: '사용' },
-            { key: 'refund', label: '환불' }
+            { key: 'recent', label: '최근' },
+            { key: 'this-month', label: '이번 달' }
           ].map((tab) => (
             <button
               key={tab.key}
-              onClick={() => setFilter(tab.key as 'all' | 'charge' | 'use' | 'refund')}
+              onClick={() => setFilter(tab.key as 'all' | 'recent' | 'this-month')}
               className={`flex-1 py-2 px-3 rounded-xl text-sm font-medium transition-all ${
                 filter === tab.key
                   ? 'bg-white text-gray-900 shadow-sm'
@@ -201,85 +146,76 @@ export default function HistoryPage() {
           ))}
         </div>
 
-        {/* 거래 내역 */}
+        {/* 결제 내역 */}
         <div className="space-y-3">
-          {filteredTransactions.length > 0 ? (
-            filteredTransactions.map((transaction) => {
-              const { icon, color } = getTransactionIcon(transaction.type)
-              return (
-                <div
-                  key={transaction.id}
-                  className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100"
-                >
-                  <div className="flex items-center space-x-4">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${color}`}>
-                      <span className="text-white text-lg">{icon}</span>
+          {filteredPayments.length > 0 ? (
+            filteredPayments.map((payment) => (
+              <div
+                key={payment.id}
+                className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100"
+              >
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0D1B2A] to-[#FF4D8D] flex items-center justify-center text-lg">
+                    {payment.userAvatar}
+                  </div>
+
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="font-medium text-[#0D1B2A]">
+                        매칭 성사 결제
+                      </h3>
+                      <span className="font-bold text-[#FF4D8D]">
+                        ₩ {payment.amount.toLocaleString()}
+                      </span>
                     </div>
 
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <h3 className="font-medium text-gray-900">
-                          {getTransactionTitle(transaction.type)}
-                        </h3>
-                        <span className={`font-bold ${
-                          transaction.amount > 0
-                            ? 'text-green-600'
-                            : 'text-red-600'
-                        }`}>
-                          {transaction.amount > 0 ? '+' : ''}₩ {Math.abs(transaction.amount).toLocaleString()}
-                        </span>
-                      </div>
+                    <p className="text-sm text-[#0D1B2A] opacity-70 mb-1">
+                      {payment.matchedUser}과의 매칭
+                      <span className="text-[#FF4D8D] ml-1">
+                        • {payment.paymentMethod}
+                      </span>
+                    </p>
 
-                      <p className="text-sm text-gray-600 mb-1">
-                        {transaction.description}
-                        {transaction.method && (
-                          <span className="text-[#FF4D8D] ml-1">
-                            • {transaction.method}
-                          </span>
-                        )}
-                      </p>
-
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-500">
-                          {transaction.date}
-                        </span>
-                        <span className={`text-xs px-2 py-1 rounded-full ${
-                          transaction.status === 'completed'
-                            ? 'bg-green-100 text-green-800'
-                            : transaction.status === 'pending'
-                            ? 'bg-yellow-100 text-yellow-800'
-                            : 'bg-red-100 text-red-800'
-                        }`}>
-                          {transaction.status === 'completed' ? '완료' :
-                           transaction.status === 'pending' ? '처리중' : '실패'}
-                        </span>
-                      </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-[#0D1B2A] opacity-60">
+                        {payment.date}
+                      </span>
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        payment.status === 'completed'
+                          ? 'bg-green-100 text-green-800'
+                          : payment.status === 'pending'
+                          ? 'bg-yellow-100 text-yellow-800'
+                          : 'bg-red-100 text-red-800'
+                      }`}>
+                        {payment.status === 'completed' ? '완료' :
+                         payment.status === 'pending' ? '처리중' : '실패'}
+                      </span>
                     </div>
                   </div>
                 </div>
-              )
-            })
+              </div>
+            ))
           ) : (
             <div className="text-center py-12">
-              <div className="text-4xl mb-4">📄</div>
+              <div className="text-4xl mb-4">💕</div>
               <h3 className="text-lg font-bold text-gray-800 mb-2">
-                내역이 없어요
+                아직 성사된 매칭이 없어요
               </h3>
               <p className="text-gray-600 mb-6">
-                해당 유형의 거래 내역이 없습니다
+                첫 번째 매칭을 성사시켜보세요!
               </p>
               <Link
-                href="/dreams/purchase"
-                className="inline-block bg-[#FF4D8D] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#ff3080] transition-colors"
+                href="/matching"
+                className="inline-block bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition-all"
               >
-                포인트 충전하기
+                매칭 시작하기
               </Link>
             </div>
           )}
         </div>
 
-        {/* 더 보기 (무한 스크롤 대신 페이지네이션 버튼) */}
-        {filteredTransactions.length >= 10 && (
+        {/* 더 보기 버튼 */}
+        {filteredPayments.length >= 6 && (
           <div className="mt-6 text-center">
             <button className="text-[#FF4D8D] font-medium hover:text-[#ff3080]">
               더 보기 →
@@ -287,13 +223,13 @@ export default function HistoryPage() {
           </div>
         )}
 
-        {/* 도움말 */}
-        <div className="mt-8 bg-blue-50 rounded-xl p-4 border border-blue-200">
-          <h4 className="font-semibold text-blue-800 mb-2">💡 알아두세요</h4>
-          <ul className="text-sm text-blue-700 space-y-1">
-            <li>• 매칭 성사 시에만 포인트가 차감됩니다</li>
-            <li>• 매칭 실패나 취소 시에는 차감되지 않습니다</li>
-            <li>• 환불은 영업일 기준 1-3일 내 처리됩니다</li>
+        {/* 후불제 안내 */}
+        <div className="mt-8 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-4 border border-green-200">
+          <h4 className="font-semibold text-green-800 mb-2">🎯 성사형 후불제 안내</h4>
+          <ul className="text-sm text-green-700 space-y-1">
+            <li>• 매칭이 성사될 때만 자동 결제됩니다</li>
+            <li>• 매칭 실패나 거절 시에는 결제되지 않습니다</li>
+            <li>• 모든 결제는 안전하게 암호화 처리됩니다</li>
             <li>• 문의사항은 고객센터로 연락해주세요</li>
           </ul>
         </div>

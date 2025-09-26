@@ -1,81 +1,19 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import TopTabNavigation from '@/components/TopTabNavigation'
 
-// 충전 옵션 데이터
-const chargeOptions = [
-  {
-    id: 1,
-    amount: 9900,
-    matches: 1,
-    bonus: 0,
-    popular: false,
-  },
-  {
-    id: 2,
-    amount: 29700,
-    matches: 3,
-    bonus: 0,
-    popular: true,
-  },
-  {
-    id: 3,
-    amount: 49500,
-    matches: 5,
-    bonus: 0,
-    popular: false,
-  },
-  {
-    id: 4,
-    amount: 89100,
-    matches: 9,
-    bonus: 9900,
-    popular: false,
-  },
-  {
-    id: 5,
-    amount: 148500,
-    matches: 15,
-    bonus: 29700,
-    popular: false,
-  },
-]
-
-const paymentMethods = [
-  { id: 'kakao', name: '카카오페이', icon: '💬', color: 'bg-yellow-400' },
-  { id: 'toss', name: '토스페이', icon: '💙', color: 'bg-blue-500' },
-  { id: 'card', name: '신용/체크카드', icon: '💳', color: 'bg-gray-600' },
-  { id: 'bank', name: '계좌이체', icon: '🏦', color: 'bg-green-600' },
-]
-
 export default function PurchasePage() {
-  const [selectedOption, setSelectedOption] = useState<number>(2)
-  const [selectedPayment, setSelectedPayment] = useState<string>('kakao')
-  const [isProcessing, setIsProcessing] = useState(false)
-
-  const handlePurchase = () => {
-    setIsProcessing(true)
-    // 실제 결제 처리 로직
-    setTimeout(() => {
-      setIsProcessing(false)
-      alert('충전이 완료되었습니다!')
-    }, 2000)
-  }
-
-  const selectedCharge = chargeOptions.find(option => option.id === selectedOption)
-
   return (
     <div className="min-h-screen bg-[#F8FAFB]">
       {/* 상단 탭 네비게이션 */}
       <TopTabNavigation />
 
-      {/* 충전하기 헤더 */}
+      {/* 알림 헤더 */}
       <div className="bg-white shadow-sm">
         <div className="max-w-sm mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-lg font-bold text-[#0D1B2A]">💰 충전하기</h1>
+            <h1 className="text-lg font-bold text-[#0D1B2A]">💳 결제 안내</h1>
             <Link href="/dreams" className="text-[#FF4D8D] text-sm font-medium">
               ← 뒤로
             </Link>
@@ -85,156 +23,99 @@ export default function PurchasePage() {
 
       {/* Main Content */}
       <div className="max-w-sm mx-auto px-4 py-6">
-        {/* 충전 금액 선택 */}
-        <div className="mb-6">
-          <h2 className="text-lg font-bold text-[#0D1B2A] mb-4">충전 금액 선택</h2>
-          <div className="space-y-3">
-            {chargeOptions.map((option) => (
-              <div
-                key={option.id}
-                onClick={() => setSelectedOption(option.id)}
-                className={`relative p-4 rounded-2xl border-2 cursor-pointer transition-all ${
-                  selectedOption === option.id
-                    ? 'border-[#FF4D8D] bg-pink-50'
-                    : 'border-gray-200 bg-white hover:border-gray-300'
-                }`}
-              >
-                {option.popular && (
-                  <div className="absolute -top-2 left-4 bg-[#FF4D8D] text-white text-xs font-bold px-2 py-1 rounded-full">
-                    인기
-                  </div>
-                )}
-                {option.bonus > 0 && (
-                  <div className="absolute -top-2 right-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                    보너스 +{(option.bonus / 9900).toFixed(0)}회
-                  </div>
-                )}
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-bold text-[#0D1B2A] text-lg">
-                      ₩ {option.amount.toLocaleString()}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      {option.matches}회 매칭 가능
-                      {option.bonus > 0 && (
-                        <span className="text-red-600 font-medium">
-                          {' '}+ 보너스 {(option.bonus / 9900).toFixed(0)}회
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                  <div className={`w-6 h-6 rounded-full border-2 ${
-                    selectedOption === option.id
-                      ? 'border-[#FF4D8D] bg-[#FF4D8D]'
-                      : 'border-gray-300'
-                  }`}>
-                    {selectedOption === option.id && (
-                      <div className="w-full h-full rounded-full bg-white scale-50"></div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* 시스템 변경 안내 */}
+        <div className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] rounded-2xl p-6 mb-6 text-white text-center">
+          <div className="text-4xl mb-3">🎯</div>
+          <h2 className="text-xl font-bold mb-2">성사형 후불제로 변경되었어요</h2>
+          <p className="text-white opacity-90 text-sm leading-relaxed">
+            더 이상 미리 충전할 필요가 없어요!<br />
+            매칭이 성사될 때만 안전하게 결제하세요.
+          </p>
         </div>
 
-        {/* 결제 방법 선택 */}
-        <div className="mb-6">
-          <h2 className="text-lg font-bold text-[#0D1B2A] mb-4">결제 방법 선택</h2>
-          <div className="grid grid-cols-2 gap-3">
-            {paymentMethods.map((method) => (
-              <div
-                key={method.id}
-                onClick={() => setSelectedPayment(method.id)}
-                className={`p-4 rounded-2xl border-2 cursor-pointer transition-all text-center ${
-                  selectedPayment === method.id
-                    ? 'border-[#FF4D8D] bg-pink-50'
-                    : 'border-gray-200 bg-white hover:border-gray-300'
-                }`}
-              >
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-2 ${method.color}`}>
-                  <span className="text-white text-xl">{method.icon}</span>
-                </div>
-                <p className="text-sm font-medium text-[#0D1B2A]">{method.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* 결제 정보 요약 */}
+        {/* 새로운 시스템 안내 */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
-          <h3 className="font-bold text-[#0D1B2A] mb-4">결제 정보</h3>
-          <div className="space-y-3">
-            <div className="flex justify-between">
-              <span className="text-gray-600">충전 금액</span>
-              <span className="font-medium text-[#0D1B2A]">
-                ₩ {selectedCharge?.amount.toLocaleString()}
-              </span>
-            </div>
-            {selectedCharge?.bonus && selectedCharge.bonus > 0 && (
-              <div className="flex justify-between">
-                <span className="text-gray-600">보너스</span>
-                <span className="font-medium text-red-600">
-                  +₩ {selectedCharge.bonus.toLocaleString()}
-                </span>
+          <h3 className="font-bold text-[#0D1B2A] mb-4">🔄 새로운 결제 방식</h3>
+          <div className="space-y-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-green-600 font-bold text-sm">✓</span>
               </div>
-            )}
-            <div className="flex justify-between">
-              <span className="text-gray-600">결제 방법</span>
-              <span className="font-medium text-[#0D1B2A]">
-                {paymentMethods.find(p => p.id === selectedPayment)?.name}
-              </span>
+              <div>
+                <p className="font-medium text-[#0D1B2A]">충전 불필요</p>
+                <p className="text-sm text-[#0D1B2A] opacity-70">미리 포인트를 충전할 필요가 없어요</p>
+              </div>
             </div>
-            <div className="border-t pt-3">
-              <div className="flex justify-between">
-                <span className="font-bold text-[#0D1B2A]">총 결제 금액</span>
-                <span className="font-bold text-[#FF4D8D] text-lg">
-                  ₩ {selectedCharge?.amount.toLocaleString()}
-                </span>
+
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-blue-600 font-bold text-sm">✓</span>
+              </div>
+              <div>
+                <p className="font-medium text-[#0D1B2A]">성사 시에만 결제</p>
+                <p className="text-sm text-[#0D1B2A] opacity-70">양쪽 모두 수락할 때만 ₩9,900 결제</p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-[#FF4D8D] bg-opacity-10 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-[#FF4D8D] font-bold text-sm">✓</span>
+              </div>
+              <div>
+                <p className="font-medium text-[#0D1B2A]">환불 걱정 없음</p>
+                <p className="text-sm text-[#0D1B2A] opacity-70">실패하면 결제되지 않으니 환불도 필요 없어요</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* 이용 약관 */}
-        <div className="mb-6">
-          <div className="bg-gray-50 rounded-xl p-4">
-            <h4 className="font-semibold text-[#0D1B2A] mb-2">꿈결제 이용 약관</h4>
-            <ul className="text-sm text-gray-600 space-y-1">
-              <li>• 충전된 포인트는 1년간 유효합니다</li>
-              <li>• 매칭 성사 시에만 포인트가 차감됩니다</li>
-              <li>• 미사용 포인트는 언제든지 환불 가능합니다</li>
-              <li>• 환불 시 수수료는 없습니다</li>
-            </ul>
-          </div>
+        {/* 결제 방법 안내 */}
+        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
+          <h3 className="font-bold text-[#0D1B2A] mb-4">💳 결제 방법 확인</h3>
+          <p className="text-sm text-[#0D1B2A] opacity-70 mb-3">
+            매칭 성사 시 사용할 결제 방법을 미리 확인해보세요
+          </p>
+          <Link
+            href="/dreams/balance"
+            className="w-full inline-block text-center bg-gray-50 hover:bg-gray-100 text-[#0D1B2A] py-3 px-4 rounded-xl font-medium transition-colors border border-gray-200"
+          >
+            결제 방법 보기 →
+          </Link>
         </div>
 
-        {/* 결제 버튼 */}
-        <button
-          onClick={handlePurchase}
-          disabled={isProcessing}
-          className="w-full bg-[#FF4D8D] text-white font-semibold py-4 rounded-2xl hover:bg-[#ff3080] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        {/* 결제 히스토리 */}
+        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
+          <h3 className="font-bold text-[#0D1B2A] mb-4">📋 결제 내역</h3>
+          <p className="text-sm text-[#0D1B2A] opacity-70 mb-3">
+            성사된 매칭의 결제 내역을 확인할 수 있어요
+          </p>
+          <Link
+            href="/dreams/history"
+            className="w-full inline-block text-center bg-gray-50 hover:bg-gray-100 text-[#0D1B2A] py-3 px-4 rounded-xl font-medium transition-colors border border-gray-200"
+          >
+            결제 내역 보기 →
+          </Link>
+        </div>
+
+        {/* 매칭 시작 안내 */}
+        <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-4 border border-green-200 mb-6">
+          <h4 className="font-semibold text-green-800 mb-2">✨ 지금 바로 매칭 시작</h4>
+          <p className="text-sm text-green-700 mb-3">
+            충전 없이 바로 AI 매칭을 시작할 수 있어요. 성사될 때만 결제됩니다.
+          </p>
+        </div>
+
+        {/* CTA 버튼 */}
+        <Link
+          href="/matching"
+          className="w-full inline-block text-center bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white font-bold py-4 px-6 rounded-xl hover:opacity-90 transition-all"
         >
-          {isProcessing ? (
-            <div className="flex items-center justify-center space-x-2">
-              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-              <span>결제 처리 중...</span>
-            </div>
-          ) : (
-            `₩ ${selectedCharge?.amount.toLocaleString()} 결제하기`
-          )}
-        </button>
-
-        {/* 안전한 결제 안내 */}
-        <div className="mt-4 text-center">
-          <div className="flex items-center justify-center space-x-2 text-sm text-gray-500">
-            <span>🔒</span>
-            <span>SSL 암호화로 안전하게 보호됩니다</span>
-          </div>
-        </div>
+          🚀 지금 매칭 시작하기
+        </Link>
+        <p className="text-xs text-[#0D1B2A] opacity-60 mt-2 text-center">
+          성사될 때만 ₩9,900가 결제됩니다
+        </p>
       </div>
-
     </div>
   )
 }
