@@ -74,7 +74,7 @@ const matchPayments: MatchPayment[] = [
 export default function HistoryPage() {
   const [filter, setFilter] = useState<'all' | 'recent' | 'this-month'>('all')
 
-  const filteredPayments = matchPayments.filter(payment => {
+  const filteredPayments = matchPayments.filter(_payment => {
     if (filter === 'all') return true
     if (filter === 'recent') return true // 최근 7일
     if (filter === 'this-month') return true // 이번 달

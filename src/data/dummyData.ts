@@ -44,6 +44,7 @@ export const dummyMatches: MatchData[] = [
       faceType: '둥근형',
       location: '서울 서초구',
       distance: '3.2km',
+      height: 175,
       isVerified: true
     },
     compatibility: 94,
@@ -79,6 +80,7 @@ export const dummyMatches: MatchData[] = [
       faceType: '각진형',
       location: '서울 홍대입구',
       distance: '5.8km',
+      height: 178,
       isVerified: true
     },
     compatibility: 88,
@@ -114,6 +116,7 @@ export const dummyMatches: MatchData[] = [
       faceType: '타원형',
       location: '서울 용산구',
       distance: '7.1km',
+      height: 172,
       isVerified: true
     },
     compatibility: 85,

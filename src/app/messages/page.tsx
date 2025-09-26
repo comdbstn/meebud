@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import TopTabNavigation from '@/components/TopTabNavigation'
-import { useAuth, useMatching } from '@/contexts/AppContext'
+import { useMatching } from '@/contexts/AppContext'
 import { dummyMessages } from '@/data/dummyData'
 
 export default function MessagesPage() {

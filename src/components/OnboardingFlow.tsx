@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuth, useNotifications } from '@/contexts/AppContext'
+import { useNotifications } from '@/contexts/AppContext'
 import InteractiveButton from './InteractiveButton'
 
 interface OnboardingStep {
@@ -15,7 +15,6 @@ interface OnboardingStep {
 }
 
 export default function OnboardingFlow() {
-  const { user } = useAuth()
   const { addNotification } = useNotifications()
   const router = useRouter()
   const [currentStep, setCurrentStep] = useState(0)

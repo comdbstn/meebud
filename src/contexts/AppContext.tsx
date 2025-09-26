@@ -41,6 +41,7 @@ export interface MatchData {
     faceType: string
     location: string
     distance: string
+    height: number
     isVerified: boolean
   }
   compatibility: number

@@ -7,7 +7,7 @@ import { dummyMatches } from '@/data/dummyData'
 
 export function useDemoFlow() {
   const { isAuthenticated, user } = useAuth()
-  const { setCurrentMatch, addToHistory } = useMatching()
+  const { setCurrentMatch } = useMatching()
   const { addNotification } = useNotifications()
   const router = useRouter()
 
@@ -164,7 +164,7 @@ export function ProgressTracker() {
   return (
     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-bold text-[#0D1B2A]">나의 MEE'BUD 여정</h3>
+        <h3 className="font-bold text-[#0D1B2A]">나의 MEE&apos;BUD 여정</h3>
         <span className="text-sm text-[#FF4D8D] font-semibold">
           {completedSteps}/{progress.length}
         </span>
