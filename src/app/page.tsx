@@ -20,16 +20,6 @@ export default function HomePage() {
   const { simulateMatchingFlow, simulateLiveUpdates } = useDemoFlow()
 
   useEffect(() => {
-    // 데모용 사용자 데이터 시뮬레이션
-    if (!user && !isLoading) {
-      // 로그인된 상태로 시뮬레이션 (데모 모드)
-      const authStatus = sessionStorage.getItem('user_authenticated')
-      if (authStatus === 'true') {
-        // 이미 로그인된 상태라면 데모 데이터 로드는 하지 않음 (실제 로그인 유지)
-        return
-      }
-    }
-
     // 초기 알림 로드 및 데모 플로우 시작
     if (isAuthenticated && user && notifications.length === 0) {
       dummyNotifications.forEach(notif => {

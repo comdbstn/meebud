@@ -3,7 +3,7 @@
 import { Metadata } from 'next'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@/contexts/AppContext'
+import { useAuth, useNotifications } from '@/contexts/AppContext'
 import { dummyUser } from '@/data/dummyData'
 import InteractiveButton from '@/components/InteractiveButton'
 
@@ -27,52 +27,60 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
   const { login } = useAuth()
+  const { addNotification } = useNotifications()
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
+    console.log('🔐 Login attempt started', { email, passwordLength: password.length })
     setLoading(true)
     setError('')
 
     try {
       // 입력값 검증
       if (!email || !password) {
+        console.log('❌ Validation failed: Missing email or password')
         setError('이메일과 비밀번호를 모두 입력해주세요.')
         return
       }
 
       // 테스트 계정 인증
       const validPassword = TEST_ACCOUNTS[email as keyof typeof TEST_ACCOUNTS]
+      console.log('🔍 Account check', { email, validPassword: !!validPassword, passwordMatch: validPassword === password })
 
       if (validPassword && validPassword === password) {
         // 상태 관리에 로그인 처리
         const userWithEmail = { ...dummyUser, email }
-        login(userWithEmail)
 
-        // 관리자 계정 확인
-        if (email === 'admin@meebud.com') {
-          sessionStorage.setItem('user_role', 'admin')
-          // 짧은 지연 후 리다이렉트 (상태 업데이트 완료 대기)
-          setTimeout(() => {
-            router.push('/admin')
-          }, 100)
-        } else {
-          sessionStorage.setItem('user_role', 'user')
-          // 짧은 지연 후 리다이렉트 (상태 업데이트 완료 대기)
-          setTimeout(() => {
-            router.push('/')
-          }, 100)
-        }
+        console.log('✅ Authentication successful, processing login...')
+
+        // 세션 스토리지 먼저 설정
+        const userRole = email === 'admin@meebud.com' ? 'admin' : 'user'
+        sessionStorage.setItem('user_role', userRole)
+        console.log('💾 Session storage updated', { userRole })
+
+        // Context 상태 업데이트
+        login(userWithEmail)
+        console.log('🔄 Context state updated')
+
+        // 알림 표시
+        addNotification('success', '로그인되었습니다!')
+        console.log('📢 Notification added')
+
+        // 상태 업데이트 완료 후 리다이렉트
+        console.log('⏳ Waiting for state update...')
+        await new Promise(resolve => setTimeout(resolve, 300))
+
+        const redirectPath = email === 'admin@meebud.com' ? '/admin' : '/'
+        console.log('🚀 Redirecting to:', redirectPath)
+        router.push(redirectPath)
       } else {
         setError('이메일 또는 비밀번호가 올바르지 않습니다.')
+        setLoading(false)
       }
     } catch (error) {
       console.error('Login error:', error)
       setError('로그인 중 오류가 발생했습니다. 다시 시도해주세요.')
-    } finally {
-      // 리다이렉트가 아닌 경우에만 로딩 상태 해제
-      setTimeout(() => {
-        setLoading(false)
-      }, 200)
+      setLoading(false)
     }
   }
 
