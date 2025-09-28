@@ -85,7 +85,7 @@ export default function MatchingStatus({ status, matchedProfile }: MatchingStatu
             AI가 최적의 상대를 찾고 있어요.<br />
             보통 24시간 이내에 결과를 알려드려요.
           </p>
-          <div className="bg-slate-50 rounded-xl p-4">
+          <div className="bg-white rounded-xl p-4 border border-gray-200">
             <div className="flex items-center justify-center space-x-2">
               <div className="w-2 h-2 bg-[#FF4D8D] rounded-full animate-bounce"></div>
               <div className="w-2 h-2 bg-[#FF4D8D] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>

@@ -132,7 +132,7 @@ export default function AdminMatchingManager({ onCreateMatch }: AdminMatchingMan
         <h4 className="font-semibold text-[#0D1B2A] mb-3">활성 사용자 ({activeUsers.length}명)</h4>
         <div className="grid grid-cols-1 gap-3">
           {activeUsers.map(user => (
-            <div key={user.id} className="bg-slate-50 rounded-xl p-4">
+            <div key={user.id} className="bg-white rounded-xl p-4 border border-gray-100">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <div className="text-2xl">{user.photos[0]}</div>

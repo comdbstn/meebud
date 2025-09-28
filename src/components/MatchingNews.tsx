@@ -58,7 +58,7 @@ export default function MatchingNews({ newsItems = defaultNewsItems }: MatchingN
         {newsItems.slice(0, 3).map((item, index) => (
           <div
             key={item.id}
-            className="flex items-start space-x-3 p-3 bg-slate-50 rounded-xl"
+            className="flex items-start space-x-3 p-3 bg-white rounded-xl border border-gray-100"
             style={{
               animationDelay: `${index * 0.1}s`,
               animation: 'fadeInUp 0.5s ease-out forwards'
