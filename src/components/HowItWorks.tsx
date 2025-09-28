@@ -1,6 +1,6 @@
 export default function HowItWorks() {
   return (
-    <section className="py-16 px-4 bg-gray-50">
+    <section className="py-16 px-4 bg-[#F8FAFB]">
       <div className="max-w-sm mx-auto">
         <div className="text-center mb-12 animate-slide-up">
           <h2 className="text-2xl font-bold text-[#0D1B2A] mb-3">

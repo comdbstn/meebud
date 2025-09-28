@@ -53,7 +53,7 @@ export default function FAQ() {
   }
 
   return (
-    <section className="py-16 px-4 bg-gray-50">
+    <section className="py-16 px-4 bg-[#F8FAFB]">
       <div className="max-w-sm mx-auto">
         <div className="text-center mb-12 animate-slide-up">
           <h2 className="text-2xl font-bold text-[#0D1B2A] mb-3">
@@ -85,7 +85,7 @@ export default function FAQ() {
               </button>
 
               {openFAQ === index && (
-                <div className="px-5 py-4 bg-gray-50 border-t border-gray-200">
+                <div className="px-5 py-4 bg-white border-t border-gray-200">
                   <p className="text-[#0D1B2A] opacity-80 text-sm leading-relaxed">
                     {faq.answer}
                   </p>

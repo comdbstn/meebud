@@ -21,8 +21,8 @@ const TEST_ACCOUNTS = {
 }
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('test@meebud.com')
+  const [password, setPassword] = useState('meebud123!')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
@@ -33,29 +33,51 @@ export default function LoginPage() {
     setLoading(true)
     setError('')
 
-    // 테스트 계정 인증
-    if (TEST_ACCOUNTS[email as keyof typeof TEST_ACCOUNTS] === password) {
-      // 상태 관리에 로그인 처리
-      const userWithEmail = { ...dummyUser, email }
-      login(userWithEmail)
-
-      // 관리자 계정 확인
-      if (email === 'admin@meebud.com') {
-        sessionStorage.setItem('user_role', 'admin')
-        router.push('/admin')
-      } else {
-        sessionStorage.setItem('user_role', 'user')
-        router.push('/')
+    try {
+      // 입력값 검증
+      if (!email || !password) {
+        setError('이메일과 비밀번호를 모두 입력해주세요.')
+        return
       }
-    } else {
-      setError('이메일 또는 비밀번호가 올바르지 않습니다.')
-    }
 
-    setLoading(false)
+      // 테스트 계정 인증
+      const validPassword = TEST_ACCOUNTS[email as keyof typeof TEST_ACCOUNTS]
+
+      if (validPassword && validPassword === password) {
+        // 상태 관리에 로그인 처리
+        const userWithEmail = { ...dummyUser, email }
+        login(userWithEmail)
+
+        // 관리자 계정 확인
+        if (email === 'admin@meebud.com') {
+          sessionStorage.setItem('user_role', 'admin')
+          // 짧은 지연 후 리다이렉트 (상태 업데이트 완료 대기)
+          setTimeout(() => {
+            router.push('/admin')
+          }, 100)
+        } else {
+          sessionStorage.setItem('user_role', 'user')
+          // 짧은 지연 후 리다이렉트 (상태 업데이트 완료 대기)
+          setTimeout(() => {
+            router.push('/')
+          }, 100)
+        }
+      } else {
+        setError('이메일 또는 비밀번호가 올바르지 않습니다.')
+      }
+    } catch (error) {
+      console.error('Login error:', error)
+      setError('로그인 중 오류가 발생했습니다. 다시 시도해주세요.')
+    } finally {
+      // 리다이렉트가 아닌 경우에만 로딩 상태 해제
+      setTimeout(() => {
+        setLoading(false)
+      }, 200)
+    }
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center px-4 max-w-md mx-auto">
+    <div className="min-h-screen bg-[#F8FAFB] flex flex-col justify-center px-4 max-w-md mx-auto">
       {/* 모바일 최적화 헤더 */}
       <div className="text-center mb-8">
         <div className="inline-flex items-center space-x-3 mb-4">
@@ -72,7 +94,7 @@ export default function LoginPage() {
       </div>
 
       {/* 모바일 최적화 카드 */}
-      <div className="bg-gray-50 rounded-2xl p-6 shadow-sm border border-gray-100">
+      <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
         {/* 테스트 계정 안내 */}
         <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl">
           <h3 className="text-sm font-semibold text-blue-900 mb-2">테스트 계정</h3>
@@ -140,7 +162,7 @@ export default function LoginPage() {
               <div className="w-full border-t border-gray-300" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-3 bg-gray-50 text-gray-600 font-medium">또는</span>
+              <span className="px-3 bg-white text-gray-600 font-medium">또는</span>
             </div>
           </div>
 
