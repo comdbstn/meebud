@@ -172,7 +172,7 @@ export default function EditProfilePage() {
                 rows={4}
                 maxLength={500}
               />
-              <div className="text-right text-xs text-gray-500 mt-1">
+              <div className="text-right text-xs text-gray-700 mt-1">
                 {profile.introduction.length}/500
               </div>
             </div>
@@ -283,7 +283,7 @@ export default function EditProfilePage() {
                 {[1, 2, 3, 4].map((index) => (
                   <div key={index} className="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:border-[#FF4D8D] transition-colors cursor-pointer aspect-square flex flex-col justify-center">
                     <div className="text-2xl mb-1">📸</div>
-                    <p className="text-xs text-gray-500">사진 {index}</p>
+                    <p className="text-xs text-gray-700">사진 {index}</p>
                   </div>
                 ))}
               </div>
@@ -321,7 +321,7 @@ export default function EditProfilePage() {
                     {profile.idealAgeMin}세
                   </div>
                 </div>
-                <span className="text-gray-500">~</span>
+                <span className="text-gray-700">~</span>
                 <div className="flex-1">
                   <input
                     type="range"

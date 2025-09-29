@@ -176,7 +176,7 @@ export function ProgressTracker() {
             <span className="text-lg">{step.icon}</span>
             <div className="flex-1">
               <div className={`text-sm font-medium ${
-                step.completed ? 'text-[#0D1B2A]' : 'text-gray-500'
+                step.completed ? 'text-[#0D1B2A]' : 'text-gray-700'
               }`}>
                 {step.title}
               </div>

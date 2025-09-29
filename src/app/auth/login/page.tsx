@@ -12,18 +12,11 @@ const _metadata: Metadata = {
   description: "MEE'BUD 로그인으로 AI 매칭 서비스를 시작하세요",
 }
 
-// 테스트 계정 정보
-const TEST_ACCOUNTS = {
-  'test@meebud.com': 'meebud123!',
-  'demo@meebud.com': 'demo123!',
-  'user@meebud.com': 'user123!',
-  'admin@meebud.com': 'admin123!'
-}
+// 간소화된 로그인 - 계정 검증 제거
 
 export default function LoginPage() {
   const [email, setEmail] = useState('test@meebud.com')
   const [password, setPassword] = useState('meebud123!')
-  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
   const { login } = useAuth()
@@ -31,34 +24,18 @@ export default function LoginPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    setError('')
 
-    // 입력값 검증
-    if (!email || !password) {
-      setError('이메일과 비밀번호를 모두 입력해주세요.')
-      setLoading(false)
-      return
-    }
+    // 즉시 로그인 처리 (간소화된 로직)
+    const userWithEmail = { ...dummyUser, email }
 
-    // 테스트 계정 인증
-    const validPassword = TEST_ACCOUNTS[email as keyof typeof TEST_ACCOUNTS]
+    // 세션 저장
+    sessionStorage.setItem('user_role', email === 'admin@meebud.com' ? 'admin' : 'user')
 
-    if (validPassword === password) {
-      // 로그인 성공
-      const userWithEmail = { ...dummyUser, email }
+    // 상태 업데이트
+    login(userWithEmail)
 
-      // 세션 저장
-      sessionStorage.setItem('user_role', email === 'admin@meebud.com' ? 'admin' : 'user')
-
-      // 상태 업데이트
-      login(userWithEmail)
-
-      // 리다이렉트
-      router.push(email === 'admin@meebud.com' ? '/admin' : '/')
-    } else {
-      setError('이메일 또는 비밀번호가 올바르지 않습니다.')
-      setLoading(false)
-    }
+    // 리다이렉트
+    router.push(email === 'admin@meebud.com' ? '/admin' : '/')
   }
 
   return (
@@ -124,11 +101,6 @@ export default function LoginPage() {
             />
           </div>
 
-          {error && (
-            <div className="p-4 bg-red-50 border border-red-300 text-red-800 rounded-xl font-medium">
-              {error}
-            </div>
-          )}
 
           <InteractiveButton
             type="submit"

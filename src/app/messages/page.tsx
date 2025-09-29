@@ -91,14 +91,14 @@ export default function MessagesPage() {
                   <div className="flex items-start space-x-3">
                     <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center text-white text-xs font-bold">2</div>
                     <div>
-                      <p className="font-medium text-gray-500">상호 수락</p>
+                      <p className="font-medium text-gray-700">상호 수락</p>
                       <p className="text-sm text-gray-400">양쪽 모두 매칭에 동의해야 합니다</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center text-white text-xs font-bold">3</div>
                     <div>
-                      <p className="font-medium text-gray-500">꿈결제 완료</p>
+                      <p className="font-medium text-gray-700">꿈결제 완료</p>
                       <p className="text-sm text-gray-400">성사형 후불제로 안전하게 결제</p>
                     </div>
                   </div>

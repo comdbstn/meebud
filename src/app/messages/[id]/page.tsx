@@ -107,7 +107,7 @@ export default function ChatPage() {
             <h2 className="font-semibold text-gray-800">
               {chat.name}, {chat.age}
             </h2>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-700">
               {chat.isOnline ? (
                 <span className="flex items-center">
                   <span className="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
@@ -157,7 +157,7 @@ export default function ChatPage() {
             }`}>
               <p className="text-sm">{msg.text}</p>
               <div className={`text-xs mt-1 ${
-                msg.sender === 'me' ? 'text-white opacity-80' : 'text-gray-500'
+                msg.sender === 'me' ? 'text-white opacity-80' : 'text-gray-700'
               }`}>
                 {msg.time}
                 {msg.sender === 'me' && (

@@ -141,7 +141,7 @@ export default function MatchingHistoryPage() {
                         <h3 className="font-bold text-gray-800">
                           {match.name}, {match.age}
                         </h3>
-                        <span className="text-xs text-gray-500">{match.matchedAt}</span>
+                        <span className="text-xs text-gray-700">{match.matchedAt}</span>
                       </div>
 
                       <p className="text-sm text-[#FF4D8D] mb-1">{match.faceType}</p>
@@ -190,7 +190,7 @@ export default function MatchingHistoryPage() {
                       <h3 className="font-bold text-gray-800">
                         {person.name}, {person.age}
                       </h3>
-                      <span className="text-xs text-gray-500">{person.time}</span>
+                      <span className="text-xs text-gray-700">{person.time}</span>
                     </div>
 
                     <p className="text-sm text-[#FF4D8D] mb-2">{person.faceType}</p>
@@ -231,7 +231,7 @@ export default function MatchingHistoryPage() {
                       <h3 className="font-bold text-gray-800">
                         {person.name}, {person.age}
                       </h3>
-                      <span className="text-xs text-gray-500">{person.time}</span>
+                      <span className="text-xs text-gray-700">{person.time}</span>
                     </div>
 
                     <p className="text-sm text-[#FF4D8D] mb-2">{person.faceType}</p>

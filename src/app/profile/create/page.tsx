@@ -93,7 +93,7 @@ export default function CreateProfilePage() {
 
         {/* 진행 바 */}
         <div className="mb-8">
-          <div className="flex justify-between text-xs text-gray-500 mb-2">
+          <div className="flex justify-between text-xs text-[#0D1B2A] mb-2">
             <span>진행률</span>
             <span>{currentStep}/{totalSteps}</span>
           </div>
@@ -183,7 +183,7 @@ export default function CreateProfilePage() {
                   <p className="text-sm text-gray-600 mb-2">
                     얼굴이 잘 보이는 사진을 업로드해주세요
                   </p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-gray-700">
                     AI가 얼굴상을 분석합니다
                   </p>
                   <input
@@ -206,11 +206,11 @@ export default function CreateProfilePage() {
                   {[1, 2, 3, 4].map((index) => (
                     <div key={index} className="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:border-[#FF4D8D] transition-colors cursor-pointer aspect-square flex flex-col justify-center">
                       <div className="text-2xl mb-1">📸</div>
-                      <p className="text-xs text-gray-500">사진 {index}</p>
+                      <p className="text-xs text-gray-700">사진 {index}</p>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-gray-500 mt-2">
+                <p className="text-xs text-gray-700 mt-2">
                   * 전신사진, 취미활동 사진 등을 추가하시면 매칭률이 높아져요
                 </p>
               </div>
@@ -338,7 +338,7 @@ export default function CreateProfilePage() {
                       {formData.idealAgeMin}세
                     </div>
                   </div>
-                  <span className="text-gray-500">~</span>
+                  <span className="text-gray-700">~</span>
                   <div className="flex-1">
                     <input
                       type="range"
@@ -422,7 +422,7 @@ export default function CreateProfilePage() {
                   placeholder="안녕하세요! 저는..."
                   maxLength={500}
                 />
-                <div className="text-right text-xs text-gray-500 mt-1">
+                <div className="text-right text-xs text-gray-700 mt-1">
                   {formData.introduction.length}/500
                 </div>
               </div>
@@ -506,7 +506,7 @@ export default function CreateProfilePage() {
 
         {/* 건너뛰기 */}
         <div className="text-center mt-4">
-          <Link href="/" className="text-sm text-gray-500 hover:text-gray-700">
+          <Link href="/" className="text-sm text-gray-700 hover:text-gray-700">
             나중에 완성하기 →
           </Link>
         </div>

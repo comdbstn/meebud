@@ -129,7 +129,7 @@ export default function DreamsPage() {
               </div>
               <div className="text-right">
                 <p className="text-sm font-bold text-[#FF4D8D]">₩ 9,900</p>
-                <p className="text-xs text-gray-500">2시간 전</p>
+                <p className="text-xs text-gray-700">2시간 전</p>
               </div>
             </div>
 
@@ -145,7 +145,7 @@ export default function DreamsPage() {
               </div>
               <div className="text-right">
                 <p className="text-sm font-bold text-[#FF4D8D]">₩ 9,900</p>
-                <p className="text-xs text-gray-500">어제</p>
+                <p className="text-xs text-gray-700">어제</p>
               </div>
             </div>
 
@@ -161,7 +161,7 @@ export default function DreamsPage() {
               </div>
               <div className="text-right">
                 <p className="text-sm font-medium text-green-600">무료</p>
-                <p className="text-xs text-gray-500">2일 전</p>
+                <p className="text-xs text-gray-700">2일 전</p>
               </div>
             </div>
           </div>
