@@ -5,7 +5,7 @@ import Link from 'next/link'
 import TopTabNavigation from '@/components/TopTabNavigation'
 import MatchingStatus, { MatchingStatusType } from '@/components/MatchingStatus'
 import MatchingNews from '@/components/MatchingNews'
-import { LinkButton, Card, H1, H2, H4, P, Small } from '@/components/ui'
+import { LinkButton, Card, H1, H4, Small } from '@/components/ui'
 import { useAuth, useMatching, useNotifications } from '@/contexts/AppContext'
 import { dummyNotifications } from '@/data/dummyData'
 import { PageLoading } from '@/components/LoadingSpinner'
@@ -160,10 +160,10 @@ export default function HomePage() {
         {/* 히어로 섹션 */}
         <Card variant="gradient" padding="lg" className="bg-gradient-to-r from-[#0D1B2A] to-[#FF4D8D] text-white mb-6 shadow-lg">
           <div className="text-3xl mb-2">✨</div>
-          <H2 className="text-white mb-2">진짜 매칭의 시작</H2>
-          <P className="text-pink-100 mb-4">
+          <h2 className="text-2xl font-bold text-white leading-tight mb-2">진짜 매칭의 시작</h2>
+          <p className="text-base text-pink-100 leading-relaxed mb-4">
             10,245명의 인증회원과 함께하고 있어요!
-          </P>
+          </p>
           <LinkButton
             href="/auth/signup"
             variant="secondary"

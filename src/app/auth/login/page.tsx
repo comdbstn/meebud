@@ -2,7 +2,7 @@
 
 import { Metadata } from 'next'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AppContext'
 import { dummyUser } from '@/data/dummyData'
 import InteractiveButton from '@/components/InteractiveButton'
@@ -17,13 +17,18 @@ const _metadata: Metadata = {
 export default function LoginPage() {
   const [email, setEmail] = useState('test@meebud.com')
   const [password, setPassword] = useState('meebud123!')
-  const router = useRouter()
+  // const router = useRouter()
   const { login } = useAuth()
 
   const handleLogin = () => {
+    // eslint-disable-next-line no-console
+    console.log('로그인 버튼 클릭됨')
     // 즉시 로그인 완료
     login(dummyUser)
-    router.push('/')
+    // eslint-disable-next-line no-console
+    console.log('로그인 완료')
+    // 강제 리다이렉트
+    window.location.href = '/'
   }
 
   return (
