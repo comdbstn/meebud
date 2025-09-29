@@ -17,25 +17,13 @@ const _metadata: Metadata = {
 export default function LoginPage() {
   const [email, setEmail] = useState('test@meebud.com')
   const [password, setPassword] = useState('meebud123!')
-  const [loading, setLoading] = useState(false)
   const router = useRouter()
   const { login } = useAuth()
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-
-    // 즉시 로그인 처리 (간소화된 로직)
-    const userWithEmail = { ...dummyUser, email }
-
-    // 세션 저장
-    sessionStorage.setItem('user_role', email === 'admin@meebud.com' ? 'admin' : 'user')
-
-    // 상태 업데이트
-    login(userWithEmail)
-
-    // 리다이렉트
-    router.push(email === 'admin@meebud.com' ? '/admin' : '/')
+  const handleLogin = () => {
+    // 즉시 로그인 완료
+    login(dummyUser)
+    router.push('/')
   }
 
   return (
@@ -66,7 +54,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <form className="space-y-6" onSubmit={handleLogin}>
+        <div className="space-y-6">
           <div>
             <label htmlFor="email" className="block text-sm font-semibold text-[#0D1B2A] mb-2">
               이메일 주소
@@ -103,15 +91,14 @@ export default function LoginPage() {
 
 
           <InteractiveButton
-            type="submit"
             variant="primary"
             size="lg"
-            loading={loading}
             className="w-full"
+            onClick={handleLogin}
           >
             로그인
           </InteractiveButton>
-        </form>
+        </div>
 
         <div className="mt-8">
           <div className="relative">
