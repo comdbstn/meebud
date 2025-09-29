@@ -158,7 +158,7 @@ export function AccessibleInput({
       </label>
 
       {hint && (
-        <p id={hintId} className="text-sm text-[#6B7280] mb-2">
+        <p id={hintId} className="text-sm text-[#374151] mb-2">
           {hint}
         </p>
       )}
@@ -238,7 +238,7 @@ export function AccessibleRadioGroup({
             <div className="flex-1">
               <span className="text-[#0D1B2A] font-medium">{option.label}</span>
               {option.description && (
-                <p id={`${option.value}-desc`} className="text-sm text-[#6B7280] mt-1">
+                <p id={`${option.value}-desc`} className="text-sm text-[#374151] mt-1">
                   {option.description}
                 </p>
               )}

@@ -101,7 +101,7 @@ export function TouchTabs({
             flex-1 py-3 px-4 rounded-xl text-sm font-medium transition-all duration-200 min-h-[44px] touch-manipulation
             ${activeTab === tab.key
               ? 'bg-white text-[#0D1B2A] shadow-sm'
-              : 'text-[#6B7280] hover:text-[#0D1B2A] active:bg-white/50'
+              : 'text-[#374151] hover:text-[#0D1B2A] active:bg-white/50'
             }
           `}
         >

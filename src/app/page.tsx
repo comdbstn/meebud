@@ -188,7 +188,7 @@ export default function HomePage() {
 
         {/* 로그인 링크 */}
         <div className="text-center mb-6">
-          <p className="text-sm text-[#6B7280]">이미 계정이 있다면?</p>
+          <p className="text-sm text-[#0D1B2A]">이미 계정이 있다면?</p>
           <Link
             href="/auth/login"
             className="text-[#FF4D8D] font-semibold hover:text-[#ff3080] transition-colors"

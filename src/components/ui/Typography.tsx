@@ -82,7 +82,7 @@ export function Secondary({ children, className = '' }: TypographyProps) {
 
 export function Muted({ children, className = '' }: TypographyProps) {
   return (
-    <span className={`text-[#6B7280] ${className}`}>
+    <span className={`text-[#374151] ${className}`}>
       {children}
     </span>
   )
